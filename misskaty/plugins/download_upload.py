@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
-# * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @author        peamasamba<peamasamba@gmail.com>
+# * @date          2022-12-01 09:12:27
+# * @projectName   Pea Masamba
+# * Copyright @peamasamba All rights reserved
 import asyncio
 import math
 import os
@@ -22,7 +22,7 @@ from misskaty.helper.http import fetch
 from misskaty.helper.pyro_progress import humanbytes, progress_for_pyrogram
 from misskaty.vars import COMMAND_HANDLER, SUDO
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("PeaMasamba")
 
 __MODULE__ = "Download/Upload"
 __HELP__ = """
