@@ -1,8 +1,8 @@
 """
- * @author        Yasir Aris M <yasiramunandar@gmail.com>
- * @created       2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        peamasamba<peamasamba@gmail.com>
+ * @date          2022-12-01 09:12:27
+ * @projectName   Pea Masamba
+ * Copyright @peamasamba All rights reserved
 """
 from json import loads as json_loads
 from os import remove
@@ -175,7 +175,7 @@ async def wastepaste(_, message):
             f"**Reply To A Message With /{target} or with command**", del_in=6
         )
 
-    msg = await message.reply_msg("`Pasting to YasirBin...`")
+    msg = await message.reply_msg("`Pasting to PeamasambaBin...`")
     data = ""
     limit = 1024 * 1024
     if reply and reply.document:
@@ -496,7 +496,7 @@ async def tempaste(_, message):
             "https://tempaste.com/api/v1/create-paste/",
             data={
                 "api_key": "xnwuzXubxk3kCUz9Q2pjMVR8xeTO4t",
-                "title": "MissKaty Paste",
+                "title": "PeaMasamba Paste",
                 "paste_content": data,
                 "visibility": "public",
                 "expiry_date_type": "months",
