@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-09-06 10:12:09
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        peamasamba<peamasamba@gmail.com>
+ * @date          2022-12-01 09:12:27
+ * @projectName   Pea Masamba
+ * Copyright @peamasamba All rights reserved
 """
 from async_pymongo import AsyncClient
 
