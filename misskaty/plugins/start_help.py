@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
+ * @author        peamasamba<peamasamba@gmail.com>
  * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @projectName   Pea Masamba
+ * Copyright @peamasamba All rights reserved
  """
 import re
 
@@ -26,7 +26,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Commands ❓", callback_data="bot_commands"),
             InlineKeyboardButton(
                 text="Source Code 🛠",
-                url="https://github.com/yasirarism/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/MissKatyPyro",
             ),
         ],
         [
@@ -34,7 +34,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
                 text="System Stats 🖥",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/YasirArisM"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/CollectionMovie_Subtitles"),
         ],
         [
             InlineKeyboardButton(
@@ -53,7 +53,7 @@ keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Help ❓", url=f"t.me/{BOT_USERNAME}?start=help"),
             InlineKeyboardButton(
                 text="Source Code �",
-                url="https://github.com/yasirarism/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/MissKatyPyro",
             ),
         ],
         [
@@ -61,7 +61,7 @@ keyboard = InlineKeyboardMarkup(
                 text="System Stats 💻",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/YasirArisM"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/CollectionMovie_Subtitles"),
         ],
     ]
 )
@@ -73,7 +73,7 @@ async def start(_, ctx: Message, strings):
     if ctx.chat.type.value != "private":
         nama = ctx.from_user.mention if ctx.from_user else ctx.sender_chat.title
         return await ctx.reply_photo(
-            photo="https://telegra.ph/file/90e9a448bc2f8b055b762.jpg",
+            photo="https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
             caption=strings("start_msg").format(kamuh=nama),
             reply_markup=keyboard,
         )
@@ -94,7 +94,7 @@ async def start(_, ctx: Message, strings):
             )
     else:
         await ctx.reply_photo(
-            photo="https://telegra.ph/file/90e9a448bc2f8b055b762.jpg",
+            photo="https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
             caption=home_text_pm,
             reply_markup=home_keyboard_pm,
         )
@@ -175,10 +175,10 @@ async def help_parser(name, keyb=None):
 I'm a bot with some useful features. You can change language bot using /setlang command, but it's still in beta stage.
 You can choose an option below, by clicking a button.
 
-If you want give coffee to my owner you can send /donate command for more info.
+If you want help me to my owner you can help Ad clicks.
 """.format(
             first_name=name,
-            bot_name="MissKaty",
+            bot_name="PeaMasamba",
         ),
         keyb,
     )
