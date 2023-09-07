@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
+ * @author        peamasamba<peamasamba@gmail.com>
  * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @projectName   Pea Masamba
+ * Copyright @peamasamba All rights reserved
 """
 import math
 import os
@@ -24,7 +24,7 @@ from misskaty.helper import is_url, progress_for_pyrogram, take_ss
 from misskaty.helper.localization import use_chat_lang
 from misskaty.helper.pyro_progress import humanbytes
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("PeaMasamba")
 
 __MODULE__ = "MediaTool"
 __HELP__ = """"
