@@ -16,7 +16,7 @@ from misskaty.vars import (
     MINIMUM_FILE_SIZE,
 )
 
-LOGGER = getLogger("PeaMasamba")
+LOGGER = getLogger("Pea Masamba")
 
 
 async def FilterMessage(message: Message):
