@@ -29,7 +29,7 @@ from pyrogram.errors import MessageIdInvalid
 
 from ..utils import PyromodConfig, patch, patchable
 
-logger = logging.getLogger("MissKaty")
+logger = logging.getLogger("PeaMasamba")
 
 
 class ListenerStopped(Exception):
