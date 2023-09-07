@@ -29,7 +29,7 @@ async def ping(_, ctx: Message):
     end_t = time.time()
     time_taken_s = round(end_t - start_t, 3)
     await rm.edit_msg(
-        f"<b>🐈 PeaMasambaBot {misskaty_version} based Pyrogram {pyrover} Online.</b>\n\n<b>Ping:</b> <code>{time_taken_s} detik</code>\n<b>Uptime:</b> <code>{currentTime}</code>\n<b>Python Version:</b> <code>{platform.python_version()}</code>"
+        f"<b>Pea Masamba Bot {misskaty_version} based Pyrogram {pyrover} Online.</b>\n\n<b>Ping:</b> <code>{time_taken_s} detik</code>\n<b>Uptime:</b> <code>{currentTime}</code>\n<b>Python Version:</b> <code>{platform.python_version()}</code>"
     )
 
 
