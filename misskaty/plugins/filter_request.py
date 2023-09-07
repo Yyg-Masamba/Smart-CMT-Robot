@@ -439,6 +439,6 @@ async def callbackaft_dahada(_, q):
     )
 
 
-scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
+scheduler = AsyncIOScheduler(timezone="Asia/Makassar")
 scheduler.add_job(clear_reqdict, trigger="cron", hour=2, minute=0)
 scheduler.start()
