@@ -26,7 +26,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Commands ❓", callback_data="bot_commands"),
             InlineKeyboardButton(
                 text="Source Code 🛠",
-                url="https://github.com/Yyg-Masamba/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
@@ -53,7 +53,7 @@ keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Help ❓", url=f"t.me/{BOT_USERNAME}?start=help"),
             InlineKeyboardButton(
                 text="Source Code �",
-                url="https://github.com/Yyg-Masamba/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
@@ -175,10 +175,10 @@ async def help_parser(name, keyb=None):
 I'm a bot with some useful features. You can change language bot using /setlang command, but it's still in beta stage.
 You can choose an option below, by clicking a button.
 
-If you want help me to my owner you can help Ad clicks.
+If you want help me to my owner you can help Ad clicks my blog.
 """.format(
             first_name=name,
-            bot_name="PeaMasamba",
+            bot_name="Pea Masamba",
         ),
         keyb,
     )
