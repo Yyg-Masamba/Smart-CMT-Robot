@@ -27,7 +27,7 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        handlers.RotatingFileHandler("MissKatyLogs.txt", mode="w+", maxBytes=1000000),
+        handlers.RotatingFileHandler("PeaMasambaLogs.txt", mode="w+", maxBytes=1000000),
         StreamHandler(),
     ],
 )
@@ -45,7 +45,7 @@ misskaty_version = "v2.10.14 - Stable"
 
 # Pyrogram Bot Client
 app = Client(
-    "PeaMasambaBot",
+    "Smartmasambabot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
@@ -57,7 +57,7 @@ app = Client(
 
 # Pyrogram UserBot Client
 user = Client(
-    "YasirUBot",
+    "Smartmasambabot",
     session_string=USER_SESSION,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
