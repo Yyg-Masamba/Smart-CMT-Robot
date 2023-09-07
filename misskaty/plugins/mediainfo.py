@@ -64,20 +64,20 @@ DETAILS
 {out or 'Not Supported'}
     """
         try:
-            link = await mediainfo_paste(out, "PeaMasamba Mediainfo")
+            link = await mediainfo_paste(out, "Pea Masamba Mediainfo")
             markup = InlineKeyboardMarkup(
                 [[InlineKeyboardButton(text=strings("viweb"), url=link)]]
             )
         except:
             try:
-                link = await post_to_telegraph(False, "PeaMasamba MediaInfo", body_text)
+                link = await post_to_telegraph(False, "Pea Masamba MediaInfo", body_text)
                 markup = InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text=strings("viweb"), url=link)]]
                 )
             except:
                 markup = None
         with io.BytesIO(str.encode(body_text)) as out_file:
-            out_file.name = "PeaMasamba_Mediainfo.txt"
+            out_file.name = "Pea_Masamba_Mediainfo.txt"
             await ctx.reply_document(
                 out_file,
                 caption=strings("capt_media").format(ment=ctx.from_user.mention),
@@ -100,19 +100,19 @@ DETAILS
             except Exception:
                 return await process.edit_msg(strings("err_link"))
             body_text = f"""
-            PeaMasambaBot MediaInfo
+            Pea Masamba Bot MediaInfo
             {output}
             """
             # link = await post_to_telegraph(False, title, body_text)
             try:
-                link = await mediainfo_paste(out, "PeaMasamba Mediainfo")
+                link = await mediainfo_paste(out, "Pea Masamba Mediainfo")
                 markup = InlineKeyboardMarkup(
                     [[InlineKeyboardButton(text=strings("viweb"), url=link)]]
                 )
             except:
                 try:
                     link = await post_to_telegraph(
-                        False, "PeaMasamba MediaInfo", body_text
+                        False, "Pea Masamba MediaInfo", body_text
                     )
                     markup = InlineKeyboardMarkup(
                         [[InlineKeyboardButton(text=strings("viweb"), url=link)]]
@@ -120,7 +120,7 @@ DETAILS
                 except:
                     markup = None
             with io.BytesIO(str.encode(output)) as out_file:
-                out_file.name = "PeaMasamba_Mediainfo.txt"
+                out_file.name = "Pea_Masamba_Mediainfo.txt"
                 await ctx.reply_document(
                     out_file,
                     caption=strings("capt_media").format(ment=ctx.from_user.mention),
