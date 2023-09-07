@@ -8,7 +8,7 @@ from os import environ
 
 import dotenv
 
-LOGGER = getLogger("PeaMasamba")
+LOGGER = getLogger("Pea Masamba")
 
 dotenv.load_dotenv("config.env", override=True)
 
@@ -40,7 +40,7 @@ else:
 
 # Optional ENV
 USER_SESSION = environ.get("USER_SESSION")
-DATABASE_NAME = environ.get("DATABASE_NAME", "MissKatyDB")
+DATABASE_NAME = environ.get("DATABASE_NAME", "PeaMasambaDB")
 TZ = environ.get("TZ", "Asia/Makassar")
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
 SUDO = list(
