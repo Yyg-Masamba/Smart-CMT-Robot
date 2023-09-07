@@ -27,7 +27,7 @@ from misskaty.core.decorator.ratelimiter import ratelimiter
 from misskaty.core.misskaty_patch.listen.listen import ListenerTimeout
 from misskaty.vars import API_HASH, API_ID, COMMAND_HANDLER
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("PeaMasamba")
 
 __MODULE__ = "SessionGen"
 __HELP__ = """
@@ -274,5 +274,5 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
     await client.disconnect()
     await bot.send_message(
         msg.chat.id,
-        f'» Successfully generated your {"Telethon" if telethon else "Pyrogram"} String Session.\n\nPlease check saved messages to get it ! \n\n**A String Generator bot by ** @IAmCuteCodes',
+        f'» Successfully generated your {"Telethon" if telethon else "Pyrogram"} String Session.\n\nPlease check saved messages to get it ! \n\n**A String Generator bot by ** @VIP_STRING_BOT',
     )
