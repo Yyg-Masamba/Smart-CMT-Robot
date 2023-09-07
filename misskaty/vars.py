@@ -1,14 +1,14 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
-# * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @author        peamasamba<peamasamba@gmail.com>
+# * @date          2022-12-01 09:12:27
+# * @projectName   Pea Masamba
+# * Copyright @peamasamba All rights reserved
 import sys
 from logging import getLogger
 from os import environ
 
 import dotenv
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("PeaMasamba")
 
 dotenv.load_dotenv("config.env", override=True)
 
@@ -52,7 +52,7 @@ SUDO = list(
         ).split()
     }
 )
-SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "YasirPediaChannel")
+SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "PeamasambaChannel")
 AUTO_RESTART = environ.get("AUTO_RESTART", False)
 OPENAI_API = environ.get("OPENAI_API")
 
