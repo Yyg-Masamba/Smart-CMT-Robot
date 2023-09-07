@@ -31,7 +31,7 @@ from misskaty.helper.tools import get_random_string
 from misskaty.plugins.dev import shell_exec
 from misskaty.vars import COMMAND_HANDLER
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Pea Masamba")
 
 ARCH_EXT = (
     "mkv",
