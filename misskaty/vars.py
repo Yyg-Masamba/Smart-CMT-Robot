@@ -41,7 +41,7 @@ else:
 # Optional ENV
 USER_SESSION = environ.get("USER_SESSION")
 DATABASE_NAME = environ.get("DATABASE_NAME", "MissKatyDB")
-TZ = environ.get("TZ", "Asia/Jakarta")
+TZ = environ.get("TZ", "Asia/Makassar")
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
 SUDO = list(
     {
