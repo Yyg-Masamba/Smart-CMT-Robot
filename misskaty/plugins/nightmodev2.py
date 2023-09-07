@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
-# * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @author        peamasamba<peamasamba@gmail.com>
+# * @date          2022-12-01 09:12:27
+# * @projectName   Pea Masamba
+# * Copyright @peamasamba All rights reserved
 import platform
 import re
 from datetime import datetime, timedelta
@@ -59,7 +59,7 @@ def puasa():
 
 
 def tglsekarang():
-    now = datetime.now(pytz.timezone("Asia/Jakarta"))
+    now = datetime.now(pytz.timezone("Asia/Makassar"))
     days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
     month = [
         "Unknown",
