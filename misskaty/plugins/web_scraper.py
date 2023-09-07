@@ -33,13 +33,13 @@ __HELP__ = """
 /samehadaku [query <optional>] - Scrape website data from Samehadaku.
 """
 
-LOGGER = logging.getLogger("PeaMasamba")
+LOGGER = logging.getLogger("Pea Masamba")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 webdb = dbname["web"]
 
 web = {
-    "peamasamba": "https://comelmuewa84.eu.org",
+    "yasirapi": "https://yasirapi.eu.org",
     "pahe": "https://pahe.li",
     "savefilm21": "https://savefilm21.skin",
     "melongmovie": "https://melongmovie.site",
