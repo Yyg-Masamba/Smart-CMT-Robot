@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
-# * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @author        peamasamba<peamasamba@gmail.com>
+# * @date          2022-12-01 09:12:27
+# * @projectName   Pea Masamba
+# * Copyright @peamasamba All rights reserved
 import random
 import re
 import shutil
@@ -46,7 +46,7 @@ async def request_user(client, message):
     is_in_gap, sleep_time = await check_time_gap(message.from_user.id)
     if is_in_gap:
         return await message.reply(
-            f"Sabar dikit napa.. Tunggu {sleep_time} detik lagi 🙄"
+            f"Sabar dikit napa.. Tunggulah {sleep_time} detik lagi 🙄"
         )
     markup = InlineKeyboardMarkup(
         [
@@ -155,7 +155,7 @@ async def thankregex(_, message):
         "Oke..",
         "Yoi..",
         "Terimakasih Kembali..",
-        "Sami-Sami...",
+        "Santai saja...",
         "Sama-sama, senang bisa membantu..",
         f"Yups, Sama-sama {message.from_user.first_name}",
         "Okayyy...",
