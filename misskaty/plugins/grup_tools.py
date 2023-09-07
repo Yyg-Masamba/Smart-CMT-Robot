@@ -22,7 +22,7 @@ from misskaty.helper import fetch, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, SUDO, SUPPORT_CHAT
 from utils import temp
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("PeaMasamba")
 
 
 def circle(pfp, size=(215, 215)):
@@ -295,7 +295,7 @@ async def kickme(_, message):
         reason = message.text.split(None, 1)[1]
     try:
         await message.chat.ban_member(message.from_user.id)
-        txt = f"Pengguna {message.from_user.mention} menendang dirinya sendiri. Mungkin dia sedang frustasi 😕"
+        txt = f"Pengguna {message.from_user.mention} menendang dirinya sendiri. Mungkin dia lagi frustasi 😕"
         txt += f"\n<b>Alasan</b>: {reason}" if reason else "-"
         await message.reply_text(txt)
         await message.chat.unban_member(message.from_user.id)
