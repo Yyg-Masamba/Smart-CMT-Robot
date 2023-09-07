@@ -15,7 +15,7 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        handlers.RotatingFileHandler("MissKatyLogs.txt", mode="w+", maxBytes=1000000),
+        handlers.RotatingFileHandler("PeaMasambaLogs.txt", mode="w+", maxBytes=1000000),
         StreamHandler(),
     ],
 )
