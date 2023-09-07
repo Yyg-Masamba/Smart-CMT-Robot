@@ -6,8 +6,8 @@ import dotenv
 import requests
 from git import Repo
 
-if os.path.exists("MissKatyLogs.txt"):
-    with open("MissKatyLogs.txt", "r+") as f:
+if os.path.exists("PeaMasambaLogs.txt"):
+    with open("PeaMasambaLogs.txt", "r+") as f:
         f.truncate(0)
 
 basicConfig(
