@@ -39,7 +39,7 @@ data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 webdb = dbname["web"]
 
 web = {
-    "peamasamba": "https://www.comelmuewa84.eu.org",
+    "peamasamba": "https://comelmuewa84.eu.org",
     "pahe": "https://pahe.li",
     "savefilm21": "https://savefilm21.skin",
     "melongmovie": "https://melongmovie.site",
