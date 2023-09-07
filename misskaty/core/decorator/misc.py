@@ -2,7 +2,7 @@ import asyncio
 import logging
 from functools import wraps
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("PeaMasamba")
 
 
 def asyncify(func):
