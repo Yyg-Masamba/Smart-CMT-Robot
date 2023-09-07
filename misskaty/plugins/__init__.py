@@ -12,7 +12,7 @@ from os.path import basename, dirname, isfile
 
 from misskaty import MOD_LOAD, MOD_NOLOAD
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Pea Masamba")
 
 
 def __list_all_modules():
