@@ -55,7 +55,7 @@ from misskaty.helper.functions import (
 from misskaty.helper.localization import use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, SUDO
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("PeaMasamba")
 
 __MODULE__ = "Admin"
 __HELP__ = """
