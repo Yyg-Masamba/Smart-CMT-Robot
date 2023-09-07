@@ -27,9 +27,9 @@ from misskaty.core.decorator.ratelimiter import ratelimiter
 from misskaty.core.misskaty_patch.listen.listen import ListenerTimeout
 from misskaty.vars import API_HASH, API_ID, COMMAND_HANDLER
 
-LOGGER = getLogger("PeaMasamba")
+LOGGER = getLogger("Pea Masamba")
 
-__MODULE__ = "SessionGen"
+__MODULE__ = "SessionGenCMT"
 __HELP__ = """
 /genstring - Generate string session using this bot. Only support Pyrogram v2 and Telethon.
 """
