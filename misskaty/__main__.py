@@ -21,7 +21,7 @@ from misskaty.plugins.web_scraper import web
 from misskaty.vars import SUDO, USER_SESSION
 from utils import auto_clean
 
-LOGGER = getLogger("PeaMasamba")
+LOGGER = getLogger("Pea Masamba")
 loop = asyncio.get_event_loop()
 
 
