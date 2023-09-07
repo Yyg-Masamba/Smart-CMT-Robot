@@ -45,7 +45,7 @@ To use this feature, just type bot username with following args below.
 keywords_list = ["imdb", "pypi", "git", "google", "secretmsg", "info", "botapi"]
 
 PRVT_MSGS = {}
-LOGGER = getLogger("PeaMasamba")
+LOGGER = getLogger("Pea Masamba")
 
 
 @app.on_inline_query()
