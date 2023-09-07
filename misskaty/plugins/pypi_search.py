@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2023-01-23 19:41:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        peamasamba<peamasamba@gmail.com>
+ * @date          2022-12-01 09:12:27
+ * @projectName   Pea Masamba
+ * Copyright @peamasamba All rights reserved
 """
 from pykeyboard import InlineButton, InlineKeyboard
 from pyrogram import filters
