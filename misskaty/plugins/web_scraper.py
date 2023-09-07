@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @created       2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        peamasamba<peamasamba@gmail.com>
+ * @date          2022-12-01 09:12:27
+ * @projectName   Pea Masamba
+ * Copyright @peamasamba All rights reserved
 """
 import logging
 import re
@@ -33,13 +33,13 @@ __HELP__ = """
 /samehadaku [query <optional>] - Scrape website data from Samehadaku.
 """
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("PeaMasamba")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 webdb = dbname["web"]
 
 web = {
-    "yasirapi": "https://yasirapi.eu.org",
+    "peamasamba": "https://www.comelmuewa84.eu.org",
     "pahe": "https://pahe.li",
     "savefilm21": "https://savefilm21.skin",
     "melongmovie": "https://melongmovie.site",
