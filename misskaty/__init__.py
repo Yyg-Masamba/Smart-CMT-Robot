@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
-# * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @author        peamasamba<peamasamba@gmail.com>
+# * @date          2022-12-01 09:12:27
+# * @projectName   Pea Masamba
+# * Copyright @peamasamba All rights reserved
 import time
 from logging import ERROR, INFO, StreamHandler, basicConfig, getLogger, handlers
 
@@ -45,13 +45,13 @@ misskaty_version = "v2.10.14 - Stable"
 
 # Pyrogram Bot Client
 app = Client(
-    "MissKatyBot",
+    "PeaMasambaBot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
-    app_version="MissKatyPyro Stable",
+    app_version="Pea Masamba Stable",
     workers=50,
 )
 
