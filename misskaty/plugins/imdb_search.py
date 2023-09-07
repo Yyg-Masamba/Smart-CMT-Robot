@@ -34,7 +34,7 @@ from misskaty.core.decorator.ratelimiter import ratelimiter
 from misskaty.helper import GENRES_EMOJI, Cache, fetch, get_random_string, search_jw
 from utils import demoji
 
-LOGGER = logging.getLogger("PeaMasamba")
+LOGGER = logging.getLogger("Pea Masamba")
 LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 
 
