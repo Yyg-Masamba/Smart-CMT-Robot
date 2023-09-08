@@ -40,7 +40,7 @@ else:
 
 # Optional ENV
 USER_SESSION = environ.get("USER_SESSION")
-DATABASE_NAME = environ.get("DATABASE_NAME", "PeaMasambaDB")
+DATABASE_NAME = environ.get("DATABASE_NAME", "masambaDB")
 TZ = environ.get("TZ", "Asia/Makassar")
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
 SUDO = list(
@@ -52,7 +52,7 @@ SUDO = list(
         ).split()
     }
 )
-SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "PeamasambaChannel")
+SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "ppeamasamba")
 AUTO_RESTART = environ.get("AUTO_RESTART", False)
 OPENAI_API = environ.get("OPENAI_API")
 
