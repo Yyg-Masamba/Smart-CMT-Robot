@@ -44,7 +44,7 @@ LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 async def imdb_choose(_, ctx: Message):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
-            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Jurassic World</code>",
+            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} The Boogeyman</code>",
             del_in=7,
         )
     if ctx.sender_chat:
