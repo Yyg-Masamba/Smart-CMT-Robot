@@ -109,7 +109,7 @@ async def log_file(_, ctx: Message, strings):
 async def donate(_, ctx: Message):
     await ctx.reply_photo(
         "https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
-        caption=f"Hai {ctx.from_user.mention}, jika kamu merasa bot ini berguna, tolomng donasilah. Karena server bot ini menggunakan VPS dan tidaklah gratis. Terimakasih..\n\nHi {ctx.from_user.mention}, if you feel this bot is useful, you can make a donation via Paypal for international payment : https://t.me/peamasamba. Because this bot server is hosted in VPS and not free. Thank you..",
+        caption=f"Hai {ctx.from_user.mention}, jika bot ini berguna, tolomng donasilah. Karena server bot ini menggunakan VPS dan tidaklah gratis. Terimakasih..\n\nHi {ctx.from_user.mention}, if you feel this bot is useful, you can make a donation via Paypal for international payment : https://t.me/peamasamba. Because this bot server is hosted in VPS and not free. Thank you..",
     )
 
 
