@@ -139,7 +139,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Help Ad Clicks", url="https://www.comelmuewa84.eu.org"),
+                    InlineButton("Help Ad Clicks", url="https://comelmuewa84.eu.org"),
                 )
                 returns = "".join(f"{i}, " for i in parsemethod[method]["returns"])
                 msg = f"<b>{method}</b> (<code>{returns[:-2]}</code>)\n"
@@ -180,7 +180,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Help Ad Clicks", url="https://www.comelmuewa84.eu.org"),
+                    InlineButton("Help Ad Clicks", url="https://comelmuewa84.eu.org"),
                 )
                 msg = f"<b>{types}</b>\n"
                 msg += f"{description}\n\n"
