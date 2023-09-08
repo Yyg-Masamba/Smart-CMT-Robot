@@ -32,7 +32,7 @@ async def approve_join_chat(c, m):
         )
         await c.send_message(
             m.from_user.id,
-            "<b>PERMINTAAN JOIN CHANNEL YMOVIEZ REBORN</b>\n\nSebelum masuk ke channel ada tes kejujuran, apakah anda sudah membaca catatan di @YMovieZ_New? Jika sudah silahkan klik <b>Sudah</b>, jika kamu berbohong resiko kamu tanggung sendiri 😶‍🌫️.\n\nBot by @CollectionMovie_Subtitles",
+            "<b>PERMINTAAN JOIN CHANNEL CMT</b>\n\nSebelum masuk ke channel ada tes kejujuran, apakah anda sudah membaca catatan di @YMovieZ_New? Jika sudah silahkan klik <b>Sudah</b>, jika kamu berbohong resiko kamu tanggung sendiri 😶‍🌫️.\n\nBot by @CollectionMovie_Subtitles",
             disable_web_page_preview=True,
             reply_markup=markup,
         )
@@ -46,7 +46,7 @@ async def approve_chat(c, q):
     _, chat = q.data.split("_")
     try:
         await q.message.edit(
-            "Yeayy, selamat kamu bisa bergabung di Channel YMovieZ Reborn..."
+            "Yeah, selamat kamu bisa bergabung di Channel Pea Masamba..."
         )
         await c.approve_chat_join_request(chat, q.from_user.id)
     except UserAlreadyParticipant:
