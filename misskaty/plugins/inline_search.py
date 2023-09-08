@@ -94,7 +94,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                 title="Github Repo",
                 description="Github Repo of This Bot.",
                 input_message_content=InputTextMessageContent(
-                    f"<b>Github Repo @{BOT_USERNAME}</b>\n\nhttps://github.com/Yyg-Masamba/MissKatyPyro"
+                    f"<b>Github Repo @{BOT_USERNAME}</b>\n\nhttps://github.com/Yyg-Masamba/Smart-CMT-Robot"
                 ),
                 thumb_url="https://hamker.me/gjc9fo3.png",
             ),
