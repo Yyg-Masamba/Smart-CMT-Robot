@@ -233,7 +233,7 @@ async def wastepaste(_, message):
         ],
     ]
 
-    pasted = f"**Successfully pasted your data to YasirBin<a href='{url}'>.</a>\n\nPaste by {uname}**"
+    pasted = f"**Successfully pasted your data to PeamasambaBin<a href='{url}'>.</a>\n\nPaste by {uname}**"
     await msg.edit_msg(pasted, reply_markup=InlineKeyboardMarkup(button))
 
 
