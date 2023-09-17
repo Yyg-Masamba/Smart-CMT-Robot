@@ -1,7 +1,4 @@
-# MissKatyPyro
-
-<!--Badges-->
-![MIT License][license-shield] ![Repository Size][repository-size-shield] ![Issue Closed][issue-closed-shield]
+# Smart-CMT-Robot
 
 <!--Project Title Image-->
 <p align="center">
