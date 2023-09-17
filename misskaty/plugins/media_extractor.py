@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @created       2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 import json
 import os
@@ -30,7 +30,7 @@ from misskaty.helper.tools import get_random_string
 from misskaty.plugins.dev import shell_exec
 from misskaty.vars import COMMAND_HANDLER
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 
 ARCH_EXT = (
     "mkv",
@@ -45,7 +45,7 @@ ARCH_EXT = (
     "m4v",
 )
 
-__MODULE__ = "MediaExtract"
+__MODULE__ = "MediaExtract CMT"
 __HELP__ = """
 /extractmedia [URL] - Extract subtitle or audio from video using link. (Not support TG File to reduce bandwith usage.)
 /converttosrt [Reply to .ass or .vtt TG File] - Convert from .ass or .vtt to srt
