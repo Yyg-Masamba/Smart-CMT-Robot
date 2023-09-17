@@ -25,7 +25,7 @@ from misskaty.core.decorator.permissions import require_admin
 from misskaty.helper.localization import langdict, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, LOG_CHANNEL, TZ
 
-__MODULE__ = "NightMode CMT"
+__MODULE__ = "NightMode"
 __HELP__ = """<b>Enable or disable nightmode (locks the chat at specified intervals everyday)</b>
 <b>Flags:</b>
 '-s': "Specify starting time in 24hr format."
