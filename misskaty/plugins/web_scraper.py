@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @created       2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 import logging
 import re
@@ -18,7 +18,7 @@ from database import dbname
 from misskaty import app
 from misskaty.helper import Cache, Kusonime, fetch, use_chat_lang
 
-__MODULE__ = "WebScraper"
+__MODULE__ = "WebScraper CMT"
 __HELP__ = """
 /melongmovie [query <optional>] - Scrape website data from MelongMovie Web.
 /lk21 [query <optional>] - Scrape website data from LayarKaca21.
@@ -32,7 +32,7 @@ __HELP__ = """
 /samehadaku [query <optional>] - Scrape website data from Samehadaku.
 """
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 webdb = dbname["web"]
