@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 import math
 import os
@@ -24,9 +24,9 @@ from misskaty.helper import is_url, progress_for_pyrogram, take_ss
 from misskaty.helper.localization import use_chat_lang
 from misskaty.helper.pyro_progress import humanbytes
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 
-__MODULE__ = "MediaTool"
+__MODULE__ = "MediaTool CMT"
 __HELP__ = """"
 /genss [reply to video] - Generate Screenshot From Video. (Support TG Media and Direct URL)
 /mediainfo [link/reply to TG Video] - Get Mediainfo From File.
@@ -69,10 +69,10 @@ async def genss(self: Client, ctx: Message, strings):
 
             estimated_total_time = downloader.get_eta(human=True)
             try:
-                current_message = "Trying to download...\n"
+                current_message = "Mencoba mengunduh...\n"
                 current_message += f"URL: <code>{url}</code>\n"
-                current_message += f"File Name: <code>{unquote(file_name)}</code>\n"
-                current_message += f"Speed: {speed}\n"
+                current_message += f"Nama File: <code>{unquote(file_name)}</code>\n"
+                current_message += f"Kecepatan: {speed}\n"
                 current_message += f"{progress_str}\n"
                 current_message += f"{downloaded} of {humanbytes(total_length)}\n"
                 current_message += f"ETA: {estimated_total_time}"
@@ -149,7 +149,7 @@ async def genss(self: Client, ctx: Message, strings):
                 progress_args=(strings("dl_progress"), process, c_time, dc_id),
             )
         except FileNotFoundError:
-            return await process.edit_msg("ERROR: FileNotFound.")
+            return await process.edit_msg("ERROR: FileTidakDitemukan.")
         the_real_download_location = os.path.join("downloads/", os.path.basename(dl))
         if the_real_download_location is not None:
             try:
