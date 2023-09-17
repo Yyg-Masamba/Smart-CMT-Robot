@@ -40,7 +40,7 @@ from misskaty.helper.tools import rentry
 from misskaty.vars import COMMAND_HANDLER
 from utils import extract_user, get_file_id
 
-LOGGER = getLogger("SmartMasambaBot")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Misc CMT"
 __HELP__ = """
