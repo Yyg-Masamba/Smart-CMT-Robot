@@ -42,7 +42,7 @@ from utils import extract_user, get_file_id
 
 LOGGER = getLogger("Smart-CMT-Robot")
 
-__MODULE__ = "Misc CMT"
+__MODULE__ = "Misc"
 __HELP__ = """
 /carbon [text or reply to text or caption] - Make beautiful snippet code on carbon from text.
 /kbbi [keyword] - Search definition on KBBI (For Indonesian People)
