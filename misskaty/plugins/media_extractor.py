@@ -45,7 +45,7 @@ ARCH_EXT = (
     "m4v",
 )
 
-__MODULE__ = "MediaExtract CMT"
+__MODULE__ = "MediaExtract"
 __HELP__ = """
 /extractmedia [URL] - Extract subtitle or audio from video using link. (Not support TG File to reduce bandwith usage.)
 /converttosrt [Reply to .ass or .vtt TG File] - Convert from .ass or .vtt to srt
