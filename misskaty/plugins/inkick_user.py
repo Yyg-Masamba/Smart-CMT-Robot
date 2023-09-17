@@ -12,7 +12,7 @@ from pyrogram.errors.exceptions.forbidden_403 import ChatWriteForbidden
 from misskaty import app
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "Inkick CMT"
+__MODULE__ = "Inkick"
 __HELP__ = """"
 /instatus - View member status in group.
 /ban_ghosts - Remove deleted account from group.
