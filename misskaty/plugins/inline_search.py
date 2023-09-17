@@ -44,7 +44,7 @@ To use this feature, just type bot username with following args below.
 keywords_list = ["imdb", "pypi", "git", "google", "secretmsg", "info", "botapi"]
 
 PRVT_MSGS = {}
-LOGGER = getLogger("SmartMasambaBot")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 @app.on_inline_query()
