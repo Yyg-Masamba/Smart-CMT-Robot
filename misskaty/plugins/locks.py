@@ -33,7 +33,7 @@ from misskaty.core.decorator.permissions import adminsOnly, list_admins
 from misskaty.helper.functions import get_urls_from_text
 from misskaty.vars import COMMAND_HANDLER, SUDO
 
-__MODULE__ = "Locks"
+__MODULE__ = "Locks CMT"
 __HELP__ = """
 Commands: /lock | /unlock | /locks [No Parameters Required]
 
