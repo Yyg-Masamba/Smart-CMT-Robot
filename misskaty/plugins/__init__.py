@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright ©YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
  """
 import glob
 import importlib
@@ -12,7 +12,7 @@ from os.path import basename, dirname, isfile
 
 from misskaty import MOD_LOAD, MOD_NOLOAD
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 
 
 def __list_all_modules():
