@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2023-01-23 19:41:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 from pykeyboard import InlineButton, InlineKeyboard
 from pyrogram import filters
@@ -48,7 +48,7 @@ async def pypi_s(_, ctx: Message):
         return await ctx.reply_msg(
             "Please add query after command. Ex: <code>/pypi pyrogram</code>", del_in=6
         )
-    pesan = await ctx.reply_msg("⏳ Please wait, getting data from pypi..", quote=True)
+    pesan = await ctx.reply_msg("Please wait, getting data from pypi..", quote=True)
     CurrentPage = 1
     pypires, PageLen, btn = await getDataPypi(
         pesan, kueri, CurrentPage, ctx.from_user.id
@@ -59,9 +59,9 @@ async def pypi_s(_, ctx: Message):
     keyboard.paginate(
         PageLen, CurrentPage, "page_pypi#{number}" + f"#{pesan.id}#{ctx.from_user.id}"
     )
-    keyboard.row(InlineButton("👇 Get Info ", "Hmmm"))
+    keyboard.row(InlineButton("Get Info ", "Hmmm"))
     keyboard.row(*btn)
-    keyboard.row(InlineButton("❌ Close", f"close#{ctx.from_user.id}"))
+    keyboard.row(InlineButton("Close", f"close#{ctx.from_user.id}"))
     await pesan.edit_msg(pypires, reply_markup=keyboard)
 
 
@@ -93,9 +93,9 @@ async def pypipage_callback(_, callback_query: CallbackQuery):
         CurrentPage,
         "page_pypi#{number}" + f"#{message_id}#{callback_query.from_user.id}",
     )
-    keyboard.row(InlineButton("👇 Extract Data ", "Hmmm"))
+    keyboard.row(InlineButton("Extract Data ", "Hmmm"))
     keyboard.row(*btn)
-    keyboard.row(InlineButton("❌ Close", f"close#{callback_query.from_user.id}"))
+    keyboard.row(InlineButton("Close", f"close#{callback_query.from_user.id}"))
     await callback_query.message.edit_msg(pypires, reply_markup=keyboard)
 
 
