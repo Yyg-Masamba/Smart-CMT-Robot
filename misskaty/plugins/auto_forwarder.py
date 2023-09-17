@@ -16,7 +16,7 @@ from misskaty.vars import (
     MINIMUM_FILE_SIZE,
 )
 
-LOGGER = getLogger("SmartMasambaBot")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 async def FilterMessage(message: Message):
