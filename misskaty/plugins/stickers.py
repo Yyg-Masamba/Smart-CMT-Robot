@@ -31,7 +31,7 @@ from misskaty import app
 from misskaty.helper import fetch, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, LOG_CHANNEL
 
-__MODULE__ = "Stickers CMT"
+__MODULE__ = "Stickers"
 __HELP__ = """
 /kang [Reply to sticker] - Add sticker to your pack.
 /unkang [Reply to sticker] - Remove sticker from your pack (Only can remove sticker that added by this bot.).
