@@ -7,7 +7,7 @@
 
 <!--Table of Contents-->
 # Table of Contents
-- [[1] About MissKaty](#1-about-misskaty)
+- [[1] About Smart-CMT-Robot](#1-about-smartcmtrobot)
 - [[2] Framework Tools And Server That Used To Build This Bot](#2-framework-tools-and-server-that-used-to-build-this-bot)
 - [[3] Support Creator](#3-donation)
 - [[4] Notes](#4-notes)
@@ -20,8 +20,8 @@
 - [[8] Credits](#8-thanks-to)
 - [[9] Disclaimer](#8-disclaimer)
 
-# [1] About MissKaty
-*MissKaty* is a Telegram Bot built using Python and the Pyrogram library. Many useful features for us to use. I hope that one day this project will be discontinued, someone will continue or develop it again. I gave the name MissKaty because I like cats, a cute animal that likes to be played with and friendly with humans.
+# [1] About Smart-CMT-Robot
+*Smart-CMT-Robot* is a Telegram Bot built using Python and the Pyrogram library. Many useful features for us to use. I hope that one day this project will be discontinued, someone will continue or develop it again. I gave the name MissKaty because I like cats, a cute animal that likes to be played with and friendly with humans.
 
 ## [2] Framework Tools And Server That Used To Build This Bot
  🌱 PyroFork v2.x.x (Fork of Pyrogram with Topics Support and Some Patch)<br>
@@ -31,17 +31,11 @@
  🌱 VS Code<br>
  🌱 VPS/Server With Docker Support (Recommended)<br>
 
-## [3] Donation and Support
-*For Indonesian Only and some supported country:*<br>
- 🌱 [QRIS][qris-url]<br>
 
-*For International Payment:*<br>
- 🌱 [Paypal][paypal-url]<br>
-
-## [4] Notes
+## [3] Notes
 If you want help me fixing some error in my bot, you can make pull request to this repo. I'm very glad if you can help me. You can also give support to me for buying server.
 
-## [5] Features
+## [4] Features
 
 | FEATURE MY BOT |🌱|
 | ------------- | ------------- |
@@ -60,7 +54,7 @@ If you want help me fixing some error in my bot, you can make pull request to th
 | GenSS From Media and MediaInfo Generator |✔️|
 | And Many More.. |✔️|
 
-## [6] Variables
+## [5] Variables
 
 ### Required Variables
 * `BOT_TOKEN`: Create a bot using [@BotFather](https://t.me/BotFather), and get the Telegram API token.
@@ -77,7 +71,7 @@ If you want help me fixing some error in my bot, you can make pull request to th
 * `OPENAI_API`: Get it from OpenAI Web
 * `CURRENCY_API`: Get API Key from https://app.exchangerate-api.com/sign-up
 
-## [7] Tutorial Deploy (Recommended using Docker/Docker Compose)
+## [6] Tutorial Deploy (Recommended using Docker/Docker Compose)
 
 #### Build And Run Using Legacy Method
 - Make sure minimum python version is 3.8 to prevent some errors. Check it with this command:
@@ -149,7 +143,7 @@ sudo docker-compose stop <pid>
 ----
 
 
-## [9] Disclaimer
+## [7] Disclaimer
 [![GNU Affero General Public License 2.0](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.en.html#header)    
 Licensed under [GNU AGPL 2.0.](https://github.com/Yyg-Masamba/Smart-CMT-Robot/blob/master/LICENSE)
 WARNING: Selling The Codes To Other People For Money Is *Strictly Prohibited*. God always sees you.
