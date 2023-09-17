@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
  """
 import asyncio
 import importlib
@@ -21,7 +21,7 @@ from misskaty.plugins.web_scraper import web
 from misskaty.vars import SUDO, USER_SESSION
 from utils import auto_clean
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 loop = asyncio.get_event_loop()
 
 
@@ -43,7 +43,7 @@ async def start_bot():
             bot_modules += "|{:<15}".format(i)
         j += 1
     LOGGER.info("+===============================================================+")
-    LOGGER.info("|                        MissKatyPyro                           |")
+    LOGGER.info("|                        Smart-CMT-Robot                           |")
     LOGGER.info("+===============+===============+===============+===============+")
     LOGGER.info(bot_modules)
     LOGGER.info("+===============+===============+===============+===============+")
@@ -76,7 +76,7 @@ async def start_bot():
         await app.edit_message_text(
             chat_id=chat_id,
             message_id=message_id,
-            text="<b>Bot restarted successfully!</b>",
+            text="<b>Selamat Bot Anda Berhasil Memulai Ulang!</b>",
         )
     asyncio.create_task(auto_clean())
     await idle()
