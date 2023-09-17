@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import asyncio
 import os
 import re
@@ -31,7 +31,7 @@ from misskaty import app
 from misskaty.helper import fetch, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, LOG_CHANNEL
 
-__MODULE__ = "Stickers"
+__MODULE__ = "Stickers CMT"
 __HELP__ = """
 /kang [Reply to sticker] - Add sticker to your pack.
 /unkang [Reply to sticker] - Remove sticker from your pack (Only can remove sticker that added by this bot.).
