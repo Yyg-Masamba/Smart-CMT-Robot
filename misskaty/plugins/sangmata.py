@@ -18,7 +18,7 @@ from misskaty.core.decorator.permissions import adminsOnly
 from misskaty.helper.localization import use_chat_lang
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "SangMata CMT"
+__MODULE__ = "SangMata-CMT"
 __HELP__ = """"
 This feature inspired from SangMata Bot. I'm created simple detection to check user data include username, first_name, and last_name.
 /sangmata_set [on/off] - Enable/disable sangmata in groups.
