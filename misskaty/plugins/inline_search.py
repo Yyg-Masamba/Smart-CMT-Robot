@@ -31,7 +31,7 @@ from misskaty.plugins.dev import shell_exec
 from misskaty.vars import USER_SESSION
 from utils import demoji
 
-__MODULE__ = "InlineFeature CMT"
+__MODULE__ = "InlineFeature"
 __HELP__ = """
 To use this feature, just type bot username with following args below.
 ~ imdb [query] - Search movie details in IMDb.com.
