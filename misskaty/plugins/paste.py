@@ -1,8 +1,8 @@
 """
- * @author        Yasir Aris M <yasiramunandar@gmail.com>
- * @created       2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 from json import loads as json_loads
 from os import remove
@@ -15,7 +15,7 @@ from misskaty import app
 from misskaty.helper import fetch, post_to_telegraph, rentry
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "Paste"
+__MODULE__ = "Paste CMT"
 __HELP__ = """
 /paste [Text/Reply To Message] - Post text to My Pastebin.
 /sbin [Text/Reply To Message] - Post text to Spacebin.
@@ -489,7 +489,7 @@ async def tempaste(_, message):
             "https://tempaste.com/api/v1/create-paste/",
             data={
                 "api_key": "xnwuzXubxk3kCUz9Q2pjMVR8xeTO4t",
-                "title": "MissKaty Paste",
+                "title": "Smart-CMT-Robot Paste",
                 "paste_content": data,
                 "visibility": "public",
                 "expiry_date_type": "months",
