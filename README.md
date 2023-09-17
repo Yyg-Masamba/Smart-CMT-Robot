@@ -7,7 +7,7 @@
 
 <!--Table of Contents-->
 # Table of Contents
-- [[1] About Smart-CMT-Robot](#1-about-smartcmtrobot)
+- [[1] About Smart-CMT-Robot](#1-about-smart-cmt-robot)
 - [[2] Framework Tools And Server That Used To Build This Bot](#2-framework-tools-and-server-that-used-to-build-this-bot)
 - [[3] Support Creator](#3-donation)
 - [[4] Notes](#4-notes)
