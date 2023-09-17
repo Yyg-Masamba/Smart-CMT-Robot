@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import logging
 
 from pyrogram.types import Message
@@ -15,7 +15,7 @@ __HELP__ = """
 /currency - Send structure message Telegram in JSON using Pyrogram Style.
 """
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("SmartMasambaBot")
 
 
 @app.on_cmd("currency")
