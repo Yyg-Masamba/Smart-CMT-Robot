@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 import platform
 import time
@@ -23,11 +23,11 @@ from misskaty.vars import COMMAND_HANDLER
 async def ping(_, ctx: Message):
     currentTime = get_readable_time(time.time() - botStartTime)
     start_t = time.time()
-    rm = await ctx.reply_msg("🐱 Pong!!...")
+    rm = await ctx.reply_msg("🪫 Pong!!...")
     end_t = time.time()
     time_taken_s = round(end_t - start_t, 3)
     await rm.edit_msg(
-        f"<b>🐈 MissKatyBot {misskaty_version} based Pyrogram {pyrover} Online.</b>\n\n<b>Ping:</b> <code>{time_taken_s} detik</code>\n<b>Uptime:</b> <code>{currentTime}</code>\n<b>Python Version:</b> <code>{platform.python_version()}</code>"
+        f"<b>Smart-CMT-Robot {misskaty_version} based Pyrogram {pyrover} Online.</b>\n\n<b>Ping:</b> <code>{time_taken_s} detik</code>\n<b>Uptime:</b> <code>{currentTime}</code>\n<b>Python Version:</b> <code>{platform.python_version()}</code>"
     )
 
 
