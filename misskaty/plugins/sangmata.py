@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 from pyrogram import filters
 from pyrogram.types import Message
 
@@ -18,7 +18,7 @@ from misskaty.core.decorator.permissions import adminsOnly
 from misskaty.helper.localization import use_chat_lang
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "SangMata"
+__MODULE__ = "SangMata CMT"
 __HELP__ = """"
 This feature inspired from SangMata Bot. I'm created simple detection to check user data include username, first_name, and last_name.
 /sangmata_set [on/off] - Enable/disable sangmata in groups.
@@ -48,7 +48,7 @@ async def cek_mataa(_, ctx: Message, strings):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"👀 <b>Mata MissKaty</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+        msg += f"👀 <b>Mata Smart-CMT-Robot</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
