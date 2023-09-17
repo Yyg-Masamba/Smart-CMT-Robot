@@ -15,7 +15,7 @@ from misskaty.core.decorator.errors import capture_err
 from misskaty.core.decorator.permissions import adminsOnly
 from misskaty.helper.functions import alpha_to_int, int_to_alpha
 
-__MODULE__ = "Karma CMT"
+__MODULE__ = "Karma"
 __HELP__ = """
 Give reputation to other people in group.
 
