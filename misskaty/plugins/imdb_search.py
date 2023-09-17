@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import json
 import logging
 import re
@@ -33,7 +33,7 @@ from misskaty import app
 from misskaty.helper import GENRES_EMOJI, Cache, fetch, get_random_string, search_jw
 from utils import demoji
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("SmartMasambaBot")
 LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 
 
@@ -42,7 +42,7 @@ LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 async def imdb_choose(_, ctx: Message):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
-            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Jurassic World</code>",
+            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Transformers: Rise of the Beasts/code>",
             del_in=7,
         )
     if ctx.sender_chat:
@@ -66,7 +66,7 @@ async def imdb_choose(_, ctx: Message):
     buttons.row(InlineButton("🚩 Set Default Language", f"imdbset#{ctx.from_user.id}"))
     buttons.row(InlineButton("❌ Close", f"close#{ctx.from_user.id}"))
     await ctx.reply_photo(
-        "https://telegra.ph/file/270955ef0d1a8a16831a9.jpg",
+        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
         caption=f"Hi {ctx.from_user.mention}, Please select the language you want to use on IMDB Search. If you want use default lang for every user, click third button. So no need click select lang if use CMD.",
         reply_markup=buttons,
         quote=True,
@@ -128,7 +128,7 @@ async def imdbsetlang(_, query: CallbackQuery):
 async def imdb_search_id(kueri, message):
     BTN = []
     k = await message.reply_photo(
-        "https://telegra.ph/file/270955ef0d1a8a16831a9.jpg",
+        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
         caption=f"🔎 Menelusuri <code>{kueri}</code> di database IMDb ...",
         quote=True,
     )
@@ -186,7 +186,7 @@ async def imdb_search_id(kueri, message):
 async def imdb_search_en(kueri, message):
     BTN = []
     k = await message.reply_photo(
-        "https://telegra.ph/file/270955ef0d1a8a16831a9.jpg",
+        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
         caption=f"🔎 Searching <code>{kueri}</code> in IMDb Database...",
         quote=True,
     )
