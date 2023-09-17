@@ -15,7 +15,7 @@ from misskaty import app
 from misskaty.helper import fetch, post_to_telegraph, rentry
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "Paste CMT"
+__MODULE__ = "Paste"
 __HELP__ = """
 /paste [Text/Reply To Message] - Post text to My Pastebin.
 /sbin [Text/Reply To Message] - Post text to Spacebin.
