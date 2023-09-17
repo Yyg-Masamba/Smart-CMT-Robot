@@ -137,8 +137,8 @@ async def draw_meme_text(image_path, text):
             )
             current_h += u_height + pad
 
-    webp_file = "misskatyfy.webp"
-    png_file = "misskatyfy.png"
+    webp_file = "peamasamba.webp"
+    png_file = "peamasamba.png"
     new_size = (512, 512)
     img.resize(new_size)
     img.save(webp_file, "WebP")
