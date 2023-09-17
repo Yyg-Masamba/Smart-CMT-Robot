@@ -18,7 +18,7 @@ from database import dbname
 from misskaty import app
 from misskaty.helper import Cache, Kusonime, fetch, use_chat_lang
 
-__MODULE__ = "WebScraper CMT"
+__MODULE__ = "WebScraper"
 __HELP__ = """
 /melongmovie [query <optional>] - Scrape website data from MelongMovie Web.
 /lk21 [query <optional>] - Scrape website data from LayarKaca21.
