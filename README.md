@@ -5,7 +5,7 @@
 
 <!--Project Title Image-->
 <p align="center">
-  <img src="https://telegra.ph/file/56b4e1294b6006555d7ac.jpg" width="200" height="200"/>
+  <img src="https://telegra.ph/file/60a1816cae4e389407ee5.jpg" width="200" height="200"/>
 </p>
 
 <!--Project Buttons-->
