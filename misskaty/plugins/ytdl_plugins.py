@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 from logging import getLogger
 from uuid import uuid4
 
@@ -30,7 +30,7 @@ from misskaty.core.decorator import capture_err, new_task
 from misskaty.helper import fetch, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, LOG_CHANNEL, SUDO
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 YT_REGEX = r"^(https?://)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)/(watch\?v=|embed/|v/|.+\?v=)?(?P<id>[A-Za-z0-9\-=_]{11})"
 YT_DB = {}
 
