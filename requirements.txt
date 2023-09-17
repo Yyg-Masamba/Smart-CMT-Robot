@@ -21,7 +21,7 @@ hachoir
 Pillow==10.0.0
 httpx[http2]
 git+https://github.com/yasirarism/vcsi
-git+https://github.com/yasirarism/iytdl
+git+https://github.com/Yyg-Masamba/iytdl
 deep-translator
 telethon
 pyrate_limiter
