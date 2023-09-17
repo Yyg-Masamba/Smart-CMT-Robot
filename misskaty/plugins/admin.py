@@ -54,7 +54,7 @@ from misskaty.helper.functions import (
 from misskaty.helper.localization import use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, SUDO
 
-LOGGER = getLogger("SmartMasambaBot")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Admin"
 __HELP__ = """
