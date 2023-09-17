@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import random
 import re
 import shutil
@@ -45,7 +45,7 @@ async def request_user(client, message):
     is_in_gap, sleep_time = await check_time_gap(message.from_user.id)
     if is_in_gap:
         return await message.reply(
-            f"Sabar dikit napa.. Tunggu {sleep_time} detik lagi 🙄"
+            f"Sabar ya.. Tunggu {sleep_time} detik lagi 🙄"
         )
     markup = InlineKeyboardMarkup(
         [
@@ -86,7 +86,7 @@ async def request_user(client, message):
             REQUEST_DB[user_id] = 1
         if REQUEST_DB[user_id] > 3:
             return await message.reply(
-                f"Mohon maaf {message.from_user.mention}, maksimal request hanya 3x perhari. Kalo mau tambah 5k per request 😝😝."
+                f"Mohon maaf {message.from_user.mention}, maksimal request hanya 3x perhari 😝😝."
             )
         if message.text:
             forward = await client.send_message(
@@ -154,7 +154,7 @@ async def thankregex(_, message):
         "Oke..",
         "Yoi..",
         "Terimakasih Kembali..",
-        "Sami-Sami...",
+        "Santa saja...",
         "Sama-sama, senang bisa membantu..",
         f"Yups, Sama-sama {message.from_user.first_name}",
         "Okayyy...",
@@ -173,7 +173,7 @@ async def callbackreq(c, q):
             _, msg_id, chat_id = q.data.split("_")
             await c.send_message(
                 chat_id=chat_id,
-                text="#Done\nDone ✅, Selamat menonton. Jika request tidak bisa dilihat digrup silahkan join channel melalui link private yang ada di @YMovieZ_New ...",
+                text="#Done\nDone ✅, Selamat menonton. Jika request tidak bisa dilihat digrup silahkan join channel kami @peamasamba ...",
                 reply_to_message_id=int(msg_id),
             )
 
@@ -287,7 +287,7 @@ async def callbackreject(c, q):
             _, msg_id, chat_id = q.data.split("_")
             await c.send_message(
                 chat_id=chat_id,
-                text="Mohon maaf, request kamu ditolak karena tidak sesuai rules. Harap baca rules grup no.6 yaa 🙃.",
+                text="Mohon maaf, request kamu ditolak karena tidak sesuai rules. Harap baca kembali rules yaa 🙃.",
                 reply_to_message_id=int(msg_id),
             )
 
@@ -343,7 +343,7 @@ async def callbackunav(c, q):
             _, msg_id, chat_id = q.data.split("_")
             await c.send_message(
                 chat_id=chat_id,
-                text="Mohon maaf, request kamu tidak tersedia. Silahkan baca beberapa alasannya di channel @YMovieZ_New",
+                text="Mohon maaf, request kamu tidak tersedia.",
                 reply_to_message_id=int(msg_id),
             )
 
