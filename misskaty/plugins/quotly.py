@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 from io import BytesIO
 
 from pyrogram import Client, filters
@@ -10,7 +10,7 @@ from pyrogram.types import Message
 from misskaty import app
 from misskaty.helper.http import fetch
 
-__MODULE__ = "Fun"
+__MODULE__ = "Fun CMT"
 __HELP__ = """
 /q [int] - Generate quotly from message
 /memify [text] - Reply to sticker to give text on sticker.
