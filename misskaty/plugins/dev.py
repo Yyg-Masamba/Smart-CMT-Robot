@@ -553,6 +553,6 @@ async def auto_restart():
 
 
 if AUTO_RESTART:
-    scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
+    scheduler = AsyncIOScheduler(timezone="Asia/Makassar")
     scheduler.add_job(auto_restart, trigger="interval", days=3)
     scheduler.start()
