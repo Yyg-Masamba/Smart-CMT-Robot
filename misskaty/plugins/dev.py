@@ -83,8 +83,8 @@ async def log_file(_, ctx: Message, strings):
     msg = await ctx.reply_msg("<b>Reading bot logs ...</b>")
     if len(ctx.command) == 1:
         await ctx.reply_document(
-            "MissKatyLogs.txt",
-            caption="Log Bot MissKatyPyro",
+            "SmartCMTLogs.txt",
+            caption="Log BotMSmartMasambaBot",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -99,7 +99,7 @@ async def log_file(_, ctx: Message, strings):
         await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v SmartCMTLogs.txt")
         await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
     else:
         await msg.edit_msg("Unsupported parameter")
@@ -108,8 +108,8 @@ async def log_file(_, ctx: Message, strings):
 @app.on_message(filters.command(["donate"], COMMAND_HANDLER))
 async def donate(_, ctx: Message):
     await ctx.reply_photo(
-        "https://telegra.ph/file/9427d61d6968b8ee4fb2f.jpg",
-        caption=f"Hai {ctx.from_user.mention}, jika kamu merasa bot ini berguna kamu bisa melakukan donasi dengan scan QR menggunakan merchant yang support QRIS ya. Karena server bot ini menggunakan VPS dan tidaklah gratis. Terimakasih..\n\nHi {ctx.from_user.mention}, if you feel this bot is useful, you can make a donation via Paypal for international payment : https://paypal.me/yasirarism. Because this bot server is hosted in VPS and not free. Thank you..",
+        "https://telegra.ph/file/1141e86c2911f63d8cd85.jpg",
+        caption=f"Hai {ctx.from_user.mention}, jika bot ini berguna, suport-lah chanel kami ya. Terimakasih..\n\nHi {ctx.from_user.mention}, if it's a boat, it's our boat : https://t.me/CollectionMovie_Subtitles. Thank you..",
     )
 
 
@@ -169,7 +169,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     start = datetime.now()
     msg = await ctx.reply_photo(
-        photo="https://te.legra.ph/file/30a82c22854971d0232c7.jpg",
+        photo="https://telegra.ph/file/924300ffb399ccfddfc6d.jpg",
         caption=caption,
         quote=True,
     )
