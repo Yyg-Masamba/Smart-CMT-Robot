@@ -17,7 +17,7 @@ from misskaty.core.decorator.errors import capture_err
 from misskaty.helper import fetch, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "OCR CMT"
+__MODULE__ = "OCR"
 __HELP__ = "/ocr [reply to photo] - Read Text From Image"
 
 
