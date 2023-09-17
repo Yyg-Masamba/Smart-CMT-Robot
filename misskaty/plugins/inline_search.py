@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import html
 import json
 import re
@@ -31,7 +31,7 @@ from misskaty.plugins.dev import shell_exec
 from misskaty.vars import USER_SESSION
 from utils import demoji
 
-__MODULE__ = "InlineFeature"
+__MODULE__ = "InlineFeature CMT"
 __HELP__ = """
 To use this feature, just type bot username with following args below.
 ~ imdb [query] - Search movie details in IMDb.com.
@@ -44,7 +44,7 @@ To use this feature, just type bot username with following args below.
 keywords_list = ["imdb", "pypi", "git", "google", "secretmsg", "info", "botapi"]
 
 PRVT_MSGS = {}
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 
 
 @app.on_inline_query()
@@ -68,7 +68,7 @@ async def inline_menu(self, inline_query: InlineQuery):
         )
 
         msg = f"""
-**[MissKaty✨](https://github.com/yasirarism):**
+**[Smart-CMT-Robot✨](https://github.com/Yyg-Masamba):**
 **MainBot Stats:** `{bot_state}`
 **UserBot Stats:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
@@ -93,7 +93,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                 title="Github Repo",
                 description="Github Repo of This Bot.",
                 input_message_content=InputTextMessageContent(
-                    f"<b>Github Repo @{BOT_USERNAME}</b>\n\nhttps://github.com/yasirarism/MissKatyPyro"
+                    f"<b>Github Repo @{BOT_USERNAME}</b>\n\nhttps://github.com/Yyg-Masamba/Smart-CMT-Robot"
                 ),
                 thumb_url="https://hamker.me/gjc9fo3.png",
             ),
@@ -138,7 +138,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Give Coffee", url="https://yasirpedia.eu.org"),
+                    InlineButton("Bantu Klik Iklan Sebentar", url="https://comelmuewa84.eu.org"),
                 )
                 returns = "".join(f"{i}, " for i in parsemethod[method]["returns"])
                 msg = f"<b>{method}</b> (<code>{returns[:-2]}</code>)\n"
@@ -179,7 +179,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Give Coffee", url="https://yasirpedia.eu.org"),
+                    InlineButton("Bantu Klik Iklan Sebentar", url="https://comelmuewa84.eu.org"),
                 )
                 msg = f"<b>{types}</b>\n"
                 msg += f"{description}\n\n"
@@ -354,7 +354,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                 title=f"A Private Msg to {penerima.first_name}",
                 input_message_content=InputTextMessageContent(msg_c),
                 description="Only he/she can open it",
-                thumb_url="https://te.legra.ph/file/16133ab3297b3f73c8da5.png",
+                thumb_url="https://telegra.ph/file/e7f1a946d88a08928db99.jpg",
                 reply_markup=prvte_msg,
             )
         ]
@@ -709,7 +709,7 @@ async def imdb_inl(_, query):
                 res_str += "\n"
             if ott != "":
                 res_str += f"Available On:\n{ott}\n"
-            res_str += "<b>©️ IMDb by</b> @MissKatyRoBot"
+            res_str += "<b>©️ IMDb by</b> @Smartmasambabot"
             if r_json.get("trailer"):
                 trailer_url = r_json["trailer"]["url"]
                 markup = InlineKeyboardMarkup(
