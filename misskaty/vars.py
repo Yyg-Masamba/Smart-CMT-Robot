@@ -1,14 +1,14 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import sys
 from logging import getLogger
 from os import environ
 
 import dotenv
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 
 dotenv.load_dotenv("config.env", override=True)
 
@@ -40,8 +40,8 @@ else:
 
 # Optional ENV
 USER_SESSION = environ.get("USER_SESSION")
-DATABASE_NAME = environ.get("DATABASE_NAME", "MissKatyDB")
-TZ = environ.get("TZ", "Asia/Jakarta")
+DATABASE_NAME = environ.get("DATABASE_NAME", "SmartMasambaBotDB")
+TZ = environ.get("TZ", "Asia/Makassar")
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
 SUDO = list(
     {
@@ -52,7 +52,7 @@ SUDO = list(
         ).split()
     }
 )
-SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "YasirPediaChannel")
+SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "CollectionMovie_Subtitles")
 AUTO_RESTART = environ.get("AUTO_RESTART", False)
 OPENAI_API = environ.get("OPENAI_API")
 
