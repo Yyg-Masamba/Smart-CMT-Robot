@@ -32,7 +32,7 @@ from misskaty.core.decorator.permissions import adminsOnly
 from misskaty.core.keyboard import ikb
 from misskaty.helper.functions import extract_text_and_keyb
 
-__MODULE__ = "Notes CMT"
+__MODULE__ = "Notes"
 __HELP__ = """/notes To Get All The Notes In The Chat.
 
 (/save, /addnote) [NOTE_NAME] To Save A Note (Can be a sticker or text).
