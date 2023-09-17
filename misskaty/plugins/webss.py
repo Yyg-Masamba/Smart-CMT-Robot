@@ -12,7 +12,7 @@ from misskaty import app
 from misskaty.core.decorator import new_task
 from misskaty.helper.localization import use_chat_lang
 
-__MODULE__ = "WebSS CMT"
+__MODULE__ = "WebSS"
 __HELP__ = """
 /webss [URL] - Take A Screenshot Of A Webpage.
 """
