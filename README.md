@@ -172,5 +172,5 @@ WARNING: Selling The Codes To Other People For Money Is *Strictly Prohibited*. G
 [report-bug-shield]: https://img.shields.io/badge/-%F0%9F%90%9E%20report%20bug-F5A9A9?style=for-the-badge
 [report-bug-url]: https://github.com/yasirarism/MissKatyPyro/issues
 [request-feature-shield]: https://img.shields.io/badge/-%E2%9C%A8%20request%20feature-A9D0F5?style=for-the-badge
-[request-feature-url]: https://github.com/yasirarism/MissKatyPyro/issues
+[request-feature-url]: https://github.com/Yyg-Masamba/Smart-CMT-Robot/issues
 
