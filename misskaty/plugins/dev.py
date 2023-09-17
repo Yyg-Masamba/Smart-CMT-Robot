@@ -46,7 +46,7 @@ from misskaty.helper.human_read import get_readable_file_size, get_readable_time
 from misskaty.helper.localization import use_chat_lang
 from misskaty.vars import AUTO_RESTART, COMMAND_HANDLER, LOG_CHANNEL, SUDO
 
-__MODULE__ = "DevCommand"
+__MODULE__ = "DevCommand CMT"
 __HELP__ = """
 **For Owner Bot Only.**
 /run [args] - Run eval CMD
@@ -84,7 +84,7 @@ async def log_file(_, ctx: Message, strings):
     if len(ctx.command) == 1:
         await ctx.reply_document(
             "SmartCMTLogs.txt",
-            caption="Log BotMSmartMasambaBot",
+            caption="Log Smart-CMT-Robot",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -99,7 +99,7 @@ async def log_file(_, ctx: Message, strings):
         await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v SmartCMTLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
         await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
     else:
         await msg.edit_msg("Unsupported parameter")
