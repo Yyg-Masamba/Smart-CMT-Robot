@@ -21,12 +21,12 @@ async def copymsg(_, message):
             return await message.reply_text("Pesan berhasil dikirim..")
         except UserIsBlocked:
             return await message.reply(
-                "Silahkan PM Saya untuk mengcopy pesan ke chat pribadi..",
+                "Silahkan PM saja jika mau mengcopy pesan ke chat pribadi..",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="💬 Chat Aku Yahh",
+                                text="💬 Chat Aku Ya",
                                 url=f"https://t.me/{BOT_USERNAME}",
                             )
                         ]
@@ -55,7 +55,7 @@ async def copymsg(_, message):
             )
             return await message.reply_text("Pesan berhasil dikirim..")
         except UserNotParticipant:
-            return await message.reply("Command ini hanya untuk admin YMoviezNew")
+            return await message.reply("Command ini hanya untuk admin CollectionMovie_Subtitles")
         except Exception as e:
             return await message.reply(f"ERROR: {e}")
     else:
@@ -78,7 +78,7 @@ async def forwardmsg(_, message):
                     [
                         [
                             InlineKeyboardButton(
-                                text="💬 Chat Aku Yahh",
+                                text="💬 Chat Aku Ya",
                                 url=f"https://t.me/{BOT_USERNAME}",
                             )
                         ]
@@ -103,7 +103,7 @@ async def forwardmsg(_, message):
             await message.reply_to_message.forward(idtujuan)
             return await message.reply_text("Pesan berhasil dikirim..")
         except UserNotParticipant:
-            return await message.reply("Comman ini hanya untuk admin YMoviezNew")
+            return await message.reply("Comman ini hanya untuk admin CollectionMovie_Subtitles")
         except Exception as e:
             return await message.reply(f"ERROR: {e}")
     else:
