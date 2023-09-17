@@ -12,7 +12,7 @@ from os.path import basename, dirname, isfile
 
 from misskaty import MOD_LOAD, MOD_NOLOAD
 
-LOGGER = getLogger("SmartMasambaBot")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 def __list_all_modules():
