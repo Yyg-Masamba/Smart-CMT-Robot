@@ -26,7 +26,7 @@ from misskaty.helper.pyro_progress import humanbytes
 
 LOGGER = getLogger("Smart-CMT-Robot")
 
-__MODULE__ = "MediaTool CMT"
+__MODULE__ = "MediaTool"
 __HELP__ = """"
 /genss [reply to video] - Generate Screenshot From Video. (Support TG Media and Direct URL)
 /mediainfo [link/reply to TG Video] - Get Mediainfo From File.
