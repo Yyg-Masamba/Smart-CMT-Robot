@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 
 import asyncio
@@ -40,9 +40,9 @@ from misskaty.helper.tools import rentry
 from misskaty.vars import COMMAND_HANDLER
 from utils import extract_user, get_file_id
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("SmartMasambaBot")
 
-__MODULE__ = "Misc"
+__MODULE__ = "Misc CMT"
 __HELP__ = """
 /carbon [text or reply to text or caption] - Make beautiful snippet code on carbon from text.
 /kbbi [keyword] - Search definition on KBBI (For Indonesian People)
