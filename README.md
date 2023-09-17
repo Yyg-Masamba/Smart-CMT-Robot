@@ -155,19 +155,9 @@ sudo docker-compose stop <pid>
 ----
 
 
-## [8] Thanks to 
- - Thanks To Allah Swt.
- - Thanks To Dan For His Awesome [Library](https://github.com/pyrogram/pyrogram).
- - Thanks To [The Hamker Cat](https://github.com/TheHamkerCat) For WilliamButcher Code.
- - Thanks To [Team Yukki](https://github.com/TeamYukki) For AFK Bot Code.
- - Thanks To [Wrench](https://github.com/EverythingSuckz) For Some Code.
- - Thanks To [AmanoTeam](https://github.com/AmanoTeam) For MultiLanguage Template.
- - And All People Who Help Me In My Life...
- If your code used in this repo and want to give credit please open issue..
-
 ## [9] Disclaimer
 [![GNU Affero General Public License 2.0](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.en.html#header)    
-Licensed under [GNU AGPL 2.0.](https://github.com/yasirarism/MissKatyPyro/blob/master/LICENSE)
+Licensed under [GNU AGPL 2.0.](https://github.com/Yyg-Masamba/Smart-CMT-Robot/blob/master/LICENSE)
 WARNING: Selling The Codes To Other People For Money Is *Strictly Prohibited*. God always sees you.
 
 <!--Url for Badges-->
@@ -184,11 +174,3 @@ WARNING: Selling The Codes To Other People For Money Is *Strictly Prohibited*. G
 [request-feature-shield]: https://img.shields.io/badge/-%E2%9C%A8%20request%20feature-A9D0F5?style=for-the-badge
 [request-feature-url]: https://github.com/yasirarism/MissKatyPyro/issues
 
-<!--URLS-->
-[readme-ko-url]: README.id.md
-[kofi-url]: https://ko-fi.com/yasirarism
-[paypal-url]: https://paypal.me/yasirarism
-[qris-url]: https://telegra.ph/file/9427d61d6968b8ee4fb2f.jpg
-[sociabuzz-url]: https://sociabuzz.com/yasirarism/tribe
-[saweria-url]: https://saweria.co/yasirarism
-[trakteer-url]: https://trakteer.id/yasir-aris-sp7cn
