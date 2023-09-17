@@ -8,9 +8,6 @@
   <img src="https://telegra.ph/file/60a1816cae4e389407ee5.jpg" width="200" height="200"/>
 </p>
 
-<!--Project Buttons-->
- [![Readme in Indonesian][readme-ko-shield]][readme-ko-url] [![View Demo][view-demo-shield]][view-demo-url] [![Report bug][report-bug-shield]][report-bug-url] [![Request feature][request-feature-shield]][request-feature-url]
-
 <!--Table of Contents-->
 # Table of Contents
 - [[1] About MissKaty](#1-about-misskaty)
@@ -160,17 +157,5 @@ sudo docker-compose stop <pid>
 Licensed under [GNU AGPL 2.0.](https://github.com/Yyg-Masamba/Smart-CMT-Robot/blob/master/LICENSE)
 WARNING: Selling The Codes To Other People For Money Is *Strictly Prohibited*. God always sees you.
 
-<!--Url for Badges-->
-[license-shield]: https://img.shields.io/github/license/yasirarism/MissKatyPyro?labelColor=D8D8D8&color=04B4AE
-[repository-size-shield]: https://img.shields.io/github/repo-size/yasirarism/MissKatyPyro?labelColor=D8D8D8&color=BE81F7
-[issue-closed-shield]: https://img.shields.io/github/issues-closed/yasirarism/MissKatyPyro?labelColor=D8D8D8&color=FE9A2E
 
-<!--Url for Buttons-->
-[readme-ko-shield]: https://img.shields.io/badge/-readme%20in%20Indonesian-2E2E2E?style=for-the-badge
-[view-demo-shield]: https://img.shields.io/badge/-%F0%9F%98%8E%20view%20demo-F3F781?style=for-the-badge
-[view-demo-url]: https://t.me/MissKatyPyro
-[report-bug-shield]: https://img.shields.io/badge/-%F0%9F%90%9E%20report%20bug-F5A9A9?style=for-the-badge
-[report-bug-url]: https://github.com/yasirarism/MissKatyPyro/issues
-[request-feature-shield]: https://img.shields.io/badge/-%E2%9C%A8%20request%20feature-A9D0F5?style=for-the-badge
-[request-feature-url]: https://github.com/Yyg-Masamba/Smart-CMT-Robot/issues
 
