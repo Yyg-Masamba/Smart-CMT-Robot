@@ -10,7 +10,7 @@ from pyrogram import filters
 from misskaty import app
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "nulis"
+__MODULE__ = "Nulis CMT"
 __HELP__ = """
 Command: <code>/nulis</code> [reply to msg or after cmd]
 Desc: For those of you who are lazy to write.
