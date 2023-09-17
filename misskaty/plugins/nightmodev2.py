@@ -1,7 +1,7 @@
-# * @author        Yasir Aris M <yasiramunandar@gmail.com>
+# * @author        Pea Masamba <comelmuewa831@gmail.com>
 # * @date          2023-06-21 22:12:27
-# * @projectName   MissKatyPyro
-# * Copyright ©YasirPedia All rights reserved
+# * @projectName   Smart-CMT-Robot
+# * Copyright ©peamasamba All rights reserved
 import platform
 import re
 from datetime import datetime, timedelta
@@ -25,7 +25,7 @@ from misskaty.core.decorator.permissions import require_admin
 from misskaty.helper.localization import langdict, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER, LOG_CHANNEL, TZ
 
-__MODULE__ = "NightMode"
+__MODULE__ = "NightMode CMT"
 __HELP__ = """<b>Enable or disable nightmode (locks the chat at specified intervals everyday)</b>
 <b>Flags:</b>
 '-s': "Specify starting time in 24hr format."
@@ -46,7 +46,7 @@ reply_markup = InlineKeyboardMarkup(
 
 # Check calculate how long it will take to Ramadhan
 def puasa():
-    now = datetime.now(pytz.timezone("Asia/Jakarta"))
+    now = datetime.now(pytz.timezone("Asia/Makassar"))
     tahun = now.strftime("%Y")
     bulan = now.strftime("%m")
     tgl = now.strftime("%d")
@@ -59,7 +59,7 @@ def puasa():
 
 
 def tglsekarang():
-    now = datetime.now(pytz.timezone("Asia/Jakarta"))
+    now = datetime.now(pytz.timezone("Asia/Makassar"))
     days = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"]
     month = [
         "Unknown",
