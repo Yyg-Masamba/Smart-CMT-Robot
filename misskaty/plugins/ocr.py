@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 
 
@@ -17,7 +17,7 @@ from misskaty.core.decorator.errors import capture_err
 from misskaty.helper import fetch, use_chat_lang
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "OCR"
+__MODULE__ = "OCR CMT"
 __HELP__ = "/ocr [reply to photo] - Read Text From Image"
 
 
