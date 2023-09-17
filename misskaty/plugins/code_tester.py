@@ -6,7 +6,7 @@ from misskaty import app
 from misskaty.helper.tools import rentry
 from misskaty.vars import COMMAND_HANDLER
 
-__MODULE__ = "CodeTesterCMT"
+__MODULE__ = "CodeTester"
 __HELP__ = """
 This feature allows you to run multiple programming languages through this bot via the Glot.io api.  The following is a list of supported languages, for temporary commands only support with a "!"  like the example below.
 
