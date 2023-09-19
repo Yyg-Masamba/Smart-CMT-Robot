@@ -5,7 +5,7 @@
  * Copyright ©peamasamba All rights reserved
 """
 
-import asynci0
+import asyncio
 import html
 import json
 import os
