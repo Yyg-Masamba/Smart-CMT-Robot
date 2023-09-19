@@ -137,8 +137,8 @@ async def draw_meme_text(image_path, text):
             )
             current_h += u_height + pad
 
-    webp_file = "peamasamba.webp"
-    png_file = "peamasamba.png"
+    webp_file = "misskatyfy.webp"
+    png_file = "misskatyfy.png"
     new_size = (512, 512)
     img.resize(new_size)
     img.save(webp_file, "WebP")
@@ -189,7 +189,7 @@ async def beriharapan(c, m):
     reply = m.reply_to_message
     if not reply and m.command == 1:
         return m.reply("Harap berikan kalimat yang ingin diberi pada seseorang")
-    pesan = m.text.split(" ", 1)[1]
+    pesan = m.text.split(maxsplit=1)[1]
     reply_name = reply.from_user.mention if reply.from_user else reply.sender_chat.title
     sender_name = m.from_user.mention if m.from_user else m.sender_chat.title
     await reply.reply(f"{sender_name} memberikan {pesan} pada {reply_name}")
