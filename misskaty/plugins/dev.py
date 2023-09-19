@@ -46,7 +46,7 @@ from misskaty.helper.human_read import get_readable_file_size, get_readable_time
 from misskaty.helper.localization import use_chat_lang
 from misskaty.vars import AUTO_RESTART, COMMAND_HANDLER, LOG_CHANNEL, SUDO
 
-__MODULE__ = "DevCommand CMT"
+__MODULE__ = "DevCommand"
 __HELP__ = """
 **For Owner Bot Only.**
 /run [args] - Run eval CMD
@@ -83,8 +83,8 @@ async def log_file(_, ctx: Message, strings):
     msg = await ctx.reply_msg("<b>Reading bot logs ...</b>")
     if len(ctx.command) == 1:
         await ctx.reply_document(
-            "SmartCMTLogs.txt",
-            caption="Log Smart-CMT-Robot",
+            "MissKatyLogs.txt",
+            caption="Log Bot MissKatyPyro",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
@@ -99,7 +99,7 @@ async def log_file(_, ctx: Message, strings):
         await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
         await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
     else:
         await msg.edit_msg("Unsupported parameter")
@@ -109,7 +109,7 @@ async def log_file(_, ctx: Message, strings):
 async def donate(_, ctx: Message):
     await ctx.reply_photo(
         "https://telegra.ph/file/1141e86c2911f63d8cd85.jpg",
-        caption=f"Hai {ctx.from_user.mention}, jika bot ini berguna, suport-lah chanel kami ya. Terimakasih..\n\nHi {ctx.from_user.mention}, if it's a boat, it's our boat : https://t.me/CollectionMovie_Subtitles. Thank you..",
+        caption=f"Hai {ctx.from_user.mention}, Silahkan gabung di group kami. Terimakasih..\n\nHi {ctx.from_user.mention}, Join our group. Thank you.",
     )
 
 
@@ -380,7 +380,7 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
         else await ctx.reply_msg(strings("run_eval"), quote=True)
     )
     code = (
-        ctx.text.split(" ", 1)[1] if ctx.command else ctx.text.split("\napp.run()")[0]
+        ctx.text.split(maxsplit=1)[1] if ctx.command else ctx.text.split("\napp.run()")[0]
     )
     out_buf = io.StringIO()
     out = ""
