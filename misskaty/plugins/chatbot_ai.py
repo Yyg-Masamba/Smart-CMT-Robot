@@ -31,7 +31,7 @@ async def bard_chatbot(_, ctx: Message, strings):
     msg = await ctx.reply_msg(strings("find_answers_str"), quote=True)
     try:
         req = await fetch.get(
-            f"https://yasirapi.eu.org/bard?input={ctx.text.split(' ', 1)[1]}"
+            f"https://yasirapi.eu.org/bard?input={ctx.text.split(maxsplit=1)[1]}"
         )
         random_choice = random.choice(req.json().get("choices"))
         await msg.edit_msg(
@@ -78,7 +78,7 @@ async def openai_chatbot(_, ctx: Message, strings):
         await msg.edit_msg(answer)
     except MessageTooLong:
         answerlink = await post_to_telegraph(
-            False, "SmartMsb ChatBot ", html.escape(f"<code>{answer}</code>")
+            False, "MissKaty ChatBot ", html.escape(f"<code>{answer}</code>")
         )
         await msg.edit_msg(
             strings("answers_too_long").format(answerlink=answerlink),
