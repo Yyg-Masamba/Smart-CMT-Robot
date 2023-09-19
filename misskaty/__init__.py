@@ -41,23 +41,24 @@ MOD_NOLOAD = ["subscene_dl"]
 HELPABLE = {}
 cleanmode = {}
 botStartTime = time.time()
-misskaty_version = "v2.10.14 - Stable"
+misskaty_version = "v2.10.15 - Stable"
 
 # Pyrogram Bot Client
 app = Client(
-    "MissKatyBot",
+    "SmartCMTRoBot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
-    app_version="Smart-CMT-Robot Stable",
+    app_version="MissKatyPyro Stable",
     workers=50,
+    max_concurrent_transmissions=20,
 )
 
 # Pyrogram UserBot Client
 user = Client(
-    "YasirUBot",
+    "Smart-CMT-Robot",
     session_string=USER_SESSION,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
