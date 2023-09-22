@@ -23,22 +23,22 @@ from misskaty.vars import COMMAND_HANDLER
 home_keyboard_pm = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text="Commands", callback_data="bot_commands"),
+            InlineKeyboardButton(text="Commands ❓", callback_data="bot_commands"),
             InlineKeyboardButton(
-                text="Source Code",
+                text="Source Code 🛠",
                 url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="System Stats",
+                text="System Stats 🖥",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev", url="https://t.me/peamasamba"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
         ],
         [
             InlineKeyboardButton(
-                text="Add Me To Your Group",
+                text="Add Me To Your Group 🎉",
                 url=f"http://t.me/{BOT_USERNAME}?startgroup=new",
             )
         ],
@@ -50,18 +50,18 @@ home_text_pm = f"Hey there! My name is {BOT_NAME}. I have many useful features f
 keyboard = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text="Help", url=f"t.me/{BOT_USERNAME}?start=help"),
+            InlineKeyboardButton(text="Help ❓", url=f"t.me/{BOT_USERNAME}?start=help"),
             InlineKeyboardButton(
-                text="Source Code",
+                text="Source Code �",
                 url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
             InlineKeyboardButton(
-                text="System Stats",
+                text="System Stats 💻",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev", url="https://t.me/peamasamba"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
         ],
     ]
 )
@@ -74,7 +74,7 @@ async def start(_, ctx: Message, strings):
         nama = ctx.from_user.mention if ctx.from_user else ctx.sender_chat.title
         try:
             return await ctx.reply_photo(
-                photo="https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
+                photo="https://telegra.ph/file/1141e86c2911f63d8cd85.jpg",
                 caption=strings("start_msg").format(kamuh=nama),
                 reply_markup=keyboard,
             )
@@ -97,7 +97,7 @@ async def start(_, ctx: Message, strings):
             )
     else:
         await ctx.reply_photo(
-            photo="https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
+            photo="https://telegra.ph/file/1141e86c2911f63d8cd85.jpg",
             caption=home_text_pm,
             reply_markup=home_keyboard_pm,
         )
