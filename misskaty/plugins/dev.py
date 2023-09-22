@@ -128,7 +128,7 @@ async def log_file(_, ctx: Message, strings):
 
 
 @app.on_message(filters.command(["webiste"], COMMAND_HANDLER))
-async def donate(_, ctx: Message):
+async def website(_, ctx: Message):
     await ctx.reply_photo(
         "https://telegra.ph/file/52265705f84fff381fb6c.jpg",
         caption=f"Hai {ctx.from_user.mention}, Silahkan klik iklan di website kami. Terimakasih.\n\nHi {ctx.from_user.mention}, Please click the ad on our website. Thank you.",
