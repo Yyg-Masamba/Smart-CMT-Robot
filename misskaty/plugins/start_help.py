@@ -34,7 +34,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
                 text="System Stats 🖥",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
+            InlineKeyboardButton(text="Website 🌐", url="https://comelmuewa84.eu.org"),
         ],
         [
             InlineKeyboardButton(
@@ -61,7 +61,7 @@ keyboard = InlineKeyboardMarkup(
                 text="System Stats 💻",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
+            InlineKeyboardButton(text="Website 🌐", url="https://comelmuewa84.eu.org"),
         ],
     ]
 )
