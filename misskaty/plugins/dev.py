@@ -8,7 +8,7 @@ import pickle
 import re
 import sys
 import traceback
-from datetime import datetime
+from datetime import datetime, timedelta
 from inspect import getfullargspec
 from shutil import disk_usage
 from time import time
@@ -19,6 +19,7 @@ import cloudscraper
 import requests
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from bs4 import BeautifulSoup
+from logging import getLogger
 from PIL import Image, ImageDraw, ImageFont
 from psutil import Process, boot_time, cpu_count, cpu_percent
 from psutil import disk_usage as disk_usage_percent
@@ -26,7 +27,7 @@ from psutil import net_io_counters, virtual_memory
 from pyrogram import Client
 from pyrogram import __version__ as pyrover
 from pyrogram import enums, filters
-from pyrogram.errors import FloodWait, PeerIdInvalid
+from pyrogram.errors import FloodWait, MessageTooLong, PeerIdInvalid
 from pyrogram.raw.types import UpdateBotStopped
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -68,6 +69,7 @@ __HELP__ = """
 
 var = {}
 teskode = {}
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 async def edit_or_reply(msg, **kwargs):
@@ -80,27 +82,47 @@ async def edit_or_reply(msg, **kwargs):
 @use_chat_lang()
 async def log_file(_, ctx: Message, strings):
     """Send log file"""
-    msg = await ctx.reply_msg("<b>Reading bot logs ...</b>")
+    msg = await ctx.reply_msg("<b>Reading bot logs ...</b>", quote=True)
     if len(ctx.command) == 1:
-        await ctx.reply_document(
-            "MissKatyLogs.txt",
-            caption="Log Bot MissKatyPyro",
-            reply_markup=InlineKeyboardMarkup(
-                [
+        try:
+            with open("MissKatyLogs.txt", "r") as file:
+                content = file.read()
+            current_utc_datetime = datetime.utcnow()
+            exp_datetime = current_utc_datetime + timedelta(days=7)
+            data = {
+                "content": content,
+                "expire_dt": str(exp_datetime),
+                "title": "Smart-CMT-RobotLogs",
+                "highlighter-name": "python"
+            }
+            pastelog = (await fetch.post("https://paste.yasirapi.eu.org/api/pastes", json=data)).json()
+            await msg.edit_msg(f"<a href='https://paste.yasirapi.eu.org/{pastelog.get('paste_id')}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('Smart-CMT-RobotLogs.txt'))}")
+        except Exception:
+            await ctx.reply_document(
+                "Smart-CMT-RobotLogs.txt",
+                caption="Log Smart-CMT-Robot",
+                reply_markup=InlineKeyboardMarkup(
                     [
-                        InlineKeyboardButton(
-                            strings("cl_btn"),
-                            f"close#{ctx.from_user.id}",
-                        )
+                        [
+                            InlineKeyboardButton(
+                                strings("cl_btn"),
+                                f"close#{ctx.from_user.id}",
+                            )
+                        ]
                     ]
-                ]
-            ),
-        )
-        await msg.delete_msg()
+                ),
+            )
+            await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
-        await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
+        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
+        try:
+            await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
+        except MessageTooLong:
+            with io.BytesIO(str.encode(tail[0])) as s:
+                s.name = "Smart-CMT-RobotLog-Tail.txt"
+                await ctx.reply_document(s)
+            await msg.delete()
     else:
         await msg.edit_msg("Unsupported parameter")
 
@@ -169,7 +191,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     start = datetime.now()
     msg = await ctx.reply_photo(
-        photo="https://telegra.ph/file/924300ffb399ccfddfc6d.jpg",
+        photo="https://te.legra.ph/file/924300ffb399ccfddfc6d.jpg",
         caption=caption,
         quote=True,
     )
@@ -509,7 +531,7 @@ async def update_restart(_, ctx: Message, strings):
     await shell_exec("python3 update.py")
     with open("restart.pickle", "wb") as status:
         pickle.dump([ctx.chat.id, msg.id], status)
-    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
+    os.execvp(sys.executable, [sys.executable, "-m", "smartcmtrobot"])
 
 
 @app.on_raw_update(group=-99)
@@ -549,7 +571,7 @@ async def shell_exec(code, treat=True):
 
 async def auto_restart():
     await shell_exec("python3 update.py")
-    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
+    os.execvp(sys.executable, [sys.executable, "-m", "smartcmtrobot"])
 
 
 if AUTO_RESTART:
