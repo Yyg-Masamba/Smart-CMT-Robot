@@ -49,7 +49,7 @@ async def genss(self: Client, ctx: Message, strings):
         download_file_path = os.path.join("downloads/", file_name)
         downloader = SmartDL(url, download_file_path, progress_bar=False, timeout=10, verify=False)
         try:
-            downloader.start(blocking=False)
+            downloader.start(blocking=False, verify=False)
         except Exception as err:
             return await pesan.edit(str(err))
         c_time = time.time()
@@ -61,7 +61,7 @@ async def genss(self: Client, ctx: Message, strings):
             diff = now - c_time
             percentage = downloader.get_progress() * 100
             speed = downloader.get_speed(human=True)
-            progress_str = "[{0}{1}]\nPerkembangan: {2}%".format(
+            progress_str = "[{0}{1}]\nProgress: {2}%".format(
                 "".join(["■" for _ in range(math.floor(percentage / 5))]),
                 "".join(["□" for _ in range(20 - math.floor(percentage / 5))]),
                 round(percentage, 2),
@@ -69,10 +69,10 @@ async def genss(self: Client, ctx: Message, strings):
 
             estimated_total_time = downloader.get_eta(human=True)
             try:
-                current_message = "Mencoba mengunduh...\n"
+                current_message = "Trying to download...\n"
                 current_message += f"URL: <code>{url}</code>\n"
-                current_message += f"Nama File: <code>{unquote(file_name)}</code>\n"
-                current_message += f"Kecepatan: {speed}\n"
+                current_message += f"File Name: <code>{unquote(file_name)}</code>\n"
+                current_message += f"Speed: {speed}\n"
                 current_message += f"{progress_str}\n"
                 current_message += f"{downloaded} of {humanbytes(total_length)}\n"
                 current_message += f"ETA: {estimated_total_time}"
@@ -149,7 +149,7 @@ async def genss(self: Client, ctx: Message, strings):
                 progress_args=(strings("dl_progress"), process, c_time, dc_id),
             )
         except FileNotFoundError:
-            return await process.edit_msg("ERROR: FileTidakDitemukan.")
+            return await process.edit_msg("ERROR: FileNotFound.")
         the_real_download_location = os.path.join("downloads/", os.path.basename(dl))
         if the_real_download_location is not None:
             try:
