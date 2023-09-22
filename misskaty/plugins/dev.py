@@ -130,7 +130,7 @@ async def log_file(_, ctx: Message, strings):
 @app.on_message(filters.command(["donate"], COMMAND_HANDLER))
 async def donate(_, ctx: Message):
     await ctx.reply_photo(
-        "https://telegra.ph/file/1141e86c2911f63d8cd85.jpg",
+        "https://telegra.ph/file/52265705f84fff381fb6c.jpg",
         caption=f"Hai {ctx.from_user.mention}, Silahkan gabung di group kami. Terimakasih..\n\nHi {ctx.from_user.mention}, Join our group. Thank you.",
     )
 
