@@ -42,7 +42,7 @@ To use this feature, just type bot username with following args below.
 ~ info [user id/username] - Check info about a user.
 """
 
-keywords_list = ["imdb", "pypi", "git", "google", "calc", "secretmsg", "info", "botapi"]
+keywords_list = ["imdb", "pypi", "git", "google", "secretmsg", "info", "botapi"]
 
 PRVT_MSGS = {}
 LOGGER = getLogger("Smart-CMT-Robot")
@@ -69,7 +69,7 @@ async def inline_menu(self, inline_query: InlineQuery):
         )
 
         msg = f"""
-**[Smart-CMT-Robot✨](https://github.com/Yyg-Masamba):**
+**[Smart-CMT-Robot](https://github.com/Yyg-Masamba):**
 **MainBot Stats:** `{bot_state}`
 **UserBot Stats:** `{ubot_state}`
 **Python:** `{pyver.split()[0]}`
@@ -171,7 +171,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Give Coffee", url="https://comelmuewa84.eu.org"),
+                    InlineButton("Ads Click", url="https://comelmuewa84.eu.org"),
                 )
                 returns = "".join(f"{i}, " for i in parsemethod[method]["returns"])
                 msg = f"<b>{method}</b> (<code>{returns[:-2]}</code>)\n"
@@ -212,7 +212,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Give Coffee", url="https://comelmuewa84.eu.org"),
+                    InlineButton("Ads Click", url="https://comelmuewa84.eu.org"),
                 )
                 msg = f"<b>{types}</b>\n"
                 msg += f"{description}\n\n"
@@ -387,7 +387,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                 title=f"A Private Msg to {penerima.first_name}",
                 input_message_content=InputTextMessageContent(msg_c),
                 description="Only he/she can open it",
-                thumb_url="https://telegra.ph/file/e7f1a946d88a08928db99.jpg",
+                thumb_url="https://te.legra.ph/file/e7f1a946d88a08928db99.jpg",
                 reply_markup=prvte_msg,
             )
         ]
@@ -406,12 +406,12 @@ async def inline_menu(self, inline_query: InlineQuery):
         srch_results = json.loads(search_results.text)
         item = srch_results.get("items")
         data = []
-        for sraeo in item:
-            title = sraeo.get("full_name")
-            link = sraeo.get("html_url")
-            deskripsi = sraeo.get("description")
-            lang = sraeo.get("language")
-            message_text = f"🔗: {sraeo.get('html_url')}\n│\n└─🍴Forks: {sraeo.get('forks')}    ┃┃    🌟Stars: {sraeo.get('stargazers_count')}\n\n"
+        for result in item:
+            title = result.get("full_name")
+            link = result.get("html_url")
+            deskripsi = result.get("description")[:25] if len(result.get("description")) > 25 else result.get("description")
+            lang = result.get("language")
+            message_text = f"🔗: {result.get('html_url')}\n│\n└─🍴Forks: {result.get('forks')}    ┃┃    🌟Stars: {sraeo.get('stargazers_count')}\n\n"
             message_text += f"<b>Description:</b> {deskripsi}\n"
             message_text += f"<b>Language:</b> {lang}"
             data.append(
@@ -742,7 +742,7 @@ async def imdb_inl(_, query):
                 res_str += "\n"
             if ott != "":
                 res_str += f"Available On:\n{ott}\n"
-            res_str += "<b>©️ IMDb by</b> @MissKatyRoBot"
+            res_str += "<b>©️ IMDb by</b> @Smartmasambabot"
             if r_json.get("trailer"):
                 trailer_url = r_json["trailer"]["url"]
                 markup = InlineKeyboardMarkup(
