@@ -42,7 +42,7 @@ LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 async def imdb_choose(_, ctx: Message):
     if len(ctx.command) == 1:
         return await ctx.reply_msg(
-            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Transformers: Rise of the Beasts</code>",
+            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} The Last Voyage of the Demeter</code>",
             del_in=7,
         )
     if ctx.sender_chat:
@@ -129,7 +129,7 @@ async def imdb_search_id(kueri, message):
     BTN = []
     k = await message.reply_photo(
         "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
-        caption=f"🔦 Menelusuri <code>{kueri}</code> di database IMDb ...",
+        caption=f"🔎 Menelusuri <code>{kueri}</code> di database IMDb ...",
         quote=True,
     )
     msg = ""
@@ -187,7 +187,7 @@ async def imdb_search_en(kueri, message):
     BTN = []
     k = await message.reply_photo(
         "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
-        caption=f"🔦 Searching <code>{kueri}</code> in IMDb Database...",
+        caption=f"🔎 Searching <code>{kueri}</code> in IMDb Database...",
         quote=True,
     )
     msg = ""
@@ -311,7 +311,7 @@ async def imdbcari(_, query: CallbackQuery):
             del LIST_CARI[msg]
         except KeyError:
             return await query.message.edit_caption("⚠️ Callback Query Expired!")
-        await query.message.edit_caption("<i>🔦 Looking in the IMDB Database..</i>")
+        await query.message.edit_caption("<i>🔎 Looking in the IMDB Database..</i>")
         msg = ""
         buttons = InlineKeyboard(row_width=4)
         try:
