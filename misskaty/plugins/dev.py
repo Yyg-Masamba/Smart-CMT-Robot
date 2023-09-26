@@ -8,7 +8,7 @@ import pickle
 import re
 import sys
 import traceback
-from datetime import datetime, timedelta
+from datetime import datetime
 from inspect import getfullargspec
 from shutil import disk_usage
 from time import time
@@ -85,22 +85,17 @@ async def log_file(_, ctx: Message, strings):
     msg = await ctx.reply_msg("<b>Reading bot logs ...</b>", quote=True)
     if len(ctx.command) == 1:
         try:
-            with open("MissKatyLogs.txt", "r") as file:
+            with open("Smart-CMT-RobotLogs.txt", "r") as file:
                 content = file.read()
-            current_utc_datetime = datetime.utcnow()
-            exp_datetime = current_utc_datetime + timedelta(days=7)
             data = {
-                "content": content,
-                "expire_dt": str(exp_datetime),
-                "title": "Smart-CMT-RobotLogs",
-                "highlighter-name": "python"
+                "value": content,
             }
-            pastelog = (await fetch.post("https://paste.yasirapi.eu.org/api/pastes", json=data)).json()
-            await msg.edit_msg(f"<a href='https://paste.yasirapi.eu.org/{pastelog.get('paste_id')}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('Smart-CMT-RobotLogs.txt'))}")
+            pastelog = await fetch.post("https://paste.yasirapi.eu.org/save", data=data, follow_redirects=True)
+            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('MissKatyLogs.txt'))}")
         except Exception:
             await ctx.reply_document(
                 "Smart-CMT-RobotLogs.txt",
-                caption="Log Smart-CMT-Robot",
+                caption="Log Bot Smart-CMT-Robot",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -115,7 +110,7 @@ async def log_file(_, ctx: Message, strings):
             await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
         try:
             await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
         except MessageTooLong:
@@ -127,8 +122,8 @@ async def log_file(_, ctx: Message, strings):
         await msg.edit_msg("Unsupported parameter")
 
 
-@app.on_message(filters.command(["webiste"], COMMAND_HANDLER))
-async def website(_, ctx: Message):
+@app.on_message(filters.command(["donate"], COMMAND_HANDLER))
+async def donate(_, ctx: Message):
     await ctx.reply_photo(
         "https://telegra.ph/file/52265705f84fff381fb6c.jpg",
         caption=f"Hai {ctx.from_user.mention}, Silahkan klik iklan di website kami. Terimakasih.\n\nHi {ctx.from_user.mention}, Please click the ad on our website. Thank you.",
@@ -187,7 +182,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     neofetch = (await shell_exec("neofetch --stdout"))[0]
 
-    caption = f"<b>{BOT_NAME} {misskaty_version} is Up and Running successfully.</b>\n\n<code>{neofetch}</code>\n\n**OS Uptime:** <code>{osuptime}</code>\n<b>Bot Uptime:</b> <code>{currentTime}</code>\n**Bot Usage:** <code>{botusage}</code>\n\n**Total Space:** <code>{disk_total}</code>\n**Free Space:** <code>{disk_free}</code>\n\n**Download:** <code>{download}</code>\n**Upload:** <code>{upload}</code>\n\n<b>Pyrogram Version</b>: <code>{pyrover}</code>\n<b>Python Version</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
+    caption = f"<b>{BOT_NAME} {misskaty_version} is Up and Running successfully.</b>\n\n<code>{neofetch}</code>\n\nOS Uptime: <code>{osuptime}</code>\n<b>Bot Uptime:</b> <code>{currentTime}</code>\nBot Usage: <code>{botusage}</code>\n\nTotal Space: <code>{disk_total}</code>\nFree Space: <code>{disk_free}</code>\n\nDownload: <code>{download}</code>\nUpload: <code>{upload}</code>\n\n<b>Pyrogram Version</b>: <code>{pyrover}</code>\n<b>Python Version</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
 
     start = datetime.now()
     msg = await ctx.reply_photo(
@@ -485,7 +480,7 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
     final_output = f"{prefix}<b>INPUT:</b>\n<pre language='python'>{html.escape(code)}</pre>\n<b>OUTPUT:</b>\n<pre language='python'>{html.escape(out)}</pre>\nExecuted Time: {el_str}"
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(out)) as out_file:
-            out_file.name = "MissKatyEval.txt"
+            out_file.name = "Smart-CMT-RobotEval.txt"
             await ctx.reply_document(
                 document=out_file,
                 caption=f"<code>{code[: 4096 // 4 - 1]}</code>",
@@ -531,7 +526,7 @@ async def update_restart(_, ctx: Message, strings):
     await shell_exec("python3 update.py")
     with open("restart.pickle", "wb") as status:
         pickle.dump([ctx.chat.id, msg.id], status)
-    os.execvp(sys.executable, [sys.executable, "-m", "smartcmtrobot"])
+    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
 
 
 @app.on_raw_update(group=-99)
@@ -571,10 +566,10 @@ async def shell_exec(code, treat=True):
 
 async def auto_restart():
     await shell_exec("python3 update.py")
-    os.execvp(sys.executable, [sys.executable, "-m", "smartcmtrobot"])
+    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
 
 
 if AUTO_RESTART:
-    scheduler = AsyncIOScheduler(timezone="Asia/Makassar")
+    scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
     scheduler.add_job(auto_restart, trigger="interval", days=3)
     scheduler.start()
