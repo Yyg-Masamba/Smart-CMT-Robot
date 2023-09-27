@@ -10,6 +10,7 @@ import traceback
 
 import cloudscraper
 from bs4 import BeautifulSoup
+from cachetools import TTLCache
 from pykeyboard import InlineButton, InlineKeyboard
 from pyrogram.errors import QueryIdInvalid
 from pyrogram.types import Message
@@ -33,9 +34,10 @@ __HELP__ = """
 /nodrakor [query <optional>] - Scrape website data from NoDrakor
 """
 
-LOGGER = logging.getLogger("Smart-CMT-Robot")
+LOGGER = logging.getLogger("MissKaty")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
+savedict = TTLCache(maxsize=1000, ttl=3600)
 webdb = dbname["web"]
 
 web = {
@@ -49,8 +51,8 @@ web = {
     "movieku": "https://107.152.37.223",
     "kusonime": "https://kusonime.com",
     "lendrive": "https://lendrive.web.id",
-    "samehadaku": "https://samehadaku.bio",
-    "oplovers": "https://oploverz.top",
+    "samehadaku": "https://samehadaku.help",
+    "oplovers": "https://oploverz.red",
     "nodrakor": "https://no-drakor.xyz",
 }
 
@@ -183,13 +185,12 @@ async def getDataPahe(msg, kueri, CurrentPage, strings):
 async def getDataKuso(msg, kueri, CurrentPage, user, strings):
     if not SCRAP_DICT.get(msg.id):
         kusodata = []
-        try:
-            data = await fetch.get(
-                f"{web['kusonime']}/?s={kueri}", follow_redirects=True
-            )
-        except Exception as err:
+        data = await fetch.get(
+            f"{web['kusonime']}/?s={kueri}", follow_redirects=True
+        )
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
-            return None, None
+            return None, 0, None, None
         res = BeautifulSoup(data, "lxml").find_all("h2", {"class": "episodeye"})
         for i in res:
             ress = i.find_all("a")[0]
@@ -236,11 +237,10 @@ async def getDataKuso(msg, kueri, CurrentPage, user, strings):
 async def getDataMovieku(msg, kueri, CurrentPage, strings):
     if not SCRAP_DICT.get(msg.id):
         moviekudata = []
-        try:
-            data = await fetch.get(
-                f"{web['movieku']}/?s={kueri}", follow_redirects=True
-            )
-        except Exception as err:
+        data = await fetch.get(
+            f"{web['movieku']}/?s={kueri}", follow_redirects=True
+        )
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
             return None, None
         r = BeautifulSoup(data, "lxml")
@@ -277,12 +277,10 @@ async def getDataMovieku(msg, kueri, CurrentPage, strings):
 async def getDataNodrakor(msg, kueri, CurrentPage, user, strings):
     if not SCRAP_DICT.get(msg.id):
         nodrakordata = []
-        try:
-            data = await fetch.get(
-                f"{web['nodrakor']}/?s={kueri}",
-                follow_redirects=True,
-            )
-        except Exception as err:
+        data = await fetch.get(
+            f"{web['nodrakor']}/?s={kueri}", follow_redirects=True,
+        )
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
             return None, 0, None
         text = BeautifulSoup(data, "lxml")
@@ -329,12 +327,10 @@ async def getDataNodrakor(msg, kueri, CurrentPage, user, strings):
 async def getDataSavefilm21(msg, kueri, CurrentPage, user, strings):
     if not SCRAP_DICT.get(msg.id):
         sfdata = []
-        try:
-            data = await fetch.get(
-                f"{web['savefilm21']}/?s={kueri}",
-                follow_redirects=True,
-            )
-        except Exception as err:
+        data = await fetch.get(
+            f"{web['savefilm21']}/?s={kueri}", follow_redirects=True,
+        )
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
             return None, 0, None
         text = BeautifulSoup(data, "lxml")
@@ -380,15 +376,13 @@ async def getDataSavefilm21(msg, kueri, CurrentPage, user, strings):
 # Lendrive GetData
 async def getDataLendrive(msg, kueri, CurrentPage, user, strings):
     if not SCRAP_DICT.get(msg.id):
-        try:
-            if query:
-                data = await fetch.get(
-                    f"{web['lendrive']}/?s={kueri}",
-                    follow_redirects=True,
-                )
-            else:
-                data = await fetch.get(web["lendrive"], follow_redirects=True)
-        except Exception as err:
+        if kueri:
+            data = await fetch.get(
+                f"{web['lendrive']}/?s={kueri}", follow_redirects=True,
+            )
+        else:
+            data = await fetch.get(web["lendrive"], follow_redirects=True)
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
             return None, 0, None
         res = BeautifulSoup(data, "lxml")
@@ -407,15 +401,15 @@ async def getDataLendrive(msg, kueri, CurrentPage, user, strings):
                 else o.find(class_="typez BD")
             )
             lenddata.append(
-                {"judul": title, "link": link, "quality": kualitas, "status": status}
+                {"judul": title, "link": link, "quality": kualitas or "N/A", "status": status}
             )
         if not lenddata:
             await msg.edit_msg(strings("no_result"), del_in=5)
             return None, 0, None
-        SCRAP_DICT.add(msg.id, [split_arr(lenddata, 6), kueri], timeout=1800)
+        savedict[msg.id] = [split_arr(lenddata, 6), kueri]
     try:
         index = int(CurrentPage - 1)
-        PageLen = len(SCRAP_DICT[msg.id][0])
+        PageLen = len(savedict[msg.id][0])
         extractbtn = []
 
         lenddataResult = (
@@ -423,7 +417,7 @@ async def getDataLendrive(msg, kueri, CurrentPage, user, strings):
             if kueri == ""
             else strings("header_with_query").format(web="Lendrive", kueri=kueri)
         )
-        for c, i in enumerate(SCRAP_DICT[msg.id][0][index], start=1):
+        for c, i in enumerate(savedict[msg.id][0][index], start=1):
             lenddataResult += f"<b>{index*6+c}. <a href='{i['link']}'>{i['judul']}</a></b>\n<b>{strings('quality')}:</b> {i['quality']}\n<b>Status:</b> {i['status']}\n\n"
             extractbtn.append(
                 InlineButton(
@@ -440,12 +434,10 @@ async def getDataLendrive(msg, kueri, CurrentPage, user, strings):
 # MelongMovie GetData
 async def getDataMelong(msg, kueri, CurrentPage, user, strings):
     if not SCRAP_DICT.get(msg.id):
-        try:
-            data = await fetch.get(
-                f"{web['melongmovie']}/?s={kueri}",
-                follow_redirects=True,
-            )
-        except Exception as err:
+        data = await fetch.get(
+            f"{web['melongmovie']}/?s={kueri}", follow_redirects=True,
+        )
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
             return None, 0, None
         bs4 = BeautifulSoup(data, "lxml")
@@ -490,13 +482,12 @@ async def getDataMelong(msg, kueri, CurrentPage, user, strings):
 # GoMov GetData
 async def getDataGomov(msg, kueri, CurrentPage, user, strings):
     if not SCRAP_DICT.get(msg.id):
-        try:
-            gomovv = await fetch.get(
-                f"{web['gomov']}/?s={kueri}", follow_redirects=True
-            )
-        except Exception as err:
+        gomovv = await fetch.get(
+            f"{web['gomov']}/?s={kueri}", follow_redirects=True
+        )
+        if gomovv.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
-            return None, None
+            return None, 0, None
         text = BeautifulSoup(gomovv, "lxml")
         entry = text.find_all(class_="entry-header")
         if entry[0].text.strip() == "Nothing Found":
@@ -546,12 +537,11 @@ async def getDataGomov(msg, kueri, CurrentPage, user, strings):
 async def getSame(msg, query, current_page, strings):
     if not SCRAP_DICT.get(msg.id):
         cfse = cloudscraper.create_scraper()
-        try:
-            if query:
-                data = cfse.get(f"{web['samehadaku']}/?s={query}")
-            else:
-                data = cfse.get(web["samehadaku"])
-        except Exception as err:
+        if query:
+            data = cfse.get(f"{web['samehadaku']}/?s={query}")
+        else:
+            data = cfse.get(web["samehadaku"])
+        if data.status_code != 200:
             await msg.edit_msg(strings("err_getweb").format(err=err))
             return None, None
         res = BeautifulSoup(data.text, "lxml").find_all(class_="animposx")
@@ -567,13 +557,13 @@ async def getSame(msg, query, current_page, strings):
         if not sdata:
             await msg.edit_msg(strings("no_result"), del_in=5)
             return None, None
-        SCRAP_DICT.add(msg.id, [split_arr(sdata, 10), query], timeout=1800)
+        savedict[msg.id] = [split_arr(sdata, 10), query]
     try:
         index = int(current_page - 1)
-        PageLen = len(SCRAP_DICT[msg.id][0])
+        PageLen = len(savedict[msg.id][0])
         sameresult = "".join(
             f"<b>{index * 6 + c}. <a href='{i['url']}'>{i['title']}</a>\n<b>Status:</b> {i['sta']}\n</b>Rating:</b> {i['rate']}\n\n"
-            for c, i in enumerate(SCRAP_DICT[msg.id][0][index], start=1)
+            for c, i in enumerate(savedict[msg.id][0][index], start=1)
         )
         sameresult = "".join(i for i in sameresult if i not in "[]")
         return sameresult, PageLen
@@ -1001,7 +991,7 @@ async def lendrivepage_callback(_, callback_query, strings):
             return await callback_query.answer(strings("unauth"), True)
         message_id = int(callback_query.data.split("#")[2])
         CurrentPage = int(callback_query.data.split("#")[1])
-        kueri = SCRAP_DICT[message_id][1]
+        kueri = savedict[message_id][1]
     except QueryIdInvalid:
         return
     except KeyError:
@@ -1078,7 +1068,7 @@ async def samepg(_, query, strings):
         _, current_page, _id, user_id = query.data.split("#")
         if int(user_id) != query.from_user.id:
             return await query.answer(strings("unauth"), True)
-        lquery = SCRAP_DICT[int(_id)][1]
+        lquery = savedict[int(_id)][1]
     except QueryIdInvalid:
         return
     except KeyError:
@@ -1320,30 +1310,16 @@ async def kusonime_scrap(client, callback_query, strings):
         InlineButton(strings("cl_btn"), f"close#{callback_query.from_user.id}"),
     )
     try:
-        init_url = data_kuso.get(link, None)
-        if init_url is not None:
-            ph = init_url.get("ph_url")
-            await callback_query.message.edit_msg(
-                strings("res_scrape").format(link=link, kl=ph),
-                reply_markup=keyboard,
-                disable_web_page_preview=False,
-            )
+        init_url = data_kuso.get(link, False)
+        if init_url:
+            await callback_query.message.edit_msg(init_url.get("ph_url"), reply_markup=keyboard)
         tgh = await kuso.telegraph(link, client.me.username)
-        if tgh["error"]:
-            return await callback_query.message.edit_msg(
-                f"ERROR: {tgh['error_message']}", reply_markup=keyboard
-            )
-    except Exception:
-        err = traceback.format_exc()
-        return await callback_query.message.edit_msg(
-            f"ERROR: {err}", reply_markup=keyboard
-        )
-    data_kuso[link] = {"ph_url": tgh["url"]}
-    await callback_query.message.edit_msg(
-        strings("res_scrape").format(link=link, kl=tgh["url"]),
-        reply_markup=keyboard,
-        disable_web_page_preview=False,
-    )
+        data_kuso[link] = {"ph_url": tgh}
+        return await callback_query.message.edit_msg(tgh, reply_markup=keyboard)
+    except Exception as e:
+        LOGGER.error(f"clases: {e.__class__}, moduleName: {e.__class__.__name__}")
+        if str(e).startswith("ERROR"):
+            return await callback_query.message.edit_msg(e, reply_markup=keyboard)
 
 
 # Savefilm21 DDL
@@ -1414,14 +1390,14 @@ async def nodrakorddl_scrap(_, callback_query, strings):
             msg = ""
             for i in result:
                 msg += str(f"{i}\n")
-            link = await post_to_telegraph(False, "Smart-CMT-Robot NoDrakor", msg)
+            link = await post_to_telegraph(False, "MissKaty NoDrakor", msg)
             return await callback_query.message.edit_msg(
                 strings("res_scrape").format(link=link, kl=link), reply_markup=keyboard
             )
         res = soup.find_all(class_="button button-shadow")
         res = "".join(f"{i.text}\n{i['href']}\n\n" for i in res)
         if len(res) > 3500:
-            link = await post_to_telegraph(False, "Smart-CMT-Robot NoDrakor", res)
+            link = await post_to_telegraph(False, "MissKaty NoDrakor", res)
             return await callback_query.message.edit_msg(
                 strings("res_scrape").format(link=link, kl=link), reply_markup=keyboard
             )
@@ -1548,7 +1524,7 @@ async def lendrive_dl(_, callback_query, strings):
     message_id = int(callback_query.data.split("#")[4])
     CurrentPage = int(callback_query.data.split("#")[1])
     try:
-        link = SCRAP_DICT[message_id][0][CurrentPage - 1][idlink - 1].get("link")
+        link = savedict[message_id][0][CurrentPage - 1][idlink - 1].get("link")
     except KeyError:
         return await callback_query.message.edit_msg(strings("invalid_cb"))
 
@@ -1577,3 +1553,4 @@ async def lendrive_dl(_, callback_query, strings):
         )
     except Exception as err:
         await callback_query.message.edit_msg(f"ERROR: {err}", reply_markup=keyboard)
+
