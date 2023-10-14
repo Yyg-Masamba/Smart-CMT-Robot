@@ -34,7 +34,7 @@ from misskaty import app
 from misskaty.helper import GENRES_EMOJI, Cache, fetch, get_random_string, search_jw
 from utils import demoji
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 
 
@@ -129,7 +129,7 @@ async def imdbsetlang(_, query: CallbackQuery):
 async def imdb_search_id(kueri, message):
     BTN = []
     k = await message.reply_photo(
-        "https://img.yasirweb.eu.org/file/270955ef0d1a8a16831a9.jpg",
+        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
         caption=f"🔎 Menelusuri <code>{kueri}</code> di database IMDb ...",
         quote=True,
     )
@@ -190,7 +190,7 @@ async def imdb_search_id(kueri, message):
 async def imdb_search_en(kueri, message):
     BTN = []
     k = await message.reply_photo(
-        "https://img.yasirweb.eu.org/file/270955ef0d1a8a16831a9.jpg",
+        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
         caption=f"🔎 Searching <code>{kueri}</code> in IMDb Database...",
         quote=True,
     )
