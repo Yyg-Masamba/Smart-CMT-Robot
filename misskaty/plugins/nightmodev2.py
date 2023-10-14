@@ -46,7 +46,7 @@ reply_markup = InlineKeyboardMarkup(
 
 # Check calculate how long it will take to Ramadhan
 def puasa():
-    now = datetime.now(pytz.timezone("Asia/Jakarta"))
+    now = datetime.now(pytz.timezone("Asia/Makassar"))
     tahun = now.strftime("%Y")
     bulan = now.strftime("%m")
     tgl = now.strftime("%d")
