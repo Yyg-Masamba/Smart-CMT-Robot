@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @created       2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 import httpx
 import logging
@@ -35,7 +35,7 @@ __HELP__ = """
 /nodrakor [query <optional>] - Scrape website data from NoDrakor
 """
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 savedict = TTLCache(maxsize=1000, ttl=3600)
