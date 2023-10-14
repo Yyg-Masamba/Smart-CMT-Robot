@@ -11,7 +11,7 @@ from misskaty import BOT_USERNAME
 from misskaty.helper.http import fetch
 from misskaty.helper.media_helper import post_to_telegraph
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 
 
 async def kusonimeBypass(url: str):
