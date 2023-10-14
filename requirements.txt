@@ -18,10 +18,10 @@ psutil
 python-dateutil
 telegraph
 hachoir
-Pillow==10.0.0
+Pillow==10.0.1
 httpx[http2]
 git+https://github.com/yasirarism/vcsi
-git+https://github.com/Yyg-Masamba/iytdl
+git+https://github.com/yasirarism/iytdl
 deep-translator
 telethon
 pyrate_limiter
@@ -29,3 +29,5 @@ cachetools
 cloudscraper
 openai
 GitPython
+aiofiles
+uvloop
