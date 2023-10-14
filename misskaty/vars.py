@@ -8,7 +8,7 @@ from os import environ
 
 import dotenv
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 dotenv.load_dotenv("config.env", override=True)
 
@@ -40,8 +40,8 @@ else:
 
 # Optional ENV
 USER_SESSION = environ.get("USER_SESSION")
-DATABASE_NAME = environ.get("DATABASE_NAME", "MissKatyDB")
-TZ = environ.get("TZ", "Asia/Jakarta")
+DATABASE_NAME = environ.get("DATABASE_NAME", "Smart-CMT-RobotDB")
+TZ = environ.get("TZ", "Asia/Makassar")
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
 SUDO = list(
     {
