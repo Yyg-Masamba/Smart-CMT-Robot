@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 from pyrogram import filters
 from pyrogram.errors import UserAlreadyParticipant, UserIsBlocked
@@ -31,7 +31,7 @@ async def approve_join_chat(c, m):
         )
         await c.send_message(
             m.from_user.id,
-            "<b>PERMINTAAN JOIN CHANNEL YMOVIEZ REBORN</b>\n\nSebelum masuk ke channel ada tes kejujuran, apakah anda sudah membaca catatan di @YMovieZ_New? Jika sudah silahkan klik <b>Sudah</b>, jika kamu berbohong resiko kamu tanggung sendiri 😶‍🌫️.\n\nBot by @YasirPediaChannel",
+            "Bot by @CollectionMovie_Subtitles",
             disable_web_page_preview=True,
             reply_markup=markup,
         )
