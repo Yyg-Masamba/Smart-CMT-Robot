@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2023-09-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
  """
 import re
 
@@ -26,7 +26,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Commands ❓", callback_data="bot_commands"),
             InlineKeyboardButton(
                 text="Source Code 🛠",
-                url="https://github.com/yasirarism/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
@@ -34,7 +34,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
                 text="System Stats 🖥",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/YasirArisM"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/CollectionMovie_Subtitles"),
         ],
         [
             InlineKeyboardButton(
@@ -53,7 +53,7 @@ keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Help ❓", url=f"t.me/{BOT_USERNAME}?start=help"),
             InlineKeyboardButton(
                 text="Source Code �",
-                url="https://github.com/yasirarism/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
@@ -61,7 +61,7 @@ keyboard = InlineKeyboardMarkup(
                 text="System Stats 💻",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/YasirArisM"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
         ],
     ]
 )
@@ -74,7 +74,7 @@ async def start(_, ctx: Message, strings):
         nama = ctx.from_user.mention if ctx.from_user else ctx.sender_chat.title
         try:
             return await ctx.reply_photo(
-                photo="https://img.yasirweb.eu.org/file/90e9a448bc2f8b055b762.jpg",
+                photo="https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
                 caption=strings("start_msg").format(kamuh=nama),
                 reply_markup=keyboard,
             )
@@ -97,7 +97,7 @@ async def start(_, ctx: Message, strings):
             )
     else:
         await ctx.reply_photo(
-            photo="https://img.yasirweb.eu.org/file/90e9a448bc2f8b055b762.jpg",
+            photo="https://telegra.ph/file/60a1816cae4e389407ee5.jpg",
             caption=home_text_pm,
             reply_markup=home_keyboard_pm,
         )
