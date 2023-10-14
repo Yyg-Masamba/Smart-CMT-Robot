@@ -28,7 +28,7 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        handlers.RotatingFileHandler("MissKatyLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
+        handlers.RotatingFileHandler("Smart-CMT-RobotLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
         StreamHandler(),
     ],
 )
@@ -50,22 +50,22 @@ from misskaty.core import misskaty_patch
 
 # Pyrogram Bot Client
 app = Client(
-    "MissKatyBot",
+    "Smart-CMT-Robot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
-    app_version="MissKatyPyro Stable",
+    app_version="Smart-CMT-Robot Stable",
     workers=50,
     max_concurrent_transmissions=20,
 )
 app.db = AsyncClient(DATABASE_URI)
-app.log = getLogger("MissKaty")
+app.log = getLogger("Smart-CMT-Robot")
 
 # Pyrogram UserBot Client
 user = Client(
-    "YasirUBot",
+    "Smart-CMT-RobotBot",
     session_string=USER_SESSION,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
