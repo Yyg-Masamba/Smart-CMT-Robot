@@ -21,7 +21,7 @@ from misskaty.plugins.web_scraper import web
 from misskaty.vars import SUDO, USER_SESSION
 from utils import auto_clean
 
-LOGGER = getLogger("Smart-CMT-Robot")
+LOGGER = getLogger("MissKaty")
 
 
 # Run Bot
@@ -85,14 +85,13 @@ if __name__ == "__main__":
     try:
         get_event_loop().run_until_complete(start_bot())
         app.loop.run_forever()
-        # loop.run_until_complete(start_bot())
     except KeyboardInterrupt:
         pass
     except Exception:
         err = traceback.format_exc()
         LOGGER.info(err)
     finally:
-        loop.stop()
+        app.loop.stop()
         LOGGER.info(
             "------------------------ Stopped Services ------------------------"
         )
