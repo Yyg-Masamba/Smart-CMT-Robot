@@ -15,6 +15,7 @@ from time import time
 from typing import Any, Optional, Tuple
 
 import aiohttp
+import contextlib
 import cloudscraper
 import requests
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -27,7 +28,7 @@ from psutil import net_io_counters, virtual_memory
 from pyrogram import Client
 from pyrogram import __version__ as pyrover
 from pyrogram import enums, filters
-from pyrogram.errors import ChatSendPhotosForbidden, FloodWait, MessageTooLong, PeerIdInvalid
+from pyrogram.errors import ChatSendPhotosForbidden, FloodWait, MessageTooLong, PeerIdInvalid, ChatSendPlainForbidden
 from pyrogram.raw.types import UpdateBotStopped
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -126,10 +127,10 @@ async def log_file(_, ctx: Message, strings):
 async def donate(self: Client, ctx: Message):
     try:
         await ctx.reply_photo(
-            "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-            caption=f"Hi {ctx.from_user.mention},",
+            "https://img.yasirweb.eu.org/file/9427d61d6968b8ee4fb2f.jpg",
+            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Thank You..\n\n<b>Indonesian Payment:</b>\n<b>QRIS:</b> https://img.yasirweb.eu.org/file/b1c86973ae4e55721983a.jpg (Yasir Store)\n<b>Mayar:</b> https://yasirarism.mayar.link/payme\n<b>Bank Jago:</b> 109641845083 (Yasir Aris M)\n\nFor international people can use PayPal to support me or via GitHub Sponsor:\nhttps://paypal.me/yasirarism\nhttps://github.com/sponsors/yasirarism\n\n<b>Source:</b> @BeriKopi",
         )
-    except ChatSendPhotosForbidden:
+    except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
         await ctx.chat.leave()
 
@@ -190,7 +191,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     start = datetime.now()
     msg = await ctx.reply_photo(
-        photo="https://te.legra.ph/file/924300ffb399ccfddfc6d.jpg",
+        photo="https://te.legra.ph/file/30a82c22854971d0232c7.jpg",
         caption=caption,
         quote=True,
     )
@@ -387,7 +388,7 @@ async def shell_cmd(_, ctx: Message, strings):
     & filters.user(SUDO)
 )
 @app.on_edited_message(
-    (filters.command(["ev", "run", "meval"]) | filters.regex(r"app.run\(\)$"))
+    (filters.command(["ev", "run", "meval"], COMMAND_HANDLER) | filters.regex(r"app.run\(\)$"))
     & filters.user(SUDO)
 )
 @user.on_message(filters.command(["ev", "run", "meval"], ".") & filters.me)
@@ -400,8 +401,9 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
         if ctx.from_user.is_self
         else await ctx.reply_msg(strings("run_eval"), quote=True)
     )
+    msg = ctx.caption if ctx.web_page_preview else ctx.text
     code = (
-        ctx.text.split(maxsplit=1)[1] if ctx.command else ctx.text.split("\napp.run()")[0]
+        msg.split(maxsplit=1)[1] if ctx.command else msg.split("\napp.run()")[0]
     )
     out_buf = io.StringIO()
     out = ""
@@ -435,15 +437,15 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
             "cloudscraper": cloudscraper,
             "json": json,
             "aiohttp": aiohttp,
-            "print": _print,
+            "p": _print,
             "send": send,
             "stdout": out_buf,
             "traceback": traceback,
             "fetch": fetch,
-            "replied": ctx.reply_to_message,
+            "r": ctx.reply_to_message,
             "requests": requests,
             "soup": BeautifulSoup,
-            "help": _help,
+            "h": _help,
         }
         eval_vars.update(var)
         eval_vars.update(teskode)
