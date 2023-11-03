@@ -171,7 +171,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Klik Iklan Bro", url="https://www.comelmuewa84.eu.org"),
+                    InlineButton("Give Ads Click", url="https://www.comelmuewa84.eu.org"),
                 )
                 returns = "".join(f"{i}, " for i in parsemethod[method]["returns"])
                 msg = f"<b>{method}</b> (<code>{returns[:-2]}</code>)\n"
@@ -212,7 +212,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                     ),
                 )
                 buttons.row(
-                    InlineButton("Klik Iklan Bro", url="https://www.comelmuewa84.eu.org"),
+                    InlineButton("Give Ads Click", url="https://www.comelmuewa84.eu.org"),
                 )
                 msg = f"<b>{types}</b>\n"
                 msg += f"{description}\n\n"
@@ -387,7 +387,7 @@ async def inline_menu(self, inline_query: InlineQuery):
                 title=f"A Private Msg to {penerima.first_name}",
                 input_message_content=InputTextMessageContent(msg_c),
                 description="Only he/she can open it",
-                thumb_url="https://telegra.ph/file/e7f1a946d88a08928db99.jpg",
+                thumb_url="https://te.legra.ph/file/e7f1a946d88a08928db99.jpg",
                 reply_markup=prvte_msg,
             )
         ]
@@ -725,20 +725,20 @@ async def imdb_inl(_, query):
                 summary = GoogleTranslator("auto", "id").translate(
                     r_json.get("description")
                 )
-                res_str += f"<b>📜 Plot: </b> <code>{summary}</code>\n\n"
+                res_str += f"<b>📜 Plot:</b>\n<blockquote><code>{summary}</code></blockquote>\n\n"
             if r_json.get("keywords"):
                 key_ = "".join(
                     f"#{i.replace(' ', '_').replace('-', '_')}, "
                     for i in r_json["keywords"].split(",")
                 )
-                res_str += f"<b>🔥 Kata Kunci:</b> {key_[:-2]} \n"
+                res_str += f"<b>🔥 Kata Kunci:</b>\n<blockquote>{key_[:-2]}</blockquote>\n"
             if award := sop.select('li[data-testid="award_information"]'):
                 awards = (
                     award[0]
                     .find(class_="ipc-metadata-list-item__list-content-item")
                     .text
                 )
-                res_str += f"<b>🏆 Penghargaan:</b> <code>{GoogleTranslator('auto', 'id').translate(awards)}</code>\n"
+                res_str += f"<b>🏆 Penghargaan:</b>\n<blockquote><code>{GoogleTranslator('auto', 'id').translate(awards)}</code></blockquote>\n"
             else:
                 res_str += "\n"
             if ott != "":
