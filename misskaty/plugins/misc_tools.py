@@ -190,7 +190,7 @@ async def kbbi_search(_, ctx: Client):
         kt_dasar = "".join(f"{a}, " for a in a["kata_dasar"])[:-2]
         bt_takbaku = "".join(f"{a}, " for a in a["bentuk_tidak_baku"])[:-2]
         res += f"<b>{a['nama']} ({a['makna'][0]['kelas'][0]['nama']}: {a['makna'][0]['kelas'][0]['deskripsi']})</b>\n<b>Kata Dasar:</b> {kt_dasar if kt_dasar else '-'}\n<b>Bentuk Tidak Baku:</b> {bt_takbaku if bt_takbaku else '-'}\n<b>Submakna:</b> {submakna}\n<b>Contoh:</b> {contoh if contoh else '-'}\n\n"
-    await ctx.reply(f"{res}<b>By YasirPedia API</b>", reply_markup=kbbi_btn)
+    await ctx.reply(f"{res}<b>By Pea Masamba</b>", reply_markup=kbbi_btn)
 
 
 @app.on_cmd("carbon")
@@ -353,7 +353,7 @@ async def translate(_, message):
     else:
         if len(message.command) < 3:
             return await message.reply_msg(
-                "Berikan Kode bahasa yang valid.\n[Available options](https://tgraph.yasirweb.eu.org/Lang-Codes-11-08).\n<b>Usage:</b> <code>/tr en</code>",
+                "Berikan Kode bahasa yang valid.\n[Available options](https://telegra.ph/Lang-Codes-11-08-11-04).\n<b>Usage:</b> <code>/tr en</code>",
             )
         target_lang = message.text.split(None, 2)[1]
         text = message.text.split(None, 2)[2]
@@ -387,7 +387,7 @@ async def tts_convert(_, message):
     else:
         if len(message.text.split()) <= 2:
             await message.reply_text(
-                "Berikan Kode bahasa yang valid.\n[Available options](https://telegra.ph/Lang-Codes-11-08).\n*Usage:* /tts en [text]",
+                "Berikan Kode bahasa yang valid.\n[Available options](https://telegra.ph/Lang-Codes-11-08-11-04).\n*Usage:* /tts en [text]",
             )
             return
         target_lang = message.text.split(None, 2)[1]
