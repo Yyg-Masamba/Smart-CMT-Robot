@@ -92,11 +92,11 @@ async def log_file(_, ctx: Message, strings):
                 "value": content,
             }
             pastelog = await fetch.post("https://paste.yasirapi.eu.org/save", data=data, follow_redirects=True)
-            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('MissKatyLogs.txt'))}")
+            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('Smart-CMT-RobotLogs.txt'))}")
         except Exception:
             await ctx.reply_document(
-                "MissKatyLogs.txt",
-                caption="Log Bot MissKatyPyro",
+                "Smart-CMT-RobotLogs.txt",
+                caption="Log Bot Smart-CMT-Robot",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -111,12 +111,12 @@ async def log_file(_, ctx: Message, strings):
             await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
         try:
             await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
         except MessageTooLong:
             with io.BytesIO(str.encode(tail[0])) as s:
-                s.name = "MissKatyLog-Tail.txt"
+                s.name = "Smart-CMT-RobotLog-Tail.txt"
                 await ctx.reply_document(s)
             await msg.delete()
     else:
@@ -127,8 +127,8 @@ async def log_file(_, ctx: Message, strings):
 async def donate(self: Client, ctx: Message):
     try:
         await ctx.reply_photo(
-            "https://img.yasirweb.eu.org/file/9427d61d6968b8ee4fb2f.jpg",
-            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Thank You..\n\n<b>Indonesian Payment:</b>\n<b>QRIS:</b> https://img.yasirweb.eu.org/file/b1c86973ae4e55721983a.jpg (Yasir Store)\n<b>Mayar:</b> https://yasirarism.mayar.link/payme\n<b>Bank Jago:</b> 109641845083 (Yasir Aris M)\n\nFor international people can use PayPal to support me or via GitHub Sponsor:\nhttps://paypal.me/yasirarism\nhttps://github.com/sponsors/yasirarism\n\n<b>Source:</b> @BeriKopi",
+            "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
+            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to us by clicking on the ad on our website. Thank You..\n\n<b>WEBSITE:</b> https://www.comelmuewa84.eu.org",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
@@ -191,7 +191,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     start = datetime.now()
     msg = await ctx.reply_photo(
-        photo="https://te.legra.ph/file/30a82c22854971d0232c7.jpg",
+        photo="https://te.legra.ph/file/924300ffb399ccfddfc6d.jpg",
         caption=caption,
         quote=True,
     )
@@ -572,10 +572,10 @@ async def shell_exec(code, treat=True):
 
 async def auto_restart():
     await shell_exec("python3 update.py")
-    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
+    os.execvp(sys.executable, [sys.executable, "-m", "Smart-CMT-Robot"])
 
 
 if AUTO_RESTART:
-    scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
+    scheduler = AsyncIOScheduler(timezone="Asia/Makassar")
     scheduler.add_job(auto_restart, trigger="interval", days=3)
     scheduler.start()
