@@ -175,10 +175,10 @@ async def help_parser(name, keyb=None):
 I'm a bot with some useful features. You can change language bot using /setlang command, but it's still in beta stage.
 You can choose an option below, by clicking a button.
 
-If you want give coffee to my owner you can send /donate command for more info.
+If you would like to provide us with coffee, you can send /donate command for more info.
 """.format(
             first_name=name,
-            bot_name="MissKaty",
+            bot_name="Smart-CMT-Robot",
         ),
         keyb,
     )
