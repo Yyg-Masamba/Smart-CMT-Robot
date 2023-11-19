@@ -92,11 +92,11 @@ async def log_file(_, ctx: Message, strings):
                 "value": content,
             }
             pastelog = await fetch.post("https://paste.yasirapi.eu.org/save", data=data, follow_redirects=True)
-            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('Smart-CMT-RobotLogs.txt'))}")
+            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('MissKatyLogs.txt'))}")
         except Exception:
             await ctx.reply_document(
-                "Smart-CMT-RobotLogs.txt",
-                caption="Log Bot Smart-CMT-Robot",
+                "MissKatyLogs.txt",
+                caption="Log Bot MissKatyPyro",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -111,12 +111,12 @@ async def log_file(_, ctx: Message, strings):
             await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
         try:
             await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
         except MessageTooLong:
             with io.BytesIO(str.encode(tail[0])) as s:
-                s.name = "Smart-CMT-RobotLog-Tail.txt"
+                s.name = "MissKatyLog-Tail.txt"
                 await ctx.reply_document(s)
             await msg.delete()
     else:
@@ -128,7 +128,7 @@ async def donate(self: Client, ctx: Message):
     try:
         await ctx.reply_photo(
             "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to us by clicking on the ad on our website. Thank You..\n\n<b>WEBSITE:</b> https://www.comelmuewa84.eu.org",
+            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, help us click ads on our website:\nhttps://www.comelmuewa84.eu.org",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
@@ -187,7 +187,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     neofetch = (await shell_exec("neofetch --stdout"))[0]
 
-    caption = f"<b>{BOT_NAME} {misskaty_version} is Up and Running successfully.</b>\n\n<code>{neofetch}</code>\n\n**OS Uptime:** <code>{osuptime}</code>\n<b>Bot Uptime:</b> <code>{currentTime}</code>\n**Bot Usage:** <code>{botusage}</code>\n\n**Total Space:** <code>{disk_total}</code>\n**Free Space:** <code>{disk_free}</code>\n\n**Download:** <code>{download}</code>\n**Upload:** <code>{upload}</code>\n\n<b>Pyrogram Version</b>: <code>{pyrover}</code>\n<b>Python Version</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
+    caption = f"<b>{BOT_NAME} {misskaty_version} is Up and Running successfully.</b>\n\n<code>{neofetch}</code>\n\n**OS Uptime:** <code>{osuptime}</code>\n<b>Bot Uptime:</b> <code>{currentTime}</code>\n**Bot Usage:** <code>{botusage}</code>\n\n**Total Space:** <code>{disk_total}</code>\n**Free Space:** <code>{disk_free}</code>\n\n**Download:** <code>{download}</code>\n**Upload:** <code>{upload}</code>\n\n<b>PyroFork Version</b>: <code>{pyrover}</code>\n<b>Python Version</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
 
     start = datetime.now()
     msg = await ctx.reply_photo(
@@ -571,7 +571,7 @@ async def shell_exec(code, treat=True):
 
 async def auto_restart():
     await shell_exec("python3 update.py")
-    os.execvp(sys.executable, [sys.executable, "-m", "Smart-CMT-Robot"])
+    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
 
 
 if AUTO_RESTART:
