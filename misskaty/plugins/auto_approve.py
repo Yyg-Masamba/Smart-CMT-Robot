@@ -1,71 +1,106 @@
-"""
- * @author        Pea Masamba <comelmuewa831@gmail.com>
- * @date          2023-09-17 22:12:27
- * @projectName   Smart-CMT-Robot
- * Copyright ©peamasamba All rights reserved
-"""
+from database import dbname
+
 from pyrogram import filters
-from pyrogram.errors import UserAlreadyParticipant, UserIsBlocked
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import (
+    CallbackQuery,
+    ChatJoinRequest,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    Message,
+)
 
 from misskaty import app
-from misskaty.core.decorator.errors import capture_err
+from misskaty.vars import SUDO, COMMAND_HANDLER
+from misskaty.core.decorator.permissions import adminsOnly, member_permissions
+
+approvaldb = dbname["autoapprove"]
+
+# For /help menu
+__MODULE__ = "Autoapprove"
+__HELP__ = """
+command: /autoapprove
+
+This module helps to automatically accept chat join request send by a user through invitation link of your group
+"""
 
 
-# Filters Approve User by bot in channel @YMovieZNew
-@capture_err
-@app.on_chat_join_request(filters.chat(-1001686184174))
-async def approve_join_chat(c, m):
-    try:
-        markup = InlineKeyboardMarkup(
-            [
+@app.on_message(filters.command("autoapprove", COMMAND_HANDLER) & filters.group)
+@adminsOnly("can_change_info")
+async def approval_command(_, message: Message):
+    chat_id = message.chat.id
+    if (await approvaldb.count_documents({"chat_id": chat_id})) > 0:
+        keyboard_OFF = InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Turn OFF", callback_data="approval_off")]]
+        )
+        await message.reply(
+            "**Autoapproval for this chat: Enabled.**",
+            reply_markup=keyboard_OFF,
+        )
+    else:
+        keyboard_ON = InlineKeyboardMarkup(
+            [[InlineKeyboardButton("Turn ON", callback_data="approval_on")]]
+        )
+        await message.reply(
+            "**Autoapproval for this chat: Disabled.**",
+            reply_markup=keyboard_ON,
+        )
+
+
+@app.on_callback_query(filters.regex("approval(.*)"))
+async def approval_cb(_, cb: CallbackQuery):
+    chat_id = cb.message.chat.id
+    from_user = cb.from_user
+
+    permissions = await member_permissions(chat_id, from_user.id)
+    permission = "can_restrict_members"
+    if permission not in permissions:
+        if from_user.id not in SUDO:
+            return await cb.answer(
+                f"You don't have the required permission.\n Permission: {permission}",
+                show_alert=True,
+            )
+
+    command_parts = cb.data.split("_", 1)
+    option = command_parts[1]
+
+    if option == "on":
+        if await approvaldb.count_documents({"chat_id": chat_id}) == 0:
+            approvaldb.insert_one({"chat_id": chat_id})
+            keyboard_off = InlineKeyboardMarkup(
                 [
-                    InlineKeyboardButton(
-                        text="Sudah", callback_data=f"approve_{m.chat.id}"
-                    ),
-                    InlineKeyboardButton(
-                        text="Belum", callback_data=f"declined_{m.chat.id}"
-                    ),
+                    [
+                        InlineKeyboardButton(
+                            "Turn OFF", callback_data="approval_off"
+                        )
+                    ]
                 ]
-            ]
-        )
-        await c.send_message(
-            m.from_user.id,
-            "Bot by @CollectionMovie_Subtitles",
-            disable_web_page_preview=True,
-            reply_markup=markup,
-        )
-    except UserIsBlocked:
-        await m.decline()
+            )
+            await cb.edit_message_text(
+                "**Autoapproval for this chat: Enabled.**",
+                reply_markup=keyboard_off,
+            )
+    elif option == "off":
+        if await approvaldb.count_documents({"chat_id": chat_id}) > 0:
+            approvaldb.delete_one({"chat_id": chat_id})
+            keyboard_on = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton(
+                            "Turn ON", callback_data="approval_on"
+                        )
+                    ]
+                ]
+            )
+            await cb.edit_message_text(
+                "**Autoapproval for this chat: Disabled.**",
+                reply_markup=keyboard_on,
+            )
+    return await cb.answer()
 
 
-@app.on_callback_query(filters.regex(r"^approve"))
-async def approve_chat(c, q):
-    _, chat = q.data.split("_")
-    try:
-        await q.message.edit(
-            "Yeayy, selamat kamu bisa bergabung di Channel YMovieZ Reborn..."
-        )
-        await c.approve_chat_join_request(chat, q.from_user.id)
-    except UserAlreadyParticipant:
-        await q.message.edit(
-            "Kamu sudah di acc join grup, jadi ga perlu menekan button."
-        )
-    except Exception as err:
-        await q.message.edit(err)
-
-
-@app.on_callback_query(filters.regex(r"^declined"))
-async def decline_chat(c, q):
-    _, chat = q.data.split("_")
-    try:
-        await q.message.edit(
-            "Yahh, kamu ditolak join channel. Biasakan rajin membaca yahhh.."
-        )
-        await c.decline_chat_join_request(chat, q.from_user.id)
-    except UserAlreadyParticipant:
-        await q.message.edit(
-            "Kamu sudah di acc join grup, jadi ga perlu menekan button."
-        )
-    except Exception as err:
-        await q.message.edit(err)
+@app.on_chat_join_request(filters.group)
+async def accept(_, message: ChatJoinRequest):
+    chat = message.chat
+    user = message.from_user
+    if (await approvaldb.count_documents({"chat_id": chat.id})) > 0:
+        await app.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
