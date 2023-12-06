@@ -37,7 +37,7 @@ __HELP__ = """
 /nodrakor [query <optional>] - Scrape website data from NoDrakor
 """
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 savedict = TTLCache(maxsize=1000, ttl=3600)
@@ -1372,14 +1372,14 @@ async def nodrakorddl_scrap(_, callback_query, strings):
                 msg = ""
                 for i in result:
                     msg += str(f"{i}\n")
-                link = await post_to_telegraph(False, "MissKaty NoDrakor", msg)
+                link = await post_to_telegraph(False, "Smart-CMT-Robot NoDrakor", msg)
                 return await callback_query.message.edit_msg(
                     strings("res_scrape").format(link=link, kl=link), reply_markup=keyboard
                 )
             res = soup.find_all(class_="button button-shadow")
             res = "".join(f"{i.text}\n{i['href']}\n\n" for i in res)
             if len(res) > 3500:
-                link = await post_to_telegraph(False, "MissKaty NoDrakor", res)
+                link = await post_to_telegraph(False, "Smart-CMT-Robot NoDrakor", res)
                 return await callback_query.message.edit_msg(
                     strings("res_scrape").format(link=link, kl=link), reply_markup=keyboard
                 )
