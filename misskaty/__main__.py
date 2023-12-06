@@ -21,7 +21,7 @@ from misskaty.plugins.web_scraper import web
 from misskaty.vars import SUDO, USER_SESSION
 from utils import auto_clean
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 # Run Bot
@@ -42,7 +42,7 @@ async def start_bot():
             bot_modules += "|{:<15}".format(i)
         j += 1
     LOGGER.info("+===============================================================+")
-    LOGGER.info("|                        MissKatyPyro                           |")
+    LOGGER.info("|                        Smart-CMT-Robot                        |")
     LOGGER.info("+===============+===============+===============+===============+")
     LOGGER.info(bot_modules)
     LOGGER.info("+===============+===============+===============+===============+")
