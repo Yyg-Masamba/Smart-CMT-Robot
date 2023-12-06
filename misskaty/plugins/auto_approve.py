@@ -31,7 +31,7 @@ async def approve_join_chat(c, m):
         )
         await c.send_message(
             m.from_user.id,
-            "<b>PERMINTAAN JOIN CHANNEL YMOVIEZ REBORN</b>\n\nSebelum masuk ke channel ada tes kejujuran, apakah anda sudah membaca catatan di @YMovieZ_New? Jika sudah silahkan klik <b>Sudah</b>, jika kamu berbohong resiko kamu tanggung sendiri 😶‍🌫️.\n\nBot by @YasirPediaChannel",
+            "<b>PERMINTAAN JOIN CHANNEL PEA MASAMBA</b>\n\nJoin: https://t.me/+HinXd5vSf-5iZDVl",
             disable_web_page_preview=True,
             reply_markup=markup,
         )
