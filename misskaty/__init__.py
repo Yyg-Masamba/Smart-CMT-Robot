@@ -28,7 +28,7 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        handlers.RotatingFileHandler("MissKatyLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
+        handlers.RotatingFileHandler("Smart-CMT-RobotLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
         StreamHandler(),
     ],
 )
