@@ -48,7 +48,7 @@ async def cek_mataa(_, ctx: Message, strings):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"👀 <b>Mata MissKaty</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+        msg += f"👀 <b>Mata Smart-CMT-Robot</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
