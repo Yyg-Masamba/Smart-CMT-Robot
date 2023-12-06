@@ -117,7 +117,7 @@ async def telegraph_paste(_, message):
         title = (
             message.text.split(None, 1)[1]
             if len(message.command) > 1
-            else "MissKaty Paste"
+            else "Smart-CMT-Robot Paste"
         )
         try:
             with open(file, "r") as text:
@@ -133,13 +133,13 @@ async def telegraph_paste(_, message):
         title = (
             message.text.split(None, 1)[1]
             if len(message.command) > 1
-            else "MissKaty Paste"
+            else "Smart-CMT-Robot Paste"
         )
         data = reply.text.html.replace("\n", "<br>") or reply.caption.html.replace(
             "\n", "<br>"
         )
     elif not reply and len(message.command) >= 2:
-        title = "MissKaty Paste"
+        title = "Smart-CMT-Robot Paste"
         data = message.text.split(None, 1)[1]
 
     try:
@@ -489,7 +489,7 @@ async def tempaste(_, message):
             "https://tempaste.com/api/v1/create-paste/",
             data={
                 "api_key": "xnwuzXubxk3kCUz9Q2pjMVR8xeTO4t",
-                "title": "MissKaty Paste",
+                "title": "Smart-CMT-Robot Paste",
                 "paste_content": data,
                 "visibility": "public",
                 "expiry_date_type": "months",
