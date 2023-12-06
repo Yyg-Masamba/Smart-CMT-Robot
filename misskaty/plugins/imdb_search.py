@@ -36,7 +36,7 @@ from misskaty import app
 from misskaty.helper import GENRES_EMOJI, Cache, fetch, get_random_string, search_jw
 from utils import demoji
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 LIST_CARI = Cache(filename="imdb_cache.db", path="cache", in_memory=False)
 
 
