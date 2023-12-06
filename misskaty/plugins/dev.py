@@ -128,7 +128,7 @@ async def donate(self: Client, ctx: Message):
     try:
         await ctx.reply_photo(
             "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Thank You..\n\n<b>Website:</b>https://www.comelmuewa84.eu.org\n\n<b>Source:</b>@peamasamba",
+            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Please help click on Ads on our website. Thank You..\n\n<b>Website: </b>https://www.comelmuewa84.eu.org\n\n<b>Source:</b>@peamasamba",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
