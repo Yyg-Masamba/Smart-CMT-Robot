@@ -70,7 +70,7 @@ __HELP__ = """
 
 var = {}
 teskode = {}
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 async def edit_or_reply(msg, **kwargs):
@@ -86,17 +86,17 @@ async def log_file(_, ctx: Message, strings):
     msg = await ctx.reply_msg("<b>Reading bot logs ...</b>", quote=True)
     if len(ctx.command) == 1:
         try:
-            with open("MissKatyLogs.txt", "r") as file:
+            with open("Smart-CMT-RobotLogs.txt", "r") as file:
                 content = file.read()
             data = {
                 "value": content,
             }
             pastelog = await fetch.post("https://paste.yasirapi.eu.org/save", data=data, follow_redirects=True)
-            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('MissKatyLogs.txt'))}")
+            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('Smart-CMT-RobotLogs.txt'))}")
         except Exception:
             await ctx.reply_document(
-                "MissKatyLogs.txt",
-                caption="Log Bot MissKatyPyro",
+                "Smart-CMT-RobotLogs.txt",
+                caption="Log Bot Smart-CMT-Robot",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -111,12 +111,12 @@ async def log_file(_, ctx: Message, strings):
             await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
         try:
             await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
         except MessageTooLong:
             with io.BytesIO(str.encode(tail[0])) as s:
-                s.name = "MissKatyLog-Tail.txt"
+                s.name = "Smart-CMT-RobotLog-Tail.txt"
                 await ctx.reply_document(s)
             await msg.delete()
     else:
@@ -485,7 +485,7 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
     final_output = f"{prefix}<b>INPUT:</b>\n<pre language='python'>{html.escape(code)}</pre>\n<b>OUTPUT:</b>\n<pre language='python'>{html.escape(out)}</pre>\nExecuted Time: {el_str}"
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(out)) as out_file:
-            out_file.name = "MissKatyEval.txt"
+            out_file.name = "Smart-CMT-RobotEval.txt"
             await ctx.reply_document(
                 document=out_file,
                 caption=f"<code>{code[: 4096 // 4 - 1]}</code>",
@@ -531,7 +531,7 @@ async def update_restart(_, ctx: Message, strings):
     await shell_exec("python3 update.py")
     with open("restart.pickle", "wb") as status:
         pickle.dump([ctx.chat.id, msg.id], status)
-    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
+    os.execvp(sys.executable, [sys.executable, "-m", "Smart-CMT-Robot"])
 
 
 @app.on_raw_update(group=-99)
@@ -571,7 +571,7 @@ async def shell_exec(code, treat=True):
 
 async def auto_restart():
     await shell_exec("python3 update.py")
-    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
+    os.execvp(sys.executable, [sys.executable, "-m", "Smart-CMT-Robot"])
 
 
 if AUTO_RESTART:
