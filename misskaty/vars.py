@@ -8,7 +8,7 @@ from os import environ
 
 import dotenv
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 dotenv.load_dotenv("config.env", override=True)
 
