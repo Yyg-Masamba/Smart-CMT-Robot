@@ -16,7 +16,7 @@ from misskaty.helper.http import fetch
 from misskaty.helper.human_read import get_readable_time
 from misskaty.plugins import ALL_MODULES
 
-LOGGER = logging.getLogger("MissKaty")
+LOGGER = logging.getLogger("Smart-CMT-Robot")
 URL_REGEX = r"(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
 GENRES_EMOJI = {
     "Action": "👊",
