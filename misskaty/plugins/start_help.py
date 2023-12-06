@@ -26,7 +26,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Commands ❓", callback_data="bot_commands"),
             InlineKeyboardButton(
                 text="Source Code 🛠",
-                url="https://github.com/yasirarism/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
@@ -34,7 +34,7 @@ home_keyboard_pm = InlineKeyboardMarkup(
                 text="System Stats 🖥",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/YasirArisM"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
         ],
         [
             InlineKeyboardButton(
@@ -53,7 +53,7 @@ keyboard = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Help ❓", url=f"t.me/{BOT_USERNAME}?start=help"),
             InlineKeyboardButton(
                 text="Source Code �",
-                url="https://github.com/yasirarism/MissKatyPyro",
+                url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
             ),
         ],
         [
@@ -61,7 +61,7 @@ keyboard = InlineKeyboardMarkup(
                 text="System Stats 💻",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/YasirArisM"),
+            InlineKeyboardButton(text="Dev 👨", url="https://t.me/peamasamba"),
         ],
     ]
 )
@@ -178,7 +178,7 @@ You can choose an option below, by clicking a button.
 If you want give coffee to my owner you can send /donate command for more info.
 """.format(
             first_name=name,
-            bot_name="MissKaty",
+            bot_name="Smart-CMT-Robot",
         ),
         keyb,
     )
