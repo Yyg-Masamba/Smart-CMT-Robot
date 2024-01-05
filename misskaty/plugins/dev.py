@@ -128,7 +128,7 @@ async def donate(self: Client, ctx: Message):
     try:
         await ctx.reply_photo(
             "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Please help click on Ads on our website. Thank You..\n\n<b>Website: </b>https://www.comelmuewa84.eu.org\n\n<b>Source:</b>@peamasamba",
+            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Thank You..\n\n<b>Indonesian Payment:</b>\n<b>QRIS:</b> https://img.yasirweb.eu.org/file/b1c86973ae4e55721983a.jpg (Yasir Store)\n<b>Mayar:</b> https://yasirarism.mayar.link/payme\n<b>Bank Jago:</b> 109641845083 (Yasir Aris M)\n\nFor international people can use PayPal to support me or via GitHub Sponsor:\nhttps://paypal.me/yasirarism\nhttps://github.com/sponsors/yasirarism\n\n<b>Source:</b> @BeriKopi",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
@@ -326,7 +326,7 @@ async def unban_globally(_, ctx: Message):
     filters.command(["shell", "sh", "term"], COMMAND_HANDLER) & filters.user(SUDO)
 )
 @app.on_edited_message(
-    filters.command(["shell", "sh", "term"], COMMAND_HANDLER) & filters.user(SUDO)
+    filters.command(["shell", "sh", "term"], COMMAND_HANDLER) & filters.user(SUDO) & ~filters.react
 )
 @user.on_message(filters.command(["shell", "sh", "term"], ".") & filters.me)
 @use_chat_lang()
@@ -389,7 +389,7 @@ async def shell_cmd(_, ctx: Message, strings):
 )
 @app.on_edited_message(
     (filters.command(["ev", "run", "meval"], COMMAND_HANDLER) | filters.regex(r"app.run\(\)$"))
-    & filters.user(SUDO)
+    & filters.user(SUDO) & ~filters.react
 )
 @user.on_message(filters.command(["ev", "run", "meval"], ".") & filters.me)
 @use_chat_lang()
@@ -436,7 +436,7 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
             "cloudscraper": cloudscraper,
             "json": json,
             "aiohttp": aiohttp,
-            "p": _print,
+            "print": _print,
             "send": send,
             "stdout": out_buf,
             "traceback": traceback,
@@ -531,7 +531,7 @@ async def update_restart(_, ctx: Message, strings):
     await shell_exec("python3 update.py")
     with open("restart.pickle", "wb") as status:
         pickle.dump([ctx.chat.id, msg.id], status)
-    os.execvp(sys.executable, [sys.executable, "-m", "Smart-CMT-Robot"])
+    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
 
 
 @app.on_raw_update(group=-99)
@@ -571,7 +571,7 @@ async def shell_exec(code, treat=True):
 
 async def auto_restart():
     await shell_exec("python3 update.py")
-    os.execvp(sys.executable, [sys.executable, "-m", "Smart-CMT-Robot"])
+    os.execvp(sys.executable, [sys.executable, "-m", "misskaty"])
 
 
 if AUTO_RESTART:
