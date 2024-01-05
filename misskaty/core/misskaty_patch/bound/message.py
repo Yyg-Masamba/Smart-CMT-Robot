@@ -7,6 +7,7 @@ from typing import Union
 
 from pyrogram.errors import (
     ChatAdminRequired,
+    ChannelPrivate,
     ChatSendPlainForbidden,
     ChatWriteForbidden,
     FloodWait,
@@ -19,7 +20,7 @@ from pyrogram.errors import (
 )
 from pyrogram.types import Message
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 @property
 def parse_cmd(msg):
@@ -91,7 +92,7 @@ async def reply_text(
         LOGGER.warning(f"Got floodwait in {self.chat.id} for {e.value}'s.")
         await asleep(e.value)
         return await reply_text(self, text, *args, **kwargs)
-    except TopicClosed:
+    except (TopicClosed, ChannelPrivate):
         return
     except (ChatWriteForbidden, ChatAdminRequired, ChatSendPlainForbidden):
         LOGGER.info(
@@ -138,7 +139,7 @@ async def edit_text(
         LOGGER.warning(f"Got floodwait in {self.chat.id} for {e.value}'s.")
         await asleep(e.value)
         return await edit_text(self, text, *args, **kwargs)
-    except MessageNotModified:
+    except (MessageNotModified, ChannelPrivate):
         return False
     except (ChatWriteForbidden, ChatAdminRequired):
         LOGGER.info(
