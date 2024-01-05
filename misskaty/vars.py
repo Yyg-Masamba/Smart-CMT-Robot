@@ -39,9 +39,10 @@ else:
     LOG_CHANNEL = int(LOG_CHANNEL)
 
 # Optional ENV
+LOG_GROUP_ID = environ.get("LOG_GROUP_ID")
 USER_SESSION = environ.get("USER_SESSION")
-DATABASE_NAME = environ.get("DATABASE_NAME", "MissKatyDB")
-TZ = environ.get("TZ", "Asia/Jakarta")
+DATABASE_NAME = environ.get("DATABASE_NAME", "Smart-CMT-RobotDB")
+TZ = environ.get("TZ", "Asia/Makassar")
 COMMAND_HANDLER = environ.get("COMMAND_HANDLER", "! /").split()
 SUDO = list(
     {
@@ -52,7 +53,7 @@ SUDO = list(
         ).split()
     }
 )
-SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "YasirPediaChannel")
+SUPPORT_CHAT = environ.get("SUPPORT_CHAT", "PeaMasambaChannel")
 AUTO_RESTART = environ.get("AUTO_RESTART", False)
 OPENAI_API = environ.get("OPENAI_API")
 BARD_API = environ.get("BARD_API")
