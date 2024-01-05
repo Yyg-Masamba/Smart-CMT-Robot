@@ -28,7 +28,7 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        handlers.RotatingFileHandler("Smart-CMT-RobotLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
+        handlers.RotatingFileHandler("MissKatyLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
         StreamHandler(),
     ],
 )
@@ -42,7 +42,7 @@ MOD_NOLOAD = ["subscene_dl"]
 HELPABLE = {}
 cleanmode = {}
 botStartTime = time.time()
-misskaty_version = "v2.12.2 - Stable"
+misskaty_version = "v2.13"
 
 uvloop.install()
 faulthandler_enable()
@@ -56,16 +56,16 @@ app = Client(
     bot_token=BOT_TOKEN,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
-    app_version="MissKatyPyro Stable",
+    app_version="Smart-CMT-Robot Stable",
     workers=50,
     max_concurrent_transmissions=20,
 )
 app.db = AsyncClient(DATABASE_URI)
-app.log = getLogger("MissKaty")
+app.log = getLogger("Smart-CMT-Robot")
 
 # Pyrogram UserBot Client
 user = Client(
-    "YasirUBot",
+    "Smart-CMT-Robot",
     session_string=USER_SESSION,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
