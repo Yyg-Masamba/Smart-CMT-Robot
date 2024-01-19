@@ -18,6 +18,7 @@ import aiohttp
 import contextlib
 import cloudscraper
 import requests
+import platform
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from bs4 import BeautifulSoup
 from logging import getLogger
@@ -28,7 +29,7 @@ from psutil import net_io_counters, virtual_memory
 from pyrogram import Client
 from pyrogram import __version__ as pyrover
 from pyrogram import enums, filters
-from pyrogram.errors import ChatSendPhotosForbidden, FloodWait, MessageTooLong, PeerIdInvalid, ChatSendPlainForbidden
+from pyrogram.errors import ChatSendPhotosForbidden, FloodWait, MessageTooLong, PeerIdInvalid, ChatSendPlainForbidden, ReactionInvalid
 from pyrogram.raw.types import UpdateBotStopped
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -86,16 +87,16 @@ async def log_file(_, ctx: Message, strings):
     msg = await ctx.reply_msg("<b>Reading bot logs ...</b>", quote=True)
     if len(ctx.command) == 1:
         try:
-            with open("Smart-CMT-RobotLogs.txt", "r") as file:
+            with open("MissKatyLogs.txt", "r") as file:
                 content = file.read()
             data = {
                 "value": content,
             }
             pastelog = await fetch.post("https://paste.yasirapi.eu.org/save", data=data, follow_redirects=True)
-            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('Smart-CMT-RobotLogs.txt'))}")
+            await msg.edit_msg(f"<a href='{pastelog.url}'>Here the Logs</a>\nlog size: {get_readable_file_size(os.path.getsize('MissKatyLogs.txt'))}")
         except Exception:
             await ctx.reply_document(
-                "Smart-CMT-RobotLogs.txt",
+                "MissKatyLogs.txt",
                 caption="Log Bot Smart-CMT-Robot",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -111,12 +112,12 @@ async def log_file(_, ctx: Message, strings):
             await msg.delete_msg()
     elif len(ctx.command) == 2:
         val = ctx.text.split()
-        tail = await shell_exec(f"tail -n {val[1]} -v Smart-CMT-RobotLogs.txt")
+        tail = await shell_exec(f"tail -n {val[1]} -v MissKatyLogs.txt")
         try:
             await msg.edit_msg(f"<pre language='bash'>{html.escape(tail[0])}</pre>")
         except MessageTooLong:
             with io.BytesIO(str.encode(tail[0])) as s:
-                s.name = "Smart-CMT-RobotLog-Tail.txt"
+                s.name = "MissKatyLog-Tail.txt"
                 await ctx.reply_document(s)
             await msg.delete()
     else:
@@ -125,10 +126,12 @@ async def log_file(_, ctx: Message, strings):
 
 @app.on_message(filters.command(["donate"], COMMAND_HANDLER))
 async def donate(self: Client, ctx: Message):
+    with contextlib.suppress(ReactionInvalid):
+        await ctx.react(emoji="❤️")
     try:
         await ctx.reply_photo(
             "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Thank You..\n\n<b>Indonesian Payment:</b>\n<b>QRIS:</b> https://img.yasirweb.eu.org/file/b1c86973ae4e55721983a.jpg (Yasir Store)\n<b>Mayar:</b> https://yasirarism.mayar.link/payme\n<b>Bank Jago:</b> 109641845083 (Yasir Aris M)\n\nFor international people can use PayPal to support me or via GitHub Sponsor:\nhttps://paypal.me/yasirarism\nhttps://github.com/sponsors/yasirarism\n\n<b>Source:</b> @BeriKopi",
+            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can click ads my blog:</b> https://www.comelmuewa84.eu.org",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
@@ -150,18 +153,6 @@ async def server_stats(_, ctx: Message) -> "Message":
     """
     Give system stats of the server.
     """
-    image = Image.open("assets/statsbg.jpg").convert("RGB")
-    IronFont = ImageFont.truetype("assets/IronFont.otf", 42)
-    draw = ImageDraw.Draw(image)
-
-    def draw_progressbar(coordinate, progress):
-        progress = 110 + (progress * 10.8)
-        draw.ellipse((105, coordinate - 25, 127, coordinate), fill="#FFFFFF")
-        draw.rectangle((120, coordinate - 25, progress, coordinate), fill="#FFFFFF")
-        draw.ellipse(
-            (progress - 7, coordinate - 25, progress + 15, coordinate), fill="#FFFFFF"
-        )
-
     total, used, free = disk_usage(".")
     process = Process(os.getpid())
 
@@ -189,14 +180,29 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     caption = f"<b>{BOT_NAME} {misskaty_version} is Up and Running successfully.</b>\n\n<code>{neofetch}</code>\n\n**OS Uptime:** <code>{osuptime}</code>\n<b>Bot Uptime:</b> <code>{currentTime}</code>\n**Bot Usage:** <code>{botusage}</code>\n\n**Total Space:** <code>{disk_total}</code>\n**Free Space:** <code>{disk_free}</code>\n\n**Download:** <code>{download}</code>\n**Upload:** <code>{upload}</code>\n\n<b>PyroFork Version</b>: <code>{pyrover}</code>\n<b>Python Version</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
 
+    if "oracle" in platform.uname().release:
+        return await ctx.reply_msg(caption, quote=True)
+        
     start = datetime.now()
     msg = await ctx.reply_photo(
-        photo="https://te.legra.ph/file/30a82c22854971d0232c7.jpg",
+        photo="https://te.legra.ph/file/924300ffb399ccfddfc6d.jpg",
         caption=caption,
         quote=True,
     )
     end = datetime.now()
 
+    image = Image.open("assets/statsbg.jpg").convert("RGB")
+    IronFont = ImageFont.truetype("assets/IronFont.otf", 42)
+    draw = ImageDraw.Draw(image)
+    
+    def draw_progressbar(coordinate, progress):
+        progress = 110 + (progress * 10.8)
+        draw.ellipse((105, coordinate - 25, 127, coordinate), fill="#FFFFFF")
+        draw.rectangle((120, coordinate - 25, progress, coordinate), fill="#FFFFFF")
+        draw.ellipse(
+            (progress - 7, coordinate - 25, progress + 15, coordinate), fill="#FFFFFF"
+        )
+    
     draw_progressbar(243, int(cpu_percentage))
     draw.text(
         (225, 153),
@@ -485,7 +491,7 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
     final_output = f"{prefix}<b>INPUT:</b>\n<pre language='python'>{html.escape(code)}</pre>\n<b>OUTPUT:</b>\n<pre language='python'>{html.escape(out)}</pre>\nExecuted Time: {el_str}"
     if len(final_output) > 4096:
         with io.BytesIO(str.encode(out)) as out_file:
-            out_file.name = "Smart-CMT-RobotEval.txt"
+            out_file.name = "MissKatyEval.txt"
             await ctx.reply_document(
                 document=out_file,
                 caption=f"<code>{code[: 4096 // 4 - 1]}</code>",
