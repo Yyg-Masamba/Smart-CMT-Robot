@@ -6,8 +6,8 @@ import dotenv
 import requests
 from git import Repo
 
-if os.path.exists("PeaMasambaLogs.txt"):
-    with open("PeaMasambaLogs.txt", "r+") as f:
+if os.path.exists("Smart-CMT-RobotLogs.txt"):
+    with open("Smart-CMT-RobotLogs.txt", "r+") as f:
         f.truncate(0)
 
 basicConfig(
@@ -15,12 +15,12 @@ basicConfig(
     format="[%(levelname)s] - [%(asctime)s - %(name)s - %(message)s] -> [%(module)s:%(lineno)d]",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        handlers.RotatingFileHandler("PeaMasambaLogs.txt", mode="w+", maxBytes=1000000),
+        handlers.RotatingFileHandler("Smart-CMT-RobotLogs.txt", mode="w+", maxBytes=5242880, backupCount=1),
         StreamHandler(),
     ],
 )
 
-LOGGER = getLogger("Pea Masamba")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 ENV_URL = os.environ.get("ENV_URL")
 try:
@@ -61,7 +61,6 @@ if all([UPSTREAM_REPO_URL, UPSTREAM_REPO_BRANCH]):
         LOGGER.info(f"Successfully update with latest branch > {UPSTREAM_REPO_BRANCH}")
     except Exception as e:
         LOGGER.error(e)
-        pass
 else:
     LOGGER.warning(
         "UPSTREAM_REPO_URL or UPSTREAM_REPO_BRANCH is not defined, Skipping auto update"
