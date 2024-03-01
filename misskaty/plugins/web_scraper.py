@@ -37,7 +37,7 @@ __HELP__ = """
 /nodrakor [query <optional>] - Scrape website data from NoDrakor
 """
 
-LOGGER = logging.getLogger("Smart-CMT-Robot")
+LOGGER = logging.getLogger("MissKaty")
 SCRAP_DICT = Cache(filename="scraper_cache.db", path="cache", in_memory=False)
 data_kuso = Cache(filename="kuso_cache.db", path="cache", in_memory=False)
 savedict = TTLCache(maxsize=1000, ttl=3600)
