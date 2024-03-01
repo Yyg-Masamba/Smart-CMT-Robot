@@ -19,11 +19,13 @@ from misskaty.helper.human_read import get_readable_time
 from misskaty.vars import COMMAND_HANDLER
 
 
+PING_LOCK = Lock()
+
 @app.on_message(filters.command(["ping"], COMMAND_HANDLER))
 async def ping(_, ctx: Message):
     currentTime = get_readable_time(time.time() - botStartTime)
     start_t = time.time()
-    rm = await ctx.reply_msg("🐱 Pong!!...")
+    rm = await ctx.reply_msg("🅿️ Pong!!...")
     end_t = time.time()
     time_taken_s = round(end_t - start_t, 3)
     await rm.edit_msg(
@@ -34,7 +36,7 @@ async def ping(_, ctx: Message):
 @app.on_message(filters.command(["ping_dc"], COMMAND_HANDLER))
 async def ping_handler(_, ctx: Message):
     m = await ctx.reply_msg("Pinging datacenters...")
-    async with Lock():
+    async with PING_LOCK:
         ips = {
             "dc1": "149.154.175.53",
             "dc2": "149.154.167.51",
