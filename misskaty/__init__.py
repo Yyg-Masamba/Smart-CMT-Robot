@@ -50,22 +50,22 @@ from misskaty.core import misskaty_patch
 
 # Pyrogram Bot Client
 app = Client(
-    "Smart-CMT-Robot",
+    "MissKatyBot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
-    app_version="Smart-CMT-Robot Stable",
+    app_version="MissKatyPyro Stable",
     workers=50,
     max_concurrent_transmissions=4,
 )
 app.db = AsyncClient(DATABASE_URI)
-app.log = getLogger("Smart-CMT-Robot")
+app.log = getLogger("MissKaty")
 
 # Pyrogram UserBot Client
 user = Client(
-    "Smart-CMT-Robot",
+    "YasirUBot",
     session_string=USER_SESSION,
     mongodb=dict(connection=AsyncClient(DATABASE_URI), remove_peers=False),
     sleep_threshold=180,
