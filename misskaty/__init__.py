@@ -50,7 +50,7 @@ from misskaty.core import misskaty_patch
 
 # Pyrogram Bot Client
 app = Client(
-    "MissKatyBot",
+    "Smart-CMT-Robot",
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
@@ -58,7 +58,7 @@ app = Client(
     sleep_threshold=180,
     app_version="Smart-CMT-Robot Stable",
     workers=50,
-    max_concurrent_transmissions=20,
+    max_concurrent_transmissions=4,
 )
 app.db = AsyncClient(DATABASE_URI)
 app.log = getLogger("Smart-CMT-Robot")
