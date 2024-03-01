@@ -71,7 +71,7 @@ __HELP__ = """
 
 var = {}
 teskode = {}
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 async def edit_or_reply(msg, **kwargs):
@@ -97,7 +97,7 @@ async def log_file(_, ctx: Message, strings):
         except Exception:
             await ctx.reply_document(
                 "MissKatyLogs.txt",
-                caption="Log Bot MissKatyPyro",
+                caption="Log Smart-CMT-Robot",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
