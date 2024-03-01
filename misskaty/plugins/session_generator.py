@@ -26,7 +26,7 @@ from telethon.sessions import StringSession
 from misskaty import app
 from misskaty.vars import API_HASH, API_ID, COMMAND_HANDLER
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "SessionGen"
 __HELP__ = """
