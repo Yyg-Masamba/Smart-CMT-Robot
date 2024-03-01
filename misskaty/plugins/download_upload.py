@@ -25,7 +25,7 @@ from misskaty.helper.http import fetch
 from misskaty.helper.pyro_progress import humanbytes, progress_for_pyrogram
 from misskaty.vars import COMMAND_HANDLER, SUDO
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Download/Upload"
 __HELP__ = """
