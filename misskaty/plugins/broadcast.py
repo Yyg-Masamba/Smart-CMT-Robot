@@ -14,7 +14,7 @@ from utils import broadcast_messages
 @app.on_message(filters.command("broadcast") & filters.user(SUDO) & filters.reply)
 async def broadcast(_, ctx: Message):
     mongo = AsyncClient(DATABASE_URI)
-    userdb = mongo["MissKatyBot"]["peers"]
+    userdb = mongo["Smart-CMT-Robot"]["peers"]
     b_msg = ctx.reply_to_message
     sts = await ctx.reply_msg("Broadcasting your messages...")
     start_time = time.time()
