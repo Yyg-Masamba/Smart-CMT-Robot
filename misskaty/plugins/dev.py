@@ -71,7 +71,7 @@ __HELP__ = """
 
 var = {}
 teskode = {}
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 
 
 async def edit_or_reply(msg, **kwargs):
@@ -130,8 +130,8 @@ async def donate(self: Client, ctx: Message):
         await ctx.react(emoji="❤️")
     try:
         await ctx.reply_photo(
-            "https://img.yasirweb.eu.org/file/9427d61d6968b8ee4fb2f.jpg",
-            caption=f"Hi {ctx.from_user.mention}, If you find this bot useful, you can make a donation to the account below. Because this bot server uses VPS and is not free. Thank You..\n\n<b>Indonesian Payment:</b>\n<b>QRIS:</b> https://img.yasirweb.eu.org/file/b1c86973ae4e55721983a.jpg (Yasir Store)\n<b>Mayar:</b> https://yasirarism.mayar.link/payme\n<b>Bank Jago:</b> 109641845083 (Yasir Aris M)\n\nFor international people can use PayPal to support me or via GitHub Sponsor:\nhttps://paypal.me/yasirarism\nhttps://github.com/sponsors/yasirarism\n\n<b>Source:</b> @BeriKopi",
+            "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
+            caption=f"Hi {ctx.from_user.mention}, Click Adds my blog. Thank You..\n\n<b>Website:</b> https://comelmuewa84.eu.org\n\n",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
         await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
@@ -185,7 +185,7 @@ async def server_stats(_, ctx: Message) -> "Message":
         
     start = datetime.now()
     msg = await ctx.reply_photo(
-        photo="https://te.legra.ph/file/30a82c22854971d0232c7.jpg",
+        photo="https://telegra.ph/file/924300ffb399ccfddfc6d.jpg",
         caption=caption,
         quote=True,
     )
