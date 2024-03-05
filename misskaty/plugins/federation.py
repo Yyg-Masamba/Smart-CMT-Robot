@@ -46,7 +46,7 @@ But then you have many groups, and you don't want this spammer to be in one of y
 You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.\n\n
 """
 
-SUPPORT_CHAT = "@YasirArisM"
+SUPPORT_CHAT = "@smartcmtrobot"
 
 
 @app.on_message(filters.command("newfed", COMMAND_HANDLER))
