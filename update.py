@@ -20,7 +20,7 @@ basicConfig(
     ],
 )
 
-LOGGER = getLogger("Smart-CMT-Robot")
+LOGGER = getLogger("MissKaty")
 
 ENV_URL = os.environ.get("ENV_URL")
 try:
