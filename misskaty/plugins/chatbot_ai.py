@@ -99,7 +99,7 @@ async def openai_chatbot(_, ctx: Message, strings):
         await msg.edit_msg(html.escape(answer))
     except MessageTooLong:
         answerlink = await post_to_telegraph(
-            False, "MissKaty ChatBot ", html.escape(f"<code>{answer}</code>")
+            False, "Smart-CMT ChatBot ", html.escape(f"<code>{answer}</code>")
         )
         await msg.edit_msg(
             strings("answers_too_long").format(answerlink=answerlink),
