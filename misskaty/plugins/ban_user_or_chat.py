@@ -48,7 +48,7 @@ async def grp_bd(self: Client, ctx: Message, strings):
         vazha = await db.get_chat(ctx.chat.id)
         try:
             k = await ctx.reply_msg(
-                f"CHAT NOT ALLOWED 🐞\n\nMy owner has restricted me from working here!\nReason : <code>{vazha['reason']}</code>.",
+                f"CHAT NOT ALLOWED 🈴\n\nMy owner has restricted me from working here!\nReason : <code>{vazha['reason']}</code>.",
                 reply_markup=reply_markup,
             )
             await k.pin()
