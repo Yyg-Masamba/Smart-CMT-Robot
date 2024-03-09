@@ -38,14 +38,5 @@
 * `CURRENCY_API`: Get API Key from https://app.exchangerate-api.com/sign-up
 
 
-## [8] Thanks to 
- - Thanks To Allah Swt.
- - Thanks To Dan For [Pyrogram Library](https://github.com/pyrogram/pyrogram) as founder of pyrogram.
- - Thanks To Mayuri For [Pyrofork Library](https://github.com/Mayuri-Chan) as owner of pyrofork library.
- - Thanks To TeamDrivecok and SecretGroup TBK in Telegram.
- - Thanks To [The Hamker Cat](https://github.com/TheHamkerCat) For WilliamButcher Code.
- - Thanks To [Team Yukki](https://github.com/TeamYukki) For AFK Bot Code.
- - Thanks To [Wrench](https://github.com/EverythingSuckz) For Some Code.
- - Thanks To [AmanoTeam](https://github.com/AmanoTeam) For MultiLanguage Template.
- - And All People Who Help Me In My Life...
- If your code used in this repo and want to give credit please open issue..
+## [3] Dev:
+ Dev Repo Official [Yasir Aris M](https://github.com/yasirarism/MissKatyPyro) 
