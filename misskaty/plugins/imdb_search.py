@@ -67,11 +67,11 @@ async def imdb_choose(_, ctx: Message):
         InlineButton("🇺🇸 English", f"imdbcari#eng#{ranval}#{ctx.from_user.id}"),
         InlineButton("🇮🇩 Indonesia", f"imdbcari#ind#{ranval}#{ctx.from_user.id}"),
     )
-    buttons.row(InlineButton("🚩 Set Default Language", f"imdbset#{ctx.from_user.id}"))
-    buttons.row(InlineButton("❌ Close", f"close#{ctx.from_user.id}"))
+    buttons.row(InlineButton("🌐 Set Default Language", f"imdbset#{ctx.from_user.id}"))
+    buttons.row(InlineButton("🚫 Close", f"close#{ctx.from_user.id}"))
     await ctx.reply_photo(
-        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
-        caption=f"Hi {ctx.from_user.mention}, Please select the language you want to use on IMDB Search. If you want use default lang for every user, click third button. So no need click select lang if use CMD.\n\nTimeout: 10s",
+        "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
+        caption=f"Hi {ctx.from_user.mention}, Please select the language you want to use in IMDB Search. If you want to use the default language, click the third button. So there is no need to click select language if using CMD.\n\nTimeout: 10s",
         reply_markup=buttons,
         quote=True,
     )
@@ -92,7 +92,7 @@ async def imdblangset(_, query: CallbackQuery):
         buttons.row(
             InlineButton("🗑 Remove UserSetting", f"setimdb#rm#{query.from_user.id}")
         )
-    buttons.row(InlineButton("❌ Close", f"close#{query.from_user.id}"))
+    buttons.row(InlineButton("🚫 Close", f"close#{query.from_user.id}"))
     with contextlib.suppress(MessageIdInvalid, MessageNotModified):
         await query.message.edit_caption(
             "<i>Please select available language below..</i>", reply_markup=buttons
@@ -128,7 +128,7 @@ async def imdbsetlang(_, query: CallbackQuery):
 async def imdb_search_id(kueri, message):
     BTN = []
     k = await message.reply_photo(
-        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
+        "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
         caption=f"🔎 Menelusuri <code>{kueri}</code> di database IMDb ...",
         quote=True,
     )
@@ -166,11 +166,11 @@ async def imdb_search_id(kueri, message):
             BTN.extend(
                 (
                     InlineKeyboardButton(
-                        text="🚩 Language",
+                        text="🌐 Language",
                         callback_data=f"imdbset#{message.from_user.id}",
                     ),
                     InlineKeyboardButton(
-                        text="❌ Close",
+                        text="🚫 Close",
                         callback_data=f"close#{message.from_user.id}",
                     ),
                 )
@@ -190,7 +190,7 @@ async def imdb_search_id(kueri, message):
 async def imdb_search_en(kueri, message):
     BTN = []
     k = await message.reply_photo(
-        "https://telegra.ph/file/a7e3aac6f01271e8bdfc5.jpg",
+        "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
         caption=f"🔎 Searching <code>{kueri}</code> in IMDb Database...",
         quote=True,
     )
@@ -228,11 +228,11 @@ async def imdb_search_en(kueri, message):
             BTN.extend(
                 (
                     InlineKeyboardButton(
-                        text="🚩 Language",
+                        text="🌐 Language",
                         callback_data=f"imdbset#{message.from_user.id}",
                     ),
                     InlineKeyboardButton(
-                        text="❌ Close",
+                        text="🚫 Close",
                         callback_data=f"close#{message.from_user.id}",
                     ),
                 )
@@ -298,9 +298,9 @@ async def imdbcari(_, query: CallbackQuery):
                 BTN.extend(
                     (
                         InlineKeyboardButton(
-                            text="🚩 Language", callback_data=f"imdbset#{uid}"
+                            text="🌐 Language", callback_data=f"imdbset#{uid}"
                         ),
-                        InlineKeyboardButton(text="❌ Close", callback_data=f"close#{uid}"),
+                        InlineKeyboardButton(text="🚫 Close", callback_data=f"close#{uid}"),
                     )
                 )
                 buttons.add(*BTN)
@@ -355,9 +355,9 @@ async def imdbcari(_, query: CallbackQuery):
                 BTN.extend(
                     (
                         InlineKeyboardButton(
-                            text="🚩 Language", callback_data=f"imdbset#{uid}"
+                            text="🌐 Language", callback_data=f"imdbset#{uid}"
                         ),
-                        InlineKeyboardButton(text="❌ Close", callback_data=f"close#{uid}"),
+                        InlineKeyboardButton(text="🚫 Close", callback_data=f"close#{uid}"),
                     )
                 )
                 buttons.add(*BTN)
