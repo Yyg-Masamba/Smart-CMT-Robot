@@ -38,12 +38,14 @@
 * `CURRENCY_API`: Get API Key from https://app.exchangerate-api.com/sign-up
 
 
-<!--URLS-->
-[readme-ko-url]: README.id.md
-[kofi-url]: https://ko-fi.com/yasirarism
-[paypal-url]: https://paypal.me/yasirarism
-[qris-url]: https://img.yasirweb.eu.org/file/9427d61d6968b8ee4fb2f.jpg
-[mayar]: https://yasirarism.mayar.link/payme
-[sociabuzz-url]: https://sociabuzz.com/yasirarism/tribe
-[saweria-url]: https://saweria.co/yasirarism
-[trakteer-url]: https://trakteer.id/yasir-aris-sp7cn
+## [8] Thanks to 
+ - Thanks To Allah Swt.
+ - Thanks To Dan For [Pyrogram Library](https://github.com/pyrogram/pyrogram) as founder of pyrogram.
+ - Thanks To Mayuri For [Pyrofork Library](https://github.com/Mayuri-Chan) as owner of pyrofork library.
+ - Thanks To TeamDrivecok and SecretGroup TBK in Telegram.
+ - Thanks To [The Hamker Cat](https://github.com/TheHamkerCat) For WilliamButcher Code.
+ - Thanks To [Team Yukki](https://github.com/TeamYukki) For AFK Bot Code.
+ - Thanks To [Wrench](https://github.com/EverythingSuckz) For Some Code.
+ - Thanks To [AmanoTeam](https://github.com/AmanoTeam) For MultiLanguage Template.
+ - And All People Who Help Me In My Life...
+ If your code used in this repo and want to give credit please open issue..
