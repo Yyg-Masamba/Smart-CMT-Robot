@@ -53,12 +53,12 @@ async def request_user(client, message):
         [
             [
                 InlineKeyboardButton(
-                    text="💬 Lihat Pesan", url=f"https://t.me/c/1255283935/{message.id}"
+                    text="📨 Lihat Pesan", url=f"https://t.me/c/1255283935/{message.id}"
                 )
             ],
             [
                 InlineKeyboardButton(
-                    text="🚫 Tolak",
+                    text="📵 Tolak",
                     callback_data=f"rejectreq_{message.id}_{message.chat.id}",
                 ),
                 InlineKeyboardButton(
@@ -88,7 +88,7 @@ async def request_user(client, message):
             REQUEST_DB[user_id] = 1
         if REQUEST_DB[user_id] > 3:
             return await message.reply(
-                f"Mohon maaf {message.from_user.mention}, maksimal request hanya 3x perhari. Kalo mau tambah 5k per request 😝😝."
+                f"Mohon maaf {message.from_user.mention}, maksimal request cuma 3x perhari. Kalau mau tambah 5k per request 😝😝."
             )
         if message.text:
             forward = await client.send_message(
