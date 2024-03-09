@@ -136,7 +136,7 @@ async def member_has_joined(c: app, member: ChatMemberUpdated, strings):
             temp.MELCOW[f"welcome-{member.chat.id}"] = await c.send_photo(
                 member.chat.id,
                 photo=welcomeimg,
-                caption=f"Hai {mention}, Selamat datang digrup {member.chat.title} harap baca rules di pinned message terlebih dahulu.\n\n<b>Nama :<b> <code>{first_name}</code>\n<b>ID :<b> <code>{id}</code>\n<b>DC ID :<b> <code>{dc}</code>\n<b>Tanggal Join :<b> <code>{joined_date}</code>",
+                caption=f"Hai {mention}, Selamat datang digrup {member.chat.title} harap baca rules di pinned message dulu ya.\n\n<b>Nama :<b> <code>{first_name}</code>\n<b>ID :<b> <code>{id}</code>\n<b>DC ID :<b> <code>{dc}</code>\n<b>Tanggal Join :<b> <code>{joined_date}</code>",
             )
         except Exception as e:
             LOGGER.info(e)
@@ -234,7 +234,7 @@ async def leave_a_chat(bot, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat,
-            text="<b>Hai kawan, \nOwner aku bilang saya harus pergi! Jika kamu ingin menambahkan bot ini lagi silahkan kontak owner bot ini.</b>",
+            text="<b>Hai kawan, \nOwner aku bilang harus pergi! Jika kau mau menambahkan bot ini lagi silahkan kontak owner bot ini.</b>",
             reply_markup=reply_markup,
         )
         await bot.leave_chat(chat)
