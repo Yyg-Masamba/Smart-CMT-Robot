@@ -496,14 +496,14 @@ async def who_is(client, message):
             chat_member_p = await message.chat.get_member(from_user.id)
             joined_date = chat_member_p.joined_date
             message_out_str += (
-                "<b>➲Joined this Chat on:</b> <code>" f"{joined_date}" "</code>\n"
+                "<b>📮 Joined this Chat on:</b> <code>" f"{joined_date}" "</code>\n"
             )
     if chat_photo := from_user.photo:
         local_user_photo = await client.download_media(message=chat_photo.big_file_id)
         buttons = [
             [
                 InlineKeyboardButton(
-                    "🔐 Close", callback_data=f"close#{message.from_user.id}"
+                    "CLOSE", callback_data=f"close#{message.from_user.id}"
                 )
             ]
         ]
@@ -520,7 +520,7 @@ async def who_is(client, message):
         buttons = [
             [
                 InlineKeyboardButton(
-                    "🔐 Close", callback_data=f"close#{message.from_user.id}"
+                    "CLOSE", callback_data=f"close#{message.from_user.id}"
                 )
             ]
         ]
