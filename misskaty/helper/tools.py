@@ -19,7 +19,7 @@ from misskaty.plugins import ALL_MODULES
 LOGGER = logging.getLogger("Smart-CMT-Robot")
 URL_REGEX = r"(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])"
 GENRES_EMOJI = {
-    "Action": "👊",
+    "Action": "☸️",
     "Adventure": random.choice(["🪂", "🧗‍♀", "🌋"]),
     "Family": "👨‍",
     "Musical": "🎸",
