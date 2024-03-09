@@ -254,7 +254,7 @@ async def banFunc(client, message, strings):
         return
     if reason:
         msg += strings("banned_reason").format(reas=reason)
-    keyboard = ikb({"🚨 Unban 🚨": f"unban_{user_id}"})
+    keyboard = ikb({"🚷 Unban 🚷": f"unban_{user_id}"})
     try:
         await message.chat.ban_member(user_id)
         await message.reply_msg(msg, reply_markup=keyboard)
@@ -539,7 +539,7 @@ async def mute(client, message, strings):
     if user_id in (await list_admins(message.chat.id)):
         return await message.reply_text(strings("mute_admin_err"))
     mention = (await app.get_users(user_id)).mention
-    keyboard = ikb({"🚨 Unmute 🚨": f"unmute_{user_id}"})
+    keyboard = ikb({"🚷 Unmute 🚷": f"unmute_{user_id}"})
     msg = strings("mute_msg").format(
         mention=mention,
         muter=message.from_user.mention if message.from_user else "Anon",
