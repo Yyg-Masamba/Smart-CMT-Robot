@@ -12,8 +12,8 @@ from misskaty.helper.http import fetch
 
 __MODULE__ = "Fun"
 __HELP__ = """
-/q [int] - Generate quotly from message
-/memify [text] - Reply to sticker to give text on sticker.
+/q [int] - Membuat kutipan dari pesan
+/memify [text] - Balas stiker untuk memberikan teks pada stiker.
 """
 
 
