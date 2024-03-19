@@ -71,7 +71,7 @@ async def imdb_choose(_, ctx: Message):
     buttons.row(InlineButton("🚫 Tutup", f"close#{ctx.from_user.id}"))
     await ctx.reply_photo(
         "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-        caption=f"Hi {ctx.from_user.mention}, Please select the language you want to use in IMDB Search. If you want to use the default language, click the third button. So there is no need to click select language if using CMD.\n\nTimeout: 10s",
+        caption=f"Hi {ctx.from_user.mention}, Pilih bahasa untuk Pencarian IMDB. Jika mau gunakan bahasa default saja, klik tombol ketiga. Jadi, tak perlu klik pilih bahasa jika menggunakan CMD.\n\nWaktu habis: 10s",
         reply_markup=buttons,
         quote=True,
     )
