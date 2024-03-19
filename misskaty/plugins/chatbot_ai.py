@@ -19,8 +19,8 @@ from misskaty.vars import GOOGLEAI_KEY, COMMAND_HANDLER, OPENAI_KEY, SUDO
 
 __MODULE__ = "ChatBot"
 __HELP__ = """
-/ai - Generate text response from AI using Gemini AI By Google.
-/ask - Generate text response from AI using OpenAI.
+/ai - Membuat respons teks dari AI menggunakan Gemini AI OLeh Google.
+/ask - Membuat respons teks dari AI menggunakan OpenAI.
 """
 
 
@@ -56,7 +56,7 @@ async def gemini_chatbot(_, ctx: Message, strings):
             timeout=20.0,
         )
         if not response.json().get("candidates"):
-            return await msg.edit_msg("⚠️ Sorry, the prompt you sent maybe contains a forbidden word that is not permitted by AI.")
+            return await msg.edit_msg("⚠️ Maaf, permintaan yang Anda kirimkan mungkin mengandung kata terlarang yang dilarang oleh AI.")
         await msg.edit_msg(html.escape(response.json()["candidates"][0]["content"]["parts"][0]["text"]))
     except Exception as e:
         await msg.edit_msg(str(e))
