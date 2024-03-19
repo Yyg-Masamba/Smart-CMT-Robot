@@ -40,10 +40,10 @@ from misskaty.core.decorator.errors import capture_err
 
 __MODULE__ = "Federation"
 __HELP__ = """
-Everything is fun, until a spammer starts entering your group, and you have to block it. Then you need to start banning more, and more, and it hurts.
-But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
-**No longer!** With Federation, you can make a ban in one chat overlap with all other chats.\n
-You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.\n\n
+Semuanya menyenangkan, bahkan seorang pengirim spam mulai memasuki grupmu, dan kau harus memblokirnya. Lalu kau harus blokir lagi, dan lebih banyak lagi, dan itu menyakitkan.
+Tapi grupmu banyak, dan kau tak mau spammer ini ada digrupmu - Bagaimana  caramu mengatasinya? Apa kau harus blokir manual, di semua grupmu?\n
+**Tidak lagi!** Dengan Federasi, kau bisa buat larangan dalam satu obrolan dengan semua obrolan lainnya.\n
+Bahkan kau bisa angkat admin federasi, agar dmin tepercayamu bisa memblokir semua spammer dari obrolan yang mau kau lindungi.\n\n
 """
 
 SUPPORT_CHAT = "@smartcmtrobot"
@@ -85,13 +85,13 @@ async def new_fed(self, message):
             )
 
         await message.reply_msg(
-            f"**You have succeeded in creating a new federation!**\nName: `{fed_name}`\nID: `{fed_id}`\n\nUse the command below to join the federation:\n`/joinfed {fed_id}`",
+            f"**Kau berhasil membuat federasi baru!**\nNama: `{fed_name}`\nID: `{fed_id}`\n\nGunakan perintah ini untuk bergabung dengan federasi:\n`/joinfed {fed_id}`",
             parse_mode=ParseMode.MARKDOWN,
         )
         try:
             await app.send_message(
                 LOG_GROUP_ID,
-                f"New Federation: <b>{fed_name}</b>\nID: <pre>{fed_id}</pre>",
+                f"Federasi Baru: <b>{fed_name}</b>\nID: <pre>{fed_id}</pre>",
                 parse_mode=ParseMode.HTML,
             )
         except:
