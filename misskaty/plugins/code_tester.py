@@ -8,7 +8,7 @@ from misskaty.vars import COMMAND_HANDLER
 
 __MODULE__ = "CodeTester"
 __HELP__ = """
-This feature allows you to run multiple programming languages through this bot via the Glot.io api.  The following is a list of supported languages, for temporary commands only support with a "!"  like the example below.
+Fitur ini bisa menjalankan beberapa bahasa pemrograman melalui bot ini lewat api Glot.io. Ini daftar bahasa yang didukung, untuk perintah sementara hanya mendukung dengan "!" seperti contoh di bawah ini.
 
 List of Supported Programming Languages:
 ~> assembly
