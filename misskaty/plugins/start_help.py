@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2022-12-01 09:12:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2024-01-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
  """
 import re
 
@@ -24,7 +24,7 @@ from misskaty.vars import COMMAND_HANDLER
 home_keyboard_pm = InlineKeyboardMarkup(
     [
         [
-            InlineKeyboardButton(text="Commands ❓", callback_data="bot_commands"),
+            InlineKeyboardButton(text="Commands ⌨️", callback_data="bot_commands"),
             InlineKeyboardButton(
                 text="Source Code 🛠",
                 url="https://github.com/Yyg-Masamba/Smart-CMT-Robot",
@@ -35,18 +35,18 @@ home_keyboard_pm = InlineKeyboardMarkup(
                 text="System Stats 🖥",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/smartcmtrobot"),
+            InlineKeyboardButton(text="Dev 🦸🏻", url="https://t.me/smartcmtrobot"),
         ],
         [
             InlineKeyboardButton(
-                text="Add Me To Your Group 🎉",
+                text="Add Me To Your Group 📲",
                 url=f"http://t.me/{BOT_USERNAME}?startgroup=new",
             )
         ],
     ]
 )
 
-home_text_pm = f"Hey there! My name is {BOT_NAME}. I have many useful features for you, feel free to add me to your group.\n\nIf you want give coffee to my owner you can send /donate command for more info."
+home_text_pm = f"Hei! Namaku adalah {BOT_NAME}. Aku punya banyak fitur yang berguna loh, jangan ragu menambahkanku ke grupmu.\n\nJika kau mau memberikan kopi kepadaku, ketik saja perintah /donate."
 
 keyboard = InlineKeyboardMarkup(
     [
@@ -62,7 +62,7 @@ keyboard = InlineKeyboardMarkup(
                 text="System Stats 💻",
                 callback_data="stats_callback",
             ),
-            InlineKeyboardButton(text="Dev 👨", url="https://t.me/smartcmtrobot"),
+            InlineKeyboardButton(text="Dev 🦸🏻", url="https://t.me/smartcmtrobot"),
         ],
     ]
 )
@@ -199,11 +199,11 @@ async def help_parser(name, keyb=None):
     if not keyb:
         keyb = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
-        """Hello {first_name}, My name is {bot_name}.
-I'm a bot with some useful features. You can change language bot using /setlang command, but it's still in beta stage.
-You can choose an option below, by clicking a button.
+        """Hello {first_name}, Namaku {bot_name}.
+Aku bot berfitur serbaguna. Kau bisa ubah bahasa bot dengan perintah /setlang, tapi masih dalam tahap beta ya.
+Kau bisa memilih opsi di bawah ini, dengan mengeklik tombol.
 
-If you want give coffee to my owner you can send /donate command for more info.
+Jika kau mau berikan kopi padaku, kau bisa ketik perintah /donate ya.
 """.format(
             first_name=name,
             bot_name="MissKaty",
