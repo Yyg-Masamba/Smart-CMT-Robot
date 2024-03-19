@@ -63,12 +63,12 @@ async def genss_link(msg, video_link, output_directory, min_duration, no_of_phot
             )
             try:
                 await msg.edit(
-                    f"📸 <b>Take Screenshoot:</b>\n<code>{looper+1} of {no_of_photos} screenshot generated..</code>"
+                    f"📸 <b>Mengambil Screenshoot:</b>\n<code>{looper+1} of {no_of_photos} screenshot generated..</code>"
                 )
             except FloodWait as e:
                 await asyncio.sleep(e.value)
                 await msg.edit(
-                    f"📸 <b>Take Screenshoot:</b>\n<code>{looper+1} of {no_of_photos} screenshot generated..</code>"
+                    f"📸 <b>Mengambil Screenshoot:</b>\n<code>{looper+1} of {no_of_photos} screenshot generated..</code>"
                 )
             current_ttl = current_ttl + ttl_step
             await asyncio.sleep(2)
