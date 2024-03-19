@@ -47,19 +47,19 @@ LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Misc"
 __HELP__ = """
-/carbon [text or reply to text or caption] - Make beautiful snippet code on carbon from text.
-/calc - Simple math calculator using inline buttons.
-/kbbi [keyword] - Search definition on KBBI (For Indonesian People)
-/sof [query] - Search your problem in StackOverflow.
-/google [query] - Search using Google Search.
-(/tr, /trans, /translate) [lang code] - Translate text using Google Translate.
-/tts - Convert Text to Voice.
-/imdb [query] - Find Movie Details From IMDB.com (Available in English and Indonesia version).
-/readqr [reply to photo] - Read QR Code From Photo.
-/createqr [text] - Convert Text to QR Code.
-/anime [query] - Search title in myanimelist.
-/info - Get info user with Pic and full description if user set profile picture.
-/id - Get simple user ID.
+/carbon [teks atau balas teks atau keterangan] - Membuat kode cuplikan indah pada karbon teks.
+/calc - Kalkulator matematika sederhana bertombol sebaris.
+/kbbi [keyword] - Mencari definisi di KBBI (Untuk Orang Indonesia)
+/sof [query] - Cari masalah Anda di StackOverflow.
+/google [query] - encarian menggunakan Google Search.
+(/tr, /trans, /translate) [lang code] - Menerjemahkan teks menggunakan Google Translate.
+/tts - Mengonversi Teks ke Suara.
+/imdb [query] - Temukan Info Film dari IMDB.com (Tersedia versi Inggris dan Indonesia).
+/readqr [reply to photo] - Baca Kode QR Dari Foto.
+/createqr [text] - Menkonvert Teks menjadi Kode QR.
+/anime [query] -  Cari judul di myanimelist.
+/info - Cari tahu info user dengan foto dan deskripsi lengkap jika user mengatur foto profilnya.
+/id - Mendapatkan ID user secara mudah.
 """
 
 
@@ -217,7 +217,7 @@ async def carbon_make(self: Client, ctx: Message):
     if response.status_code != 200:
         return await ctx.reply_photo(
             f"https://http.cat/{response.status_code}",
-            caption="<b>🤧 Carbon API ERROR</b>",
+            caption="<b>💨 Carbon API ERROR</b>",
         )
     fname = (
         f"carbonBY_{ctx.from_user.id if ctx.from_user else ctx.sender_chat.title}.png"
@@ -479,18 +479,18 @@ async def who_is(client, message):
     dc_id = from_user.dc_id or "<i>[User Doesn't Have Profile Pic]</i>"
     bio = (await client.get_chat(from_user.id)).bio
     count_pic = await client.get_chat_photos_count(from_user.id)
-    message_out_str += f"<b>🔸 First Name:</b> {from_user.first_name}\n"
+    message_out_str += f"<b>🔸 Nama Depan:</b> {from_user.first_name}\n"
     if last_name := from_user.last_name:
-        message_out_str += f"<b>🔹 Last Name:</b> {last_name}\n"
-    message_out_str += f"<b>🆔 User ID:</b> <code>{from_user.id}</code>\n"
-    message_out_str += f"<b>✴️ User Name:</b> {username}\n"
-    message_out_str += f"<b>💠 Data Centre:</b> <code>{dc_id}</code>\n"
+        message_out_str += f"<b>🔹 Nama Belakang:</b> {last_name}\n"
+    message_out_str += f"<b>🆔 ID User:</b> <code>{from_user.id}</code>\n"
+    message_out_str += f"<b>✴️ Nama User:</b> {username}\n"
+    message_out_str += f"<b>💠 Pusat Data:</b> <code>{dc_id}</code>\n"
     if bio:
         message_out_str += f"<b>👨🏿‍💻 Bio:</b> <code>{bio}</code>\n"
-    message_out_str += f"<b>📸 Pictures:</b> {count_pic}\n"
-    message_out_str += f"<b>🧐 Restricted:</b> {from_user.is_restricted}\n"
-    message_out_str += f"<b>✅ Verified:</b> {from_user.is_verified}\n"
-    message_out_str += f"<b>🌐 Profile Link:</b> <a href='tg://user?id={from_user.id}'><b>Click Here</b></a>\n"
+    message_out_str += f"<b>📸 Gambar:</b> {count_pic}\n"
+    message_out_str += f"<b>🧐 Dibatasi:</b> {from_user.is_restricted}\n"
+    message_out_str += f"<b>✅ Terverifikasi:</b> {from_user.is_verified}\n"
+    message_out_str += f"<b>🌐 Link Profil:</b> <a href='tg://user?id={from_user.id}'><b>Klik Ini</b></a>\n"
     if message.chat.type.value in (("supergroup", "channel")):
         with contextlib.suppress(UserNotParticipant, ChatAdminRequired):
             chat_member_p = await message.chat.get_member(from_user.id)
@@ -539,7 +539,7 @@ async def close_callback(_, query: CallbackQuery):
     _, userid = query.data.split("#")
     if query.from_user.id != int(userid):
         with contextlib.suppress(QueryIdInvalid):
-            return await query.answer("⚠️ Access Denied!", True)
+            return await query.answer("⚠️ Akses Ditolak!", True)
     with contextlib.redirect_stdout(Exception):
         await query.answer("Deleting this message in 5 seconds.")
         await asyncio.sleep(5)
@@ -558,11 +558,11 @@ async def mdlapi(title):
 async def mdlsearch(_, message):
     if " " in message.text:
         _, title = message.text.split(None, 1)
-        k = await message.reply("Sedang mencari di Database MyDramaList.. 😴")
+        k = await message.reply("Sedang mencari di Database MyDramaList.. 🔦")
         movies = await mdlapi(title)
         res = movies["results"]["dramas"]
         if not movies:
-            return await k.edit("Tidak ada hasil ditemukan.. 😕")
+            return await k.edit("Tidak ada hasil ditemukan.. 🥲")
         btn = [
             [
                 InlineKeyboardButton(
@@ -577,50 +577,50 @@ async def mdlsearch(_, message):
             reply_markup=InlineKeyboardMarkup(btn),
         )
     else:
-        await message.reply("Berikan aku nama drama yang ingin dicari. 🤷🏻‍♂️")
+        await message.reply("Ketikan nama drama yang ingin dicari. 🤷🏻‍♂️")
 
 
 @app.on_callback_query(filters.regex("^mdls"))
 async def mdl_callback(_, query: CallbackQuery):
     _, user, _, slug = query.data.split("#")
     if user == f"{query.from_user.id}":
-        await query.message.edit_text("Permintaan kamu sedang diproses.. ")
+        await query.message.edit_text("Permintaan anda lagi diproses.. ")
         result = ""
         try:
             res = (await fetch.get(f"https://kuryana.vercel.app/id/{slug}")).json()
-            result += f"<b>Title:</b> <a href='{res['data']['link']}'>{res['data']['title']}</a>\n"
+            result += f"<b>🎬Judul:</b> <a href='{res['data']['link']}'>{res['data']['title']}</a>\n"
             result += (
-                f"<b>AKA:</b> <code>{res['data']['others']['also_known_as']}</code>\n\n"
+                f"<b>🎬AKA:</b> <code>{res['data']['others']['also_known_as']}</code>\n\n"
             )
-            result += f"<b>Rating:</b> <code>{res['data']['details']['score']}</code>\n"
-            result += f"<b>Content Rating:</b> <code>{res['data']['details']['content_rating']}</code>\n"
-            result += f"<b>Type:</b> <code>{res['data']['details']['type']}</code>\n"
+            result += f"<b>🎬Rating:</b> <code>{res['data']['details']['score']}</code>\n"
+            result += f"<b>🎬Penilaian Konten:</b> <code>{res['data']['details']['content_rating']}</code>\n"
+            result += f"<b>🛅Tipe:</b> <code>{res['data']['details']['type']}</code>\n"
             result += (
-                f"<b>Country:</b> <code>{res['data']['details']['country']}</code>\n"
+                f"<b>🌐Negara:</b> <code>{res['data']['details']['country']}</code>\n"
             )
             if res["data"]["details"]["type"] == "Movie":
-                result += f"<b>Release Date:</b> <code>{res['data']['details']['release_date']}</code>\n"
+                result += f"<b>🗓Tanggal Rilis:</b> <code>{res['data']['details']['release_date']}</code>\n"
             elif res["data"]["details"]["type"] == "Drama":
-                result += f"<b>Episode:</b> {res['data']['details']['episodes']}\n"
+                result += f"<b>🗃Episode:</b> {res['data']['details']['episodes']}\n"
                 result += (
-                    f"<b>Aired:</b> <code>{res['data']['details']['aired']}</code>\n"
+                    f"<b>📹Ditayangkan:</b> <code>{res['data']['details']['aired']}</code>\n"
                 )
                 try:
-                    result += f"<b>Aired on:</b> <code>{res['data']['details']['aired_on']}</code>\n"
+                    result += f"<b>📹Ditayangkan di:</b> <code>{res['data']['details']['aired_on']}</code>\n"
                 except:
                     pass
                 try:
-                    result += f"<b>Original Network:</b> <code>{res['data']['details']['original_network']}</code>\n"
+                    result += f"<b>📶Jaringan Asli:</b> <code>{res['data']['details']['original_network']}</code>\n"
                 except:
                     pass
             result += (
-                f"<b>Duration:</b> <code>{res['data']['details']['duration']}</code>\n"
+                f"<b>🔋Durasi:</b> <code>{res['data']['details']['duration']}</code>\n"
             )
             result += (
-                f"<b>Genre:</b> <code>{res['data']['others']['genres']}</code>\n\n"
+                f"<b>💽Genre:</b> <code>{res['data']['others']['genres']}</code>\n\n"
             )
-            result += f"<b>Synopsis:</b> <code>{res['data']['synopsis']}</code>\n"
-            result += f"<b>Tags:</b> <code>{res['data']['others']['tags']}</code>\n"
+            result += f"<b>📓Sinopsis.:</b> <code>{res['data']['synopsis']}</code>\n"
+            result += f"<b>🖍Tags:</b> <code>{res['data']['others']['tags']}</code>\n"
             btn = InlineKeyboardMarkup(
                 [[InlineKeyboardButton("🎬 Open MyDramaList", url=res["data"]["link"])]]
             )
