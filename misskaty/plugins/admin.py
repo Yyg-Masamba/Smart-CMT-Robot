@@ -58,34 +58,34 @@ LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Admin"
 __HELP__ = """
-/ban - Ban A User From A Group
-/dban - Delete the replied message banning its sender
-/tban - Ban A User For Specific Time
-/unban - Unban A User
-/listban - Ban a user from groups listed in a message
-/listunban - Unban a user from groups listed in a message
-/warn - Warn A User
-/dwarn - Delete the replied message warning its sender
-/rmwarns - Remove All Warning of A User
-/warns - Show Warning Of A User
-/kick - Kick A User
-/dkick - Delete the replied message kicking its sender
-/purge - Purge Messages
-/purge [n] - Purge "n" number of messages from replied message
-/del - Delete Replied Message
-/promote - Promote A Member
-/fullpromote - Promote A Member With All Rights
-/demote - Demote A Member
-/pin - Pin A Message
-/mute - Mute A User
-/tmute - Mute A User For Specific Time
-/unmute - Unmute A User
-/ban_ghosts - Ban Deleted Accounts
-/report | @admins | @admin - Report A Message To Admins.
-/set_chat_title - Change The Name Of A Group/Channel.
-/set_chat_photo - Change The PFP Of A Group/Channel.
-/set_user_title - Change The Administrator Title Of An Admin.
-/mentionall - Mention all members in a groups.
+/ban - Memblokir user dari Grup
+/dban - Menghapus pesan balasan yang melarang pengirimnya
+/tban - Melarang User Untuk Waktu Tertentu
+/unban - Mencabut Blokir Pengguna
+/listban - Memblokir pengguna dari grup yang tercantum dalam pesan
+/listunban - Membatalkan pencekalan user dari grup yang tercantum dalam pesan
+/warn - Mempringatkan user
+/dwarn - Menghapus pesan balasan yang memperingatkan pengirimnya
+/rmwarns - Menghapus Semua Peringatan User
+/warns - Menampilkan Peringatan Pengguna
+/kick - Keluarkan User
+/dkick - Menghapus pesan balasan pengirim yang dikeluarkan
+/purge - Bersihkan Pesan
+/purge [n] - Menghapus "n" jumlah pesan dari pesan balasan
+/del - Menghapus Pesan Balasan
+/promote - Mempromosikan Anggota
+/fullpromote - Promosikan Anggota Dengan Semua Hak
+/demote - Menurunkan Jabatan Anggota
+/pin - Menyematkan Pesan
+/mute - Membisukan User
+/tmute - Membisukan User Selama Waktu Tertentu
+/unmute - Tidak membisukan User
+/ban_ghosts - Memblokir Akun yang Dihapus
+/report | @admins | @admin - Melaporkan Pesan Kepada Admin.
+/set_chat_title - Mengubah Nama Grup/Chanel.
+/set_chat_photo - Mengubah PFP Grup/Chanel.
+/set_user_title - Mengubah Judul Administrator Dari Seorang Admin.
+/mentionall - Menyebutkan semua anggota dalam grup.
 """
 
 
