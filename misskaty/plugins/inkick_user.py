@@ -14,8 +14,8 @@ from misskaty.vars import COMMAND_HANDLER
 
 __MODULE__ = "Inkick"
 __HELP__ = """"
-/instatus - View member status in group.
-/ban_ghosts - Remove deleted account from group.
+/instatus - Melihat status anggota grup.
+/ban_ghosts - Hapus akun yang dihapus dari grup.
 """
 
 
@@ -46,7 +46,7 @@ async def inkick(_, message):
                         await message.chat.unban_member(member.user.id)
                     except (ChatAdminRequired, UserAdminInvalid):
                         await sent_message.edit(
-                            "❗**Oh tidaakk, saya bukan admin disini**\n__Saya pergi dari sini, tambahkan aku kembali dengan perijinan banned pengguna.__"
+                            "❗**Oh tidak, aku bukan admin disini**\n__Aku pergi dari sini, masukkan aku kembali dengan izin banned pengguna.__"
                         )
                         await app.leave_chat(message.chat.id)
                         break
@@ -63,11 +63,11 @@ async def inkick(_, message):
                 await app.leave_chat(message.chat.id)
         else:
             await message.reply_text(
-                "❗ **Arguments Required**\n__See /help in personal message for more information.__"
+                "❗ **Dibutuhkan Perintah**\n__Lihat /help dalam pesan pribadi untuk informasi lebih lanjut.__"
             )
     else:
         sent_message = await message.reply_text(
-            "❗ **You have to be the group creator to do that.**"
+            "❗ **Jadi admin dulu baru bisa.**"
         )
         await sleep(5)
         await sent_message.delete()
@@ -97,7 +97,7 @@ async def uname(_, message):
                     await message.chat.unban_member(member.user.id)
                 except (ChatAdminRequired, UserAdminInvalid):
                     await sent_message.edit(
-                        "❗**Oh tidaakk, saya bukan admin disini**\n__Saya pergi dari sini, tambahkan aku kembali dengan perijinan banned pengguna.__"
+                        "❗**Oh tidakk, aku bukan admin disini**\n__Aku pergi dari sini, masukkan aku kembali dengan izin banned pengguna.__"
                     )
                     await app.leave_chat(message.chat.id)
                     break
@@ -114,7 +114,7 @@ async def uname(_, message):
             await app.leave_chat(message.chat.id)
     else:
         sent_message = await message.reply_text(
-            "❗ **You have to be the group creator to do that.**"
+            "❗ **Jadi admin dulu baru bisa.**"
         )
         await sleep(5)
         await sent_message.delete()
@@ -130,7 +130,7 @@ async def rm_delacc(_, message):
     user = await app.get_chat_member(message.chat.id, message.from_user.id)
     if user.status.value in ("administrator", "owner"):
         sent_message = await message.reply_text(
-            "🚮**Sedang membersihkan user, mungkin butuh waktu beberapa saat...**"
+            "🚮**Sedang membersihkan user, mungkin butuh waktu...**"
         )
         count = 0
         async for member in app.get_chat_members(message.chat.id):
@@ -145,7 +145,7 @@ async def rm_delacc(_, message):
                     await message.chat.unban_member(member.user.id)
                 except (ChatAdminRequired, UserAdminInvalid):
                     await sent_message.edit(
-                        "❗**Oh Nooo, i'm doesn't have admin permission in this group. Make sure i'm have admin permission to <b>ban users</b>."
+                        "❗**Oh Tidak, aku bukan dmin di grup ini. Jadikan aku admin dulu untuk <b>memblokir member</b>."
                     )
                     break
                 except FloodWait as e:
@@ -154,12 +154,12 @@ async def rm_delacc(_, message):
                     await message.chat.unban_member(member.user.id)
         if count == 0:
             return await sent_message.edit_msg(
-                "There are no deleted accounts in this chat."
+                "Tidak ada akun yang dihapus dalam obrolan ini."
             )
         await sent_message.edit_msg(f"✔️ **Berhasil menendang {count} akun terhapus.**")
     else:
         sent_message = await message.reply_text(
-            "❗ **Kamu harus jadi admin atau owner grup untuk melakukan tindakan ini.**"
+            "❗ **Jadi admin atau owner grup dulu baru bisa.**"
         )
         await sleep(5)
         await sent_message.delete()
@@ -173,7 +173,7 @@ async def instatus(client, message):
     bstat = await app.get_chat_member(message.chat.id, client.me.id)
     if bstat.status.value != "administrator":
         return await message.reply_msg(
-            "Please give me all basic admin permission, to run this command."
+            "Tolong berikan semua izin admin dasar, untuk menjalankan perintah ini."
         )
     start_time = time.perf_counter()
     user = await app.get_chat_member(message.chat.id, message.from_user.id)
@@ -183,7 +183,7 @@ async def instatus(client, message):
         enums.ChatMemberStatus.OWNER,
     ):
         sent_message = await message.reply_text(
-            "**Sedang mengumpulkan informasi pengguna...**"
+            "**Lagi mengumpulkan informasi member disini...**"
         )
         recently = 0
         within_week = 0
@@ -227,7 +227,7 @@ async def instatus(client, message):
         end_time = time.perf_counter()
         timelog = "{:.2f}".format(end_time - start_time)
         await sent_message.edit_msg(
-            "<b>☮️ {}\n👨‍👨‍👦 {} Anggota\n——————\n👁‍🗨 Informasi Status Anggota\n——————\n</b>⌚️ <code>recently</code>: {}\n🕒 <code>last_week</code>: {}\n🕒 <code>last_month</code>: {}\n🕒 <code>long_ago</code>: {}\n🉑 Tanpa Username: {}\n🤐 Dibatasi: {}\n🚫 Diblokir: {}\n👻 Deleted Account (<code>/ban_ghosts</code>): {}\n🤖 Bot: {}\n⭐️ Premium User: {}\n👽 UnCached: {}\n\n⏱ Waktu eksekusi {} detik.".format(
+            "<b>☮️ {}\n👨‍👨‍👦 {} Anggota\n——————\n👁‍🗨 Informasi Status Anggota\n——————\n</b>⌚️ <code>recently</code>: {}\n🕒 <code>Minggu Lalu</code>: {}\n🧭 <code>Bulan Lallu</code>: {}\n🕰 <code>Sudah Lama</code>: {}\n🉑 Tanpa Username: {}\n🤐 Dibatasi: {}\n🚫 Diblokir: {}\n👻 Deleted Account (<code>/ban_ghosts</code>): {}\n🤖 Bot: {}\n⭐️ Premium User: {}\n👽 UnCached: {}\n\n⏲ Waktu eksekusi {} detik.".format(
                 message.chat.title,
                 count,
                 recently,
@@ -246,7 +246,7 @@ async def instatus(client, message):
         )
     else:
         sent_message = await message.reply_text(
-            "❗ **Kau harus jadi admin atau owner grup baru bisa.**"
+            "❗ **Jadi admin atau owner grup dulu baru bisa.**"
         )
         await sleep(5)
         await sent_message.delete()
