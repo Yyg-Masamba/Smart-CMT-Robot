@@ -12,7 +12,7 @@ from misskaty.vars import CURRENCY_API
 
 __MODULE__ = "Currency"
 __HELP__ = """
-/currency - Send structure message Telegram in JSON using Pyrogram Style.
+/currency - Mengirim pesan struktur Telegram dalam JSON menggunakan Pyrogram Style.
 """
 
 LOGGER = logging.getLogger("Smart-CMT-Robot")
