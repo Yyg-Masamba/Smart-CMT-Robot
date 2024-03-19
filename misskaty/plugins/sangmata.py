@@ -20,8 +20,8 @@ from misskaty.vars import COMMAND_HANDLER
 
 __MODULE__ = "SangMata"
 __HELP__ = """"
-This feature inspired from SangMata Bot. I'm created simple detection to check user data include username, first_name, and last_name.
-/sangmata_set [on/off] - Enable/disable sangmata in groups.
+Fitur ini terinspirasi dari Bot SangMata. Mmeriksa data pengguna termasuk Nama User, Nama Depan, dan Belakang.
+/sangmata_set [on/off] - Enable/disable sangmata di group.
 """
 
 
@@ -48,7 +48,7 @@ async def cek_mataa(_, ctx: Message, strings):
         or first_name != ctx.from_user.first_name
         or lastname_before != ctx.from_user.last_name
     ):
-        msg += f"👀 <b>Mata Pea Masamba</b>\n\n🌞 User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
+        msg += f"👀 <b>Mata Pea Masamba</b>\n\n🦹‍♀️ User: {ctx.from_user.mention} [<code>{ctx.from_user.id}</code>]\n"
     if usernamebefore != ctx.from_user.username:
         usernamebefore = f"@{usernamebefore}" if usernamebefore else strings("no_uname")
         usernameafter = (
