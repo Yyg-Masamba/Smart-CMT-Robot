@@ -1,8 +1,8 @@
 """
- * @author        yasir <yasiramunandar@gmail.com>
- * @date          2023-01-23 19:41:27
- * @projectName   MissKatyPyro
- * Copyright @YasirPedia All rights reserved
+ * @author        Pea Masamba <comelmuewa831@gmail.com>
+ * @date          2024-01-17 22:12:27
+ * @projectName   Smart-CMT-Robot
+ * Copyright ©peamasamba All rights reserved
 """
 from pykeyboard import InlineButton, InlineKeyboard
 from pyrogram import filters
@@ -59,9 +59,9 @@ async def pypi_s(_, ctx: Message):
     keyboard.paginate(
         PageLen, CurrentPage, "page_pypi#{number}" + f"#{pesan.id}#{ctx.from_user.id}"
     )
-    keyboard.row(InlineButton("👇 Get Info ", "Hmmm"))
+    keyboard.row(InlineButton("🧬 Get Info ", "Hmmm"))
     keyboard.row(*btn)
-    keyboard.row(InlineButton("❌ Close", f"close#{ctx.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Close", f"close#{ctx.from_user.id}"))
     await pesan.edit_msg(pypires, reply_markup=keyboard)
 
 
@@ -93,9 +93,9 @@ async def pypipage_callback(_, callback_query: CallbackQuery):
         CurrentPage,
         "page_pypi#{number}" + f"#{message_id}#{callback_query.from_user.id}",
     )
-    keyboard.row(InlineButton("👇 Extract Data ", "Hmmm"))
+    keyboard.row(InlineButton("📙 Extract Data ", "Hmmm"))
     keyboard.row(*btn)
-    keyboard.row(InlineButton("❌ Close", f"close#{callback_query.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Close", f"close#{callback_query.from_user.id}"))
     await callback_query.message.edit_msg(pypires, reply_markup=keyboard)
 
 
@@ -116,10 +116,10 @@ async def pypi_getdata(_, callback_query: CallbackQuery):
     keyboard = InlineKeyboard()
     keyboard.row(
         InlineButton(
-            "↩️ Back",
+            "◀️ Back",
             f"page_pypi#{CurrentPage}#{message_id}#{callback_query.from_user.id}",
         ),
-        InlineButton("❌ Close", f"close#{callback_query.from_user.id}"),
+        InlineButton("🚫 Close", f"close#{callback_query.from_user.id}"),
     )
     try:
         html = await fetch.get(f"https://pypi.org/pypi/{pkgname}/json")
