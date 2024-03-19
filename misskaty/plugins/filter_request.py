@@ -175,7 +175,7 @@ async def callbackreq(c, q):
             _, msg_id, chat_id = q.data.split("_")
             await c.send_message(
                 chat_id=chat_id,
-                text="#Done\nDone ✅, Selamat menonton. Jika request tidak bisa dilihat digrup silahkan join channel melalui link private yang ada di @YMovieZ_New ...",
+                text="#Done\nDone ✅, Selamat menonton. Jika request tidak bisa dilihat digrup silahkan join channel melalui link private yang ada di https://t.me/+LUX4Ppe0-YI4NTk1 ...",
                 reply_to_message_id=int(msg_id),
             )
 
