@@ -48,7 +48,7 @@ async def getTitleSub(msg, kueri, CurrentPage, user):
         PageLen = len(SUB_TITLE_DICT[msg.id][0])
         extractbtn1 = []
         extractbtn2 = []
-        subResult = f"<b>#Subscene Results For:</b> <code>{kueri}</code>\n\n"
+        subResult = f"<b>#Hasil Subscene Untuk:</b> <code>{kueri}</code>\n\n"
         for c, i in enumerate(SUB_TITLE_DICT[msg.id][0][index], start=1):
             subResult += f"<b>{c}. <a href='{i['link']}'>{i['title']}</a></b>\n"
             if c < 6:
@@ -62,7 +62,7 @@ async def getTitleSub(msg, kueri, CurrentPage, user):
         subResult = "".join(i for i in subResult if i not in "[]")
         return subResult, PageLen, extractbtn1, extractbtn2
     except (IndexError, KeyError):
-        await msg.edit_msg("Sorry could not find any matching results!", del_in=5)
+        await msg.edit_msg("Maaf tak bisa menemukan hasil yang cocok!", del_in=5)
         return None, 0, None
 
 
@@ -93,7 +93,7 @@ async def getListSub(msg, link, CurrentPage, user):
         PageLen = len(SUB_DL_DICT[msg.id][0])
         extractbtn1 = []
         extractbtn2 = []
-        subResult = f"<b>#Subscene Results For:</b> <code>{link}</code>\n\n"
+        subResult = f"<b>#Hasil Subscene Untuk:</b> <code>{link}</code>\n\n"
         for c, i in enumerate(SUB_DL_DICT[msg.id][0][index], start=1):
             subResult += f"<b>{c}. {i['title']}</b> [{i['rate']}]\n{i['lang']}\n"
             if c < 6:
@@ -116,10 +116,10 @@ async def getListSub(msg, link, CurrentPage, user):
 async def subscene_cmd(_, ctx: Message):
     if not ctx.input:
         return await ctx.reply_msg(
-            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Transformers: Rise of the Beast</code>"
+            f"ℹ️ Silakan tambahkan kueri setelah CMD!\nContoh: <code>/{ctx.command[0]} Transformers: Rise of the Beast</code>"
         )
     pesan = await ctx.reply_msg(
-        "⏳ Please wait, getting data from subscene..", quote=True
+        "⏳ Mohon tunggu, mendapatkan data dari subscene...", quote=True
     )
     CurrentPage = 1
     subres, PageLen, btn1, btn2 = await getTitleSub(
@@ -133,11 +133,11 @@ async def subscene_cmd(_, ctx: Message):
         CurrentPage,
         "subscenepage#{number}" + f"#{pesan.id}#{ctx.from_user.id}",
     )
-    keyboard.row(InlineButton("📚 Extract Data ", "Hmmm"))
+    keyboard.row(InlineButton("📚 Mengekstrak Data ", "Hmmm"))
     keyboard.row(*btn1)
     if btn2:
         keyboard.row(*btn2)
-    keyboard.row(InlineButton("🚫 Close", f"close#{ctx.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Tutup", f"close#{ctx.from_user.id}"))
     await pesan.edit_msg(subres, disable_web_page_preview=True, reply_markup=keyboard)
 
 
@@ -170,11 +170,11 @@ async def subpage_callback(_, callback_query: CallbackQuery):
         CurrentPage,
         "subscenepage#{number}" + f"#{message_id}#{callback_query.from_user.id}",
     )
-    keyboard.row(InlineButton("🆘 Get Subtitle List", "Hmmm"))
+    keyboard.row(InlineButton("🆘 Dapatkan Daftar Subtitle", "Hmmm"))
     keyboard.row(*btn1)
     if btn2:
         keyboard.row(*btn2)
-    keyboard.row(InlineButton("🚫 Close", f"close#{callback_query.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Tutup", f"close#{callback_query.from_user.id}"))
     await callback_query.message.edit_msg(
         subres, disable_web_page_preview=True, reply_markup=keyboard
     )
@@ -208,11 +208,11 @@ async def subdlpage_callback(_, callback_query: CallbackQuery):
         CurrentPage,
         "sublist#{number}" + f"#{idlink}#{message_id}#{callback_query.from_user.id}",
     )
-    keyboard.row(InlineButton("🔽 Download Subtitle", "Hmmm"))
+    keyboard.row(InlineButton("🔽 Unduh Subtitle", "Hmmm"))
     keyboard.row(*btn1)
     if btn2:
         keyboard.row(*btn2)
-    keyboard.row(InlineButton("🚫 Close", f"close#{callback_query.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Tutup", f"close#{callback_query.from_user.id}"))
     await callback_query.message.edit_msg(
         subres, disable_web_page_preview=True, reply_markup=keyboard
     )
@@ -242,6 +242,6 @@ async def dlsub_callback(_, callback_query: CallbackQuery):
         f.write(dl.content)
     await callback_query.message.reply_document(
         f"{title}.zip",
-        caption=f"Title: {res.get('title')}\nIMDb: {res['imdb']}\nAuthor: {res['author_name']}\nRelease Info: ",
+        caption=f"Title: {res.get('title')}\nIMDb: {res['imdb']}\nPenulis: {res['author_name']}\nInfo Rilis: ",
     )
     os.remove(f"{title}.zip")
