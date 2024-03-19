@@ -10,7 +10,7 @@
 | MultiLanguage Support (Unfinished) |⚠️|
 | NightMode  |✔️|
 | ChatBot based on OpenAI and Google Bard |✔️|
-| MissKaty Mata |✔️|
+| Mata |✔️|
 | Inline Search  |✔️|
 | Sticker Tools  |✔️|
 | PasteBin Tools  |✔️|
