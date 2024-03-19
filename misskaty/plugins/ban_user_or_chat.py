@@ -16,7 +16,7 @@ async def ban_reply(_, ctx: Message):
     isban, alesan = await db.get_ban_status(ctx.from_user.id)
     if isban:
         await ctx.reply_msg(
-            f'I am sorry, You are banned to use Me. \nBan Reason: {alesan["reason"]}'
+            f'Maaf, kau dilarang untuk menggunakan-Ku. \nAlasan Pelarangan: {alesan["reason"]}'
         )
         await ctx.stop_propagation()
 
@@ -48,7 +48,7 @@ async def grp_bd(self: Client, ctx: Message, strings):
         vazha = await db.get_chat(ctx.chat.id)
         try:
             k = await ctx.reply_msg(
-                f"CHAT NOT ALLOWED 🈴\n\nMy owner has restricted me from working here!\nReason : <code>{vazha['reason']}</code>.",
+                f"OBROLAN TIDAK DIIZINKAN 🈴\n\nPemilikku melarangku bekerja di sini!\nAlasan : <code>{vazha['reason']}</code>.",
                 reply_markup=reply_markup,
             )
             await k.pin()
@@ -80,7 +80,7 @@ async def ban_a_user(bot, message):
         k = await bot.get_users(chat)
     except PeerIdInvalid:
         return await message.reply(
-            "This is an invalid user, make sure i have met him before."
+            "Ini adalah pengguna yang tidak valid, pastikan aku pernah bertemu dengannya."
         )
     except IndexError:
         return await message.reply("This might be a channel, make sure its a user.")
@@ -90,10 +90,10 @@ async def ban_a_user(bot, message):
         isban, alesan = await db.get_ban_status(k.id)
         if isban:
             return await message.reply(
-                f"{k.mention} is already banned\n<b>Reason:</b> {alesan['reason']}"
+                f"{k.mention} sudah dilarang\n<b>Alasan:</b> {alesan['reason']}"
             )
         await db.ban_user(k.id, reason)
-        await message.reply(f"Successfully banned user {k.mention}!!\n<b>Reason:</b> {reason}")
+        await message.reply(f"Berhasil memblokir pengguna {k.mention}!!\n<b>Alasan:</b> {reason}")
 
 
 @app.on_message(filters.command("unbanuser", COMMAND_HANDLER) & filters.user(SUDO))
@@ -110,7 +110,7 @@ async def unban_a_user(bot, message):
         k = await bot.get_users(chat)
     except PeerIdInvalid:
         return await message.reply(
-            "This is an invalid user, make sure ia have met him before."
+            "Ini pengguna yang tidak valid, pastikan ia pernah bertemu sebelumnya."
         )
     except IndexError:
         return await message.reply("This might be a channel, make sure its a user.")
@@ -144,7 +144,7 @@ async def disable_chat(bot, message):
         return await message.reply("Chat Not Found In DB")
     if cha_t["is_disabled"]:
         return await message.reply(
-            f"This chat is already disabled:\nReason-<code> {cha_t['reason']} </code>"
+            f"Obrolan ini sudah dinonaktifkan:\nAlasan-<code> {cha_t['reason']} </code>"
         )
     await db.disable_chat(chat_, reason)
     await message.reply("Chat Succesfully Disabled")
@@ -155,7 +155,7 @@ async def disable_chat(bot, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_,
-            text=f"<b>Hello Friends, \nMy owner has told me to leave from group so i go! If you wanna add me again contact my Owner.</b> \nReason : <code>{reason}</code>",
+            text=f"<b>Halo temanku, \nPemilikku menyuruhku untuk keluar dari grup, jadi aku pergi! Jika mau memasukkanku lagi, hubungi Pemilikku.</b> \nAlasan : <code>{reason}</code>",
             reply_markup=reply_markup,
         )
         await bot.leave_chat(chat_)
