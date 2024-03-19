@@ -18,9 +18,9 @@ approvaldb = dbname["autoapprove"]
 # For /help menu
 __MODULE__ = "Autoapprove"
 __HELP__ = """
-command: /autoapprove
+perintah: /autoapprove
 
-This module helps to automatically accept chat join request send by a user through invitation link of your group
+Modul ini membantu otomatis menerima permintaan bergabung dengan obrolan yang dikirim oleh user lewat link undangan grupmu
 """
 
 
@@ -33,7 +33,7 @@ async def approval_command(_, message: Message):
             [[InlineKeyboardButton("Turn OFF", callback_data="approval_off")]]
         )
         await message.reply(
-            "**Autoapproval for this chat: Enabled.**",
+            "**Persetujuan otomatis untuk obrolan ini: Diaktifkan.**",
             reply_markup=keyboard_OFF,
         )
     else:
@@ -41,7 +41,7 @@ async def approval_command(_, message: Message):
             [[InlineKeyboardButton("Turn ON", callback_data="approval_on")]]
         )
         await message.reply(
-            "**Autoapproval for this chat: Disabled.**",
+            "**Persetujuan otomatis untuk obrolan ini: Dinonaktifkan.**",
             reply_markup=keyboard_ON,
         )
 
@@ -56,7 +56,7 @@ async def approval_cb(_, cb: CallbackQuery):
     if permission not in permissions:
         if from_user.id not in SUDO:
             return await cb.answer(
-                f"You don't have the required permission.\n Permission: {permission}",
+                f"Anda tidak memiliki izin.\n Izin: {permission}",
                 show_alert=True,
             )
 
@@ -70,13 +70,13 @@ async def approval_cb(_, cb: CallbackQuery):
                 [
                     [
                         InlineKeyboardButton(
-                            "Turn OFF", callback_data="approval_off"
+                            "Matikan", callback_data="approval_off"
                         )
                     ]
                 ]
             )
             await cb.edit_message_text(
-                "**Autoapproval for this chat: Enabled.**",
+                "**Persetujuan otomatis untuk obrolan ini: Diaktifkan.**",
                 reply_markup=keyboard_off,
             )
     elif option == "off":
@@ -86,13 +86,13 @@ async def approval_cb(_, cb: CallbackQuery):
                 [
                     [
                         InlineKeyboardButton(
-                            "Turn ON", callback_data="approval_on"
+                            "Nyalakan", callback_data="approval_on"
                         )
                     ]
                 ]
             )
             await cb.edit_message_text(
-                "**Autoapproval for this chat: Disabled.**",
+                "**Persetujuan otomatis untuk obrolan ini: Dinonaktifkan.**",
                 reply_markup=keyboard_on,
             )
     return await cb.answer()
