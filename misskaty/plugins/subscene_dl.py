@@ -116,7 +116,7 @@ async def getListSub(msg, link, CurrentPage, user):
 async def subscene_cmd(_, ctx: Message):
     if not ctx.input:
         return await ctx.reply_msg(
-            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Jurassic World</code>"
+            f"ℹ️ Please add query after CMD!\nEx: <code>/{ctx.command[0]} Transformers: Rise of the Beast</code>"
         )
     pesan = await ctx.reply_msg(
         "⏳ Please wait, getting data from subscene..", quote=True
@@ -133,11 +133,11 @@ async def subscene_cmd(_, ctx: Message):
         CurrentPage,
         "subscenepage#{number}" + f"#{pesan.id}#{ctx.from_user.id}",
     )
-    keyboard.row(InlineButton("👇 Extract Data ", "Hmmm"))
+    keyboard.row(InlineButton("📚 Extract Data ", "Hmmm"))
     keyboard.row(*btn1)
     if btn2:
         keyboard.row(*btn2)
-    keyboard.row(InlineButton("❌ Close", f"close#{ctx.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Close", f"close#{ctx.from_user.id}"))
     await pesan.edit_msg(subres, disable_web_page_preview=True, reply_markup=keyboard)
 
 
@@ -170,11 +170,11 @@ async def subpage_callback(_, callback_query: CallbackQuery):
         CurrentPage,
         "subscenepage#{number}" + f"#{message_id}#{callback_query.from_user.id}",
     )
-    keyboard.row(InlineButton("👇 Get Subtitle List", "Hmmm"))
+    keyboard.row(InlineButton("🆘 Get Subtitle List", "Hmmm"))
     keyboard.row(*btn1)
     if btn2:
         keyboard.row(*btn2)
-    keyboard.row(InlineButton("❌ Close", f"close#{callback_query.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Close", f"close#{callback_query.from_user.id}"))
     await callback_query.message.edit_msg(
         subres, disable_web_page_preview=True, reply_markup=keyboard
     )
@@ -208,11 +208,11 @@ async def subdlpage_callback(_, callback_query: CallbackQuery):
         CurrentPage,
         "sublist#{number}" + f"#{idlink}#{message_id}#{callback_query.from_user.id}",
     )
-    keyboard.row(InlineButton("👇 Download Subtitle", "Hmmm"))
+    keyboard.row(InlineButton("🔽 Download Subtitle", "Hmmm"))
     keyboard.row(*btn1)
     if btn2:
         keyboard.row(*btn2)
-    keyboard.row(InlineButton("❌ Close", f"close#{callback_query.from_user.id}"))
+    keyboard.row(InlineButton("🚫 Close", f"close#{callback_query.from_user.id}"))
     await callback_query.message.edit_msg(
         subres, disable_web_page_preview=True, reply_markup=keyboard
     )
