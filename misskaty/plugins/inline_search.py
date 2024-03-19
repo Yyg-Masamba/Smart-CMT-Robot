@@ -34,12 +34,12 @@ from utils import demoji
 
 __MODULE__ = "InlineFeature"
 __HELP__ = """
-To use this feature, just type bot username with following args below.
-~ imdb [query] - Search movie details in IMDb.com.
-~ pypi [query] - Search package from Pypi.
-~ git [query] - Search in Git.
-~ google [query] - Search in Google.
-~ info [user id/username] - Check info about a user.
+Untuk menggunakan fitur ini, cukup ketik nama pengguna bot dengan perinntah di bawah ini.
+~ imdb [query] - Mencari detail film di IMDb.com.
+~ pypi [query] - Mencari paket dari Pypi.
+~ git [query] - Mencari di Git.
+~ google [query] - Mencari di Google.
+~ info [user id/username] - Memeriksa info user.
 """
 
 keywords_list = ["imdb", "pypi", "git", "google", "secretmsg", "info", "botapi"]
@@ -315,16 +315,16 @@ async def inline_menu(self, inline_query: InlineQuery):
         )
         msg = f"<b>🏷 Name:</b> {namanya}\n<b>🆔 ID:</b> <code>{diaa.id}</code>\n"
         if diaa.username:
-            msg += f"<b>🌐 Username:</b> <code>@{diaa.username}</code>\n"
+            msg += f"<b>🌐 Namauser:</b> <code>@{diaa.username}</code>\n"
         if diaa.status:
-            msg += f"<b>🕰 User Status:</b> {diaa.status}\n"
+            msg += f"<b>🕰 Status User:</b> {diaa.status}\n"
         if diaa.dc_id:
             msg += f"<b>🌏 DC:</b> {diaa.dc_id}\n"
         msg += f"<b>✨ Premium:</b> {diaa.is_premium}\n"
-        msg += f"<b>⭐️ Verified:</b> {diaa.is_verified}\n"
+        msg += f"<b>⭐️ Terverifikasi:</b> {diaa.is_verified}\n"
         msg += f"<b>🤖 Bot:</b> {diaa.is_bot}\n"
         if diaa.language_code:
-            msg += f"<b>🇮🇩 Language:</b> {diaa.language_code}"
+            msg += f"<b>🇮🇩 Bahasa:</b> {diaa.language_code}"
         results = [
             InlineQueryResultArticle(
                 title=f"Get information off {diaa.id}",
@@ -412,9 +412,9 @@ async def inline_menu(self, inline_query: InlineQuery):
             desc = result.get("description") if result.get("description") else ""
             deskripsi = desc[:100] if len(desc) > 100 else desc
             lang = result.get("language")
-            message_text = f"🔗: {result.get('html_url')}\n│\n└─🍴Forks: {result.get('forks')}    ┃┃    🌟Stars: {result.get('stargazers_count')}\n\n"
-            message_text += f"<b>Description:</b> {deskripsi}\n"
-            message_text += f"<b>Language:</b> {lang}"
+            message_text = f"🔗: {result.get('html_url')}\n│\n└─🍴Forks: {result.get('forks')}    ┃┃    🌟Bintang: {result.get('stargazers_count')}\n\n"
+            message_text += f"<b>Deskripsi:</b> {deskripsi}\n"
+            message_text += f"<b>Bahasa:</b> {lang}"
             data.append(
                 InlineQueryResultArticle(
                     title=f"{title}",
@@ -509,10 +509,10 @@ async def inline_menu(self, inline_query: InlineQuery):
             except:
                 deskripsi = "-"
             message_text = f"<a href='{link}'>{title}</a>\n"
-            message_text += f"Description: {deskripsi}\n"
+            message_text += f"Deskripsi: {deskripsi}\n"
             message_text += f"Total View: {view}\n"
-            message_text += f"Duration: {durasi}\n"
-            message_text += f"Published Time: {publishTime}"
+            message_text += f"Durasi: {durasi}\n"
+            message_text += f"Waktu Terbit: {publishTime}"
             oorse.append(
                 InlineQueryResultArticle(
                     title=f"{title}",
@@ -632,7 +632,7 @@ async def imdb_inl(_, query):
     if cbuser == f"{query.from_user.id}":
         try:
             await query.edit_message_caption(
-                "⏳ <i>Permintaan kamu sedang diproses.. </i>"
+                "⏳ <i>Permintaanmu lagi diproses.. </i>"
             )
             url = f"https://www.imdb.com/title/{movie}/"
             resp = await fetch.get(url)
@@ -661,11 +661,11 @@ async def imdb_inl(_, query):
                     .find(class_="ipc-metadata-list-item__content-container")
                     .text
                 )
-                res_str += f"<b>Durasi:</b> <code>{GoogleTranslator('auto', 'id').translate(durasi)}</code>\n"
+                res_str += f"<b>⏱ Durasi:</b> <code>{GoogleTranslator('auto', 'id').translate(durasi)}</code>\n"
             if r_json.get("contentRating"):
-                res_str += f"<b>Kategori:</b> <code>{r_json['contentRating']}</code> \n"
+                res_str += f"<b>🎛Kategori:</b> <code>{r_json['contentRating']}</code> \n"
             if r_json.get("aggregateRating"):
-                res_str += f"<b>Peringkat:</b> <code>{r_json['aggregateRating']['ratingValue']}⭐️ dari {r_json['aggregateRating']['ratingCount']} pengguna</code> \n"
+                res_str += f"<b>🛜Peringkat:</b> <code>{r_json['aggregateRating']['ratingValue']}⭐️ dari {r_json['aggregateRating']['ratingCount']} pengguna</code> \n"
             if release := sop.select('li[data-testid="title-details-releasedate"]'):
                 rilis = (
                     release[0]
@@ -677,7 +677,7 @@ async def imdb_inl(_, query):
                 rilis_url = release[0].find(
                     class_="ipc-metadata-list-item__list-content-item ipc-metadata-list-item__list-content-item--link"
                 )["href"]
-                res_str += f"<b>Rilis:</b> <a href='https://www.imdb.com{rilis_url}'>{rilis}</a>\n"
+                res_str += f"<b>⏰ Rilis:</b> <a href='https://www.imdb.com{rilis_url}'>{rilis}</a>\n"
             if r_json.get("genre"):
                 genre = "".join(
                     f"{GENRES_EMOJI[i]} #{i.replace('-', '_').replace(' ', '_')}, "
@@ -685,7 +685,7 @@ async def imdb_inl(_, query):
                     else f"#{i.replace('-', '_').replace(' ', '_')}, "
                     for i in r_json["genre"]
                 )
-                res_str += f"<b>Genre:</b> {genre[:-2]}\n"
+                res_str += f"<b>🎞 Genre:</b> {genre[:-2]}\n"
             if negara := sop.select('li[data-testid="title-details-origin"]'):
                 country = "".join(
                     f"{demoji(country.text)} #{country.text.replace(' ', '_').replace('-', '_')}, "
@@ -693,7 +693,7 @@ async def imdb_inl(_, query):
                         class_="ipc-metadata-list-item__list-content-item ipc-metadata-list-item__list-content-item--link"
                     )
                 )
-                res_str += f"<b>Negara:</b> {country[:-2]}\n"
+                res_str += f"<b>🌐 Negara:</b> {country[:-2]}\n"
             if bahasa := sop.select('li[data-testid="title-details-languages"]'):
                 language = "".join(
                     f"#{lang.text.replace(' ', '_').replace('-', '_')}, "
@@ -701,26 +701,26 @@ async def imdb_inl(_, query):
                         class_="ipc-metadata-list-item__list-content-item ipc-metadata-list-item__list-content-item--link"
                     )
                 )
-                res_str += f"<b>Bahasa:</b> {language[:-2]}\n"
-            res_str += "\n<b>🙎 Info Cast:</b>\n"
+                res_str += f"<b>🏳️ Bahasa:</b> {language[:-2]}\n"
+            res_str += "\n<b>🙎 Info Pemeran:</b>\n"
             if r_json.get("director"):
                 director = "".join(
                     f"<a href='{i['url']}'>{i['name']}</a>, "
                     for i in r_json["director"]
                 )
-                res_str += f"<b>Sutradara:</b> {director[:-2]}\n"
+                res_str += f"<b>👨🏻‍🚒 Sutradara:</b> {director[:-2]}\n"
             if r_json.get("creator"):
                 creator = "".join(
                     f"<a href='{i['url']}'>{i['name']}</a>, "
                     for i in r_json["creator"]
                     if i["@type"] == "Person"
                 )
-                res_str += f"<b>Penulis:</b> {creator[:-2]}\n"
+                res_str += f"<b>👨🏻‍🚒 Penulis:</b> {creator[:-2]}\n"
             if r_json.get("actor"):
                 actors = "".join(
                     f"<a href='{i['url']}'>{i['name']}</a>, " for i in r_json["actor"]
                 )
-                res_str += f"<b>Pemeran:</b> {actors[:-2]}\n\n"
+                res_str += f"<b>👨🏻‍🚒 Pemeran:</b> {actors[:-2]}\n\n"
             if r_json.get("description"):
                 summary = GoogleTranslator("auto", "id").translate(
                     r_json.get("description")
@@ -731,7 +731,7 @@ async def imdb_inl(_, query):
                     f"#{i.replace(' ', '_').replace('-', '_')}, "
                     for i in r_json["keywords"].split(",")
                 )
-                res_str += f"<b>🔥 Kata Kunci:</b>\n<blockquote>{key_[:-2]}</blockquote>\n"
+                res_str += f"<b>⌨️ Kata Kunci:</b>\n<blockquote>{key_[:-2]}</blockquote>\n"
             if award := sop.select('li[data-testid="award_information"]'):
                 awards = (
                     award[0]
@@ -742,8 +742,8 @@ async def imdb_inl(_, query):
             else:
                 res_str += "\n"
             if ott != "":
-                res_str += f"Available On:\n{ott}\n"
-            res_str += "<b>©️ IMDb by</b> @smartcmtrobot or Pea Masamba"
+                res_str += f"Tersedia di:\n{ott}\n"
+            res_str += "<b>©️ IMDb by</b> @smartcmtrobot"
             if r_json.get("trailer"):
                 trailer_url = r_json["trailer"]["url"]
                 markup = InlineKeyboardMarkup(
