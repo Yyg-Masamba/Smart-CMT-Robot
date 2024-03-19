@@ -6,10 +6,10 @@ from misskaty import app
 
 @app.on_cmd("session")
 async def session(_, ctx: Message):
-    nama = await ctx.chat.ask("Ketik nama kamu:")
-    umur = await ctx.chat.ask("Ketik umur kamu")
-    alamat = await ctx.chat.ask("Ketik alamat kamu:")
+    nama = await ctx.chat.ask("Ketikkan namamu:")
+    umur = await ctx.chat.ask("Ketikkan umurmu")
+    alamat = await ctx.chat.ask("Ketikkan alamatmu:")
     await app.send_msg(
         ctx.chat.id,
-        f"Nama Kamu Adalah: {nama.text}\nUmur Kamu Adalah: {umur.text}\nAlamat Kamu Adalah: {alamat.text}",
+        f"Namamu Adalah: {nama.text}\nUmur Kamu Adalah: {umur.text}\nAlamatmu Adalah: {alamat.text}",
     )
