@@ -48,9 +48,9 @@ ARCH_EXT = (
 
 __MODULE__ = "MediaExtract"
 __HELP__ = """
-/extractmedia [URL] - Extract subtitle or audio from video using link. (Not support TG File to reduce bandwith usage.)
-/converttosrt [Reply to .ass or .vtt TG File] - Convert from .ass or .vtt to srt
-/converttoass [Reply to .srt or .vtt TG File] - Convert from .srt or .vtt to srt
+/extractmedia [URL] - Mengekstrak sub atau audio film menggunakan tautan. (Tidak suport File TG agar penggunaan bandwith berkurang).
+/converttosrt [Reply to .ass or .vtt TG File] - Konvert dari .ass or .vtt to srt
+/converttoass [Reply to .srt or .vtt TG File] - Konvert dari .srt or .vtt to srt
 """
 
 
