@@ -24,17 +24,17 @@ from misskaty.helper import Cache, Kusonime, fetch, use_chat_lang, post_to_teleg
 
 __MODULE__ = "WebScraper"
 __HELP__ = """
-/melongmovie [query <optional>] - Scrape website data from MelongMovie Web.
-/lk21 [query <optional>] - Scrape website data from LayarKaca21.
-/pahe [query <optional>] - Scrape website data from Pahe.li.
-/terbit21 [query <optional>] - Scrape website data from Terbit21.
-/savefilm21 [query <optional>] - Scrape website data from Savefilm21.
-/movieku [query <optional>] - Scrape website data from Movieku.cc
-/kusonime [query <optional>] - Scrape website data from Kusonime
-/lendrive [query <optional>] - Scrape website data from Lendrive
-/gomov [query <optional>] - Scrape website data from GoMov.
-/samehadaku [query <optional>] - Scrape website data from Samehadaku.
-/nodrakor [query <optional>] - Scrape website data from NoDrakor
+/melongmovie [query <optional>] - Menyalin data situs web dari MelongMovie Web.
+/lk21 [query <optional>] - Menyalin data situs web dari LayarKaca21.
+/pahe [query <optional>] - Menyalin data situs web dari Pahe.li.
+/terbit21 [query <optional>] - Menyalin data situs web dari Terbit21.
+/savefilm21 [query <optional>] - Menyalin data situs web dari Savefilm21.
+/movieku [query <optional>] - Menyalin data situs web dari Movieku.cc
+/kusonime [query <optional>] - Menyalin data situs web dari Kusonime
+/lendrive [query <optional>] - Menyalin data situs web dari Lendrive
+/gomov [query <optional>] - Menyalin data situs web dari GoMov.
+/samehadaku [query <optional>] - Menyalin data situs web dari Samehadaku.
+/nodrakor [query <optional>] - Menyalin data situs web dari NoDrakor
 """
 
 LOGGER = logging.getLogger("Smart-CMT-Robot")
