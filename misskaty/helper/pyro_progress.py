@@ -33,7 +33,7 @@ async def progress_for_pyrogram(current, total, ud_type, message, start, dc_id):
 
         tmp = (
             progress
-            + "{0} <b>of</b> {1}\n<b>Speed:</b> {2}/s\n<b>DC ID:</b> {3}\n<b>ETA:</b> {4}</b>\n".format(
+            + "{0} <b>of</b> {1}\n<b>Kecepatan:</b> {2}/s\n<b>DC ID:</b> {3}\n<b>ETA:</b> {4}</b>\n".format(
                 humanbytes(current),
                 humanbytes(total),
                 humanbytes(speed),
