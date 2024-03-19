@@ -112,15 +112,15 @@ async def byPassPh(url: str, name: str) -> Optional[str]:
     template = """
 <img src={{{thumb}}}>
 
-<p><b>Title</b> : <code>{{title}}</code></p>
+<p><b>Judul</b> : <code>{{title}}</code></p>
 <p><b>Genre</b> : <code>{{genre_string}}</code></p>
 <br><p><b>Season</b> : <code>{{season}}</code></p>
-<br><p><b>Type</b> : <code>{{tipe}}</code></p>
+<br><p><b>Tipe</b> : <code>{{tipe}}</code></p>
 <br><p><b>Status</b> : <code>{{status_anime}}</code></p>
 <br><p><b>Total Episode</b> : <code>{{ep}}</code></p>
-<br><p><b>Score</b> : <code>{{score}}</code></p>
-<br><p><b>Duration</b> : <code>{{duration}}</code></p>
-<br><p><b>Released on</b> : <code>{{rilis}}</code></p>
+<br><p><b>Nilai</b> : <code>{{score}}</code></p>
+<br><p><b>Durasi</b> : <code>{{duration}}</code></p>
+<br><p><b>Dirilis di</b> : <code>{{rilis}}</code></p>
 <br><br>
 {{#data}}
     <h4>{{name}}</h4>
