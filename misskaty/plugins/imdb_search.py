@@ -459,10 +459,10 @@ async def imdb_id_callback(self: Client, query: CallbackQuery):
                     for i in creators
                     if i["@type"] == "Person"
                 )
-                res_str += f"<b>Penulis:</b> {creator[:-2]}\n"
+                res_str += f"<b>✍🏼 Penulis:</b> {creator[:-2]}\n"
             if actors := r_json.get("actor"):
                 actor = "".join(f"<a href='{i['url']}'>{i['name']}</a>, " for i in actors)
-                res_str += f"<b>Pemeran:</b> {actor[:-2]}\n\n"
+                res_str += f"<b>👩🏻‍🦲 Pemeran:</b> {actor[:-2]}\n\n"
             if deskripsi := r_json.get("description"):
                 summary = GoogleTranslator("auto", "id").translate(deskripsi)
                 res_str += f"<b>📜 Plot:</b>\n<blockquote><code>{summary}</code></blockquote>\n\n"
@@ -538,7 +538,7 @@ async def imdb_id_callback(self: Client, query: CallbackQuery):
 async def imdb_en_callback(self: Client, query: CallbackQuery):
     i, userid, movie = query.data.split("#")
     if query.from_user.id != int(userid):
-        return await query.answer("⚠️ Access Denied!", True)
+        return await query.answer("⚠️ Akses Ditolak!", True)
     with contextlib.redirect_stdout(sys.stderr):
         try:
             await query.message.edit_caption("<i>⏳ Getting IMDb source..</i>")
@@ -566,11 +566,11 @@ async def imdb_en_callback(self: Client, query: CallbackQuery):
                 durasi = (
                     durasi[0].find(class_="ipc-metadata-list-item__content-container").text
                 )
-                res_str += f"<b>Duration:</b> <code>{durasi}</code>\n"
+                res_str += f"<b>🕰 Durasi:</b> <code>{durasi}</code>\n"
             if kategori := r_json.get("contentRating"):
-                res_str += f"<b>Category:</b> <code>{kategori}</code> \n"
+                res_str += f"<b>📟 Kategori:</b> <code>{kategori}</code> \n"
             if rating := r_json.get("aggregateRating"):
-                res_str += f"<b>Rating:</b> <code>{rating['ratingValue']}⭐️ from {rating['ratingCount']} users</code>\n"
+                res_str += f"<b>🌟 Rating:</b> <code>{rating['ratingValue']}⭐️ from {rating['ratingCount']} users</code>\n"
             if release := sop.select('li[data-testid="title-details-releasedate"]'):
                 rilis = (
                     release[0]
@@ -609,19 +609,19 @@ async def imdb_en_callback(self: Client, query: CallbackQuery):
                     )
                 )
                 res_str += f"<b>Language:</b> {language[:-2]}\n"
-            res_str += "\n<b>🙎 Cast Info:</b>\n"
+            res_str += "\n<b>🙎 Info Pemeran:</b>\n"
             if r_json.get("director"):
                 director = "".join(
                     f"<a href='{i['url']}'>{i['name']}</a>, " for i in r_json["director"]
                 )
-                res_str += f"<b>Director:</b> {director[:-2]}\n"
+                res_str += f"<b>👨🏻‍🔧 Director:</b> {director[:-2]}\n"
             if r_json.get("creator"):
                 creator = "".join(
                     f"<a href='{i['url']}'>{i['name']}</a>, "
                     for i in r_json["creator"]
                     if i["@type"] == "Person"
                 )
-                res_str += f"<b>Writer:</b> {creator[:-2]}\n"
+                res_str += f"<b>✍🏼 Penulis:</b> {creator[:-2]}\n"
             if r_json.get("actor"):
                 actors = actors = "".join(
                     f"<a href='{i['url']}'>{i['name']}</a>, " for i in r_json["actor"]
@@ -634,7 +634,7 @@ async def imdb_en_callback(self: Client, query: CallbackQuery):
                     f"#{i.replace(' ', '_').replace('-', '_')}, "
                     for i in r_json["keywords"].split(",")
                 )
-                res_str += f"<b>🔥 Keywords:</b>\n<blockquote>{key_[:-2]}</blockquote>\n"
+                res_str += f"<b>⌨️ Keywords:</b>\n<blockquote>{key_[:-2]}</blockquote>\n"
             if award := sop.select('li[data-testid="award_information"]'):
                 awards = (
                     award[0].find(class_="ipc-metadata-list-item__list-content-item").text
