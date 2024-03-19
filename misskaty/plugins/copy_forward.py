@@ -55,7 +55,7 @@ async def copymsg(_, message):
             )
             return await message.reply_text("Pesan berhasil dikirim..")
         except UserNotParticipant:
-            return await message.reply("Command ini hanya untuk admin YMoviezNew")
+            return await message.reply("Perintah ini hanya untuk admin Pea Masamba")
         except Exception as e:
             return await message.reply(f"ERROR: {e}")
     else:
@@ -103,7 +103,7 @@ async def forwardmsg(_, message):
             await message.reply_to_message.forward(idtujuan)
             return await message.reply_text("Pesan berhasil dikirim..")
         except UserNotParticipant:
-            return await message.reply("Comman ini hanya untuk admin YMoviezNew")
+            return await message.reply("Perintah ini hanya untuk admin Pea Masamba")
         except Exception as e:
             return await message.reply(f"ERROR: {e}")
     else:
