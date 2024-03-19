@@ -52,21 +52,21 @@ from misskaty.vars import AUTO_RESTART, COMMAND_HANDLER, LOG_CHANNEL, SUDO
 __MODULE__ = "DevCommand"
 __HELP__ = """
 **For Owner Bot Only.**
-/run [args] - Run eval CMD
-/logs [int] - Check logs bot
-/shell [args] - Run Exec/Terminal CMD
-/download [link/reply_to_telegram_file] - Download file from Telegram
-/disablechat [chat id] - Remove blacklist group
-/enablechat [chat id] - Add Blacklist group
-/banuser [chat id] - Ban user and block user so cannot use bot
-/unbanuser [chat id] - Unban user and make their can use bot again
-/gban - To Ban A User Globally.
-/ungban - To remove ban user globbaly.
-/restart - update and restart bot.
+/run [args] - Jalankan eval CMD
+/logs [int] - Periksa bot log
+/shell [args] - Menjalankan Exec/Terminal CMD
+/download [link/reply_to_telegram_file] - Download file dari Telegram
+/disablechat [chat id] - Menghapus grup daftar hitam
+/enablechat [chat id] - Menambahkan grup Daftar Hitam
+/banuser [chat id] - Melarang dan memblokir user agar tak bisa memakai bot
+/unbanuser [chat id] - Membuka blokir user agar bisa memakai bot lagi
+/gban - Melarang User Secara Global.
+/ungban - Untuk menghapus larangan pengguna secara global.
+/restart - Memperbarui dan memulai kembali bot.
 
-**For Public Use**
-/stats - Check statistic bot
-/json - Send structure message Telegram in JSON using Pyrogram Style.
+**Untuk Penggunaan Umum**
+/stats - Periksa bot statistik
+/json - Kirim pesan struktur Telegram dalam JSON menggunakan Pyrogram Style.
 """
 
 var = {}
@@ -131,10 +131,10 @@ async def donate(self: Client, ctx: Message):
     try:
         await ctx.reply_photo(
             "https://telegra.ph/file/2dd694fa7318e79df3423.jpg",
-            caption=f"Hi {ctx.from_user.mention}, Click Adds my blog. Thank You..\n\n<b>Website:</b> https://comelmuewa84.eu.org\n\n",
+            caption=f"Hi {ctx.from_user.mention}, Silahkan Donasi seadanya buat beli kopi. Terima kasih.\n\n<b>Akun Donasi:</b> https://saweria.co/peamasamba\n\n",
         )
     except (ChatSendPlainForbidden, ChatSendPhotosForbidden):
-        await self.send_message(LOG_CHANNEL, f"❗️ <b>WARNING</b>\nI'm leaving from {ctx.chat.id} since i didn't have sufficient admin permissions.")
+        await self.send_message(LOG_CHANNEL, f"❗️ <b>PERINGATAN</b>\nSaya keluar {ctx.chat.id} karena tak memiliki izin admin yang memadai.")
         await ctx.chat.leave()
 
 
@@ -178,7 +178,7 @@ async def server_stats(_, ctx: Message) -> "Message":
 
     neofetch = (await shell_exec("neofetch --stdout"))[0]
 
-    caption = f"<b>{BOT_NAME} {misskaty_version} is Up and Running successfully.</b>\n\n<code>{neofetch}</code>\n\n**OS Uptime:** <code>{osuptime}</code>\n<b>Bot Uptime:</b> <code>{currentTime}</code>\n**Bot Usage:** <code>{botusage}</code>\n\n**Total Space:** <code>{disk_total}</code>\n**Free Space:** <code>{disk_free}</code>\n\n**Download:** <code>{download}</code>\n**Upload:** <code>{upload}</code>\n\n<b>PyroFork Version</b>: <code>{pyrover}</code>\n<b>Python Version</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
+    caption = f"<b>{BOT_NAME} {misskaty_version} is Aktif dan Berjalan dengan sukses.</b>\n\n<code>{neofetch}</code>\n\n**Waktu Aktif OS:** <code>{osuptime}</code>\n<b>Waktu Aktif Bot:</b> <code>{currentTime}</code>\n**Penggunaan Bot:** <code>{botusage}</code>\n\n**Total Ruang:** <code>{disk_total}</code>\n**Ruang Kosong:** <code>{disk_free}</code>\n\n**Download:** <code>{download}</code>\n**Upload:** <code>{upload}</code>\n\n<b>Versi PyroFork</b>: <code>{pyrover}</code>\n<b>Versi Python</b>: <code>{sys.version_info[0]}.{sys.version_info[1]}.{sys.version_info[2]} {sys.version_info[3].title()}</code>"
 
     if "oracle" in platform.uname().release:
         return await ctx.reply_msg(caption, quote=True)
@@ -468,7 +468,7 @@ async def cmd_eval(self: Client, ctx: Message, strings) -> Optional[str]:
             # Return formatted stripped traceback
             stripped_tb = tb[first_snip_idx:]
             formatted_tb = format_exception(e, tb=stripped_tb)
-            return "⚠️ Error while executing snippet\n\n", formatted_tb
+            return "⚠️ Kesalahan saat menjalankan cuplikan\n\n", formatted_tb
 
     before = time()
     prefix, result = await _eval()
