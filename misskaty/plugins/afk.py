@@ -24,10 +24,10 @@ from misskaty.helper.localization import use_chat_lang
 from utils import put_cleanmode
 
 __MODULE__ = "AFK"
-__HELP__ = """/afk [Reason > Optional] - Tell others that you are AFK (Away From Keyboard), so that your boyfriend or girlfriend won't look for you 💔.
-/afk [reply to media] - AFK with media.
-/afkdel - Enable auto delete AFK message in group (Only for group admin). Default is **Enable**.
-Just type something in group to remove AFK Status."""
+__HELP__ = """/afk [Reason > Optional] - Beritahu orang lain kau sedang AFK (Away From Keyboard), sehingga pacarmu tidak akan mencarimu 💔.
+/afk [reply to media] - AFK dengan media.
+/afkdel - Aktifkan hapus otomatis pesan AFK dalam grup (Hanya untuk admin grup). Standarnya adalah **Aktifkan**.
+Cukup ketik sesuatu di grup untuk menghapus Status AFK."""
 
 
 # Handle set AFK Command
