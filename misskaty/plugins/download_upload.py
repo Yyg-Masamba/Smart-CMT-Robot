@@ -29,15 +29,15 @@ LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Download/Upload"
 __HELP__ = """
-/download [url] - Download file from URL (Sudo Only)
-/download [reply_to_TG_File] - Download TG File
-/tgraph_up [reply_to_TG_File] - Download TG File
-/tiktokdl [link] - Download TikTok Video, try use ytdown command if error.
-/fbdl [link] - Download Facebook Video.
-/instadl [link] - Download photo or video from instagram (Only first post).
-/twitterdl [link] - Dowload video from Twitter aka X.
-/anon [link] - Upload files to Anonfiles.
-/ytdown [YT-DLP Supported URL] - Downloading YT-DLP Supported Video and Audio.
+/download [url] - Unduh file dari URL (Khusus Sudo)
+/download [reply_to_TG_File] - Download file TG
+/tgraph_up [reply_to_TG_File] - Download file TG
+/tiktokdl [link] - Download Video TikTok, coba gunakan perintah ytdown jika terjadi kesalahan.
+/fbdl [link] - Download Video Facebook.
+/instadl [link] - Download photo or video dari instagram (Hanya posting pertama).
+/twitterdl [link] - Dowload video dari Twitter aka X.
+/anon [link] - Upload file ke Anonfiles.
+/ytdown [YT-DLP Supported URL] - Mengunduh Video dan Audio yang Didukung YT-DLP.
 """
 
 
@@ -66,7 +66,7 @@ async def upload(bot, message):
         await m.edit("Uploading to Anonfile, Please Wait||")
         callapi = await fetch.post("https://api.anonfiles.com/upload", files=files)
         text = callapi.json()
-        output = f'<u>File Uploaded to Anonfile</u>\n\n📂 File Name: {text["data"]["file"]["metadata"]["name"]}\n\n📦 File Size: {text["data"]["file"]["metadata"]["size"]["readable"]}\n\n📥 Download Link: {text["data"]["file"]["url"]["full"]}'
+        output = f'<u>Upload file ke Anonfile</u>\n\n📂 Nama File: {text["data"]["file"]["metadata"]["name"]}\n\n📦 Ukuran File: {text["data"]["file"]["metadata"]["size"]["readable"]}\n\n📥 Link Download: {text["data"]["file"]["url"]["full"]}'
 
         btn = InlineKeyboardMarkup(
             [
