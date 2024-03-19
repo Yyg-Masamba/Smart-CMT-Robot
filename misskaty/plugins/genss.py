@@ -28,8 +28,8 @@ LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "MediaTool"
 __HELP__ = """"
-/genss [reply to video] - Generate Screenshot From Video. (Support TG Media and Direct URL)
-/mediainfo [link/reply to TG Video] - Get Mediainfo From File.
+/genss [reply to video] - Membuat SS dari video. (Mendukung Media TG dan Direct URL)
+/mediainfo [link/reply to TG Video] - Mendapatkan Mediainfo dari File.
 """
 
 
@@ -69,10 +69,10 @@ async def genss(self: Client, ctx: Message, strings):
 
             estimated_total_time = downloader.get_eta(human=True)
             try:
-                current_message = "Trying to download...\n"
+                current_message = "Mencoba mengunduh...\n"
                 current_message += f"URL: <code>{url}</code>\n"
-                current_message += f"File Name: <code>{unquote(file_name)}</code>\n"
-                current_message += f"Speed: {speed}\n"
+                current_message += f"Nama File: <code>{unquote(file_name)}</code>\n"
+                current_message += f"Kecepatan: {speed}\n"
                 current_message += f"{progress_str}\n"
                 current_message += f"{downloaded} of {humanbytes(total_length)}\n"
                 current_message += f"ETA: {estimated_total_time}"
