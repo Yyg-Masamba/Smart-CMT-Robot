@@ -17,7 +17,7 @@ from misskaty.helper.functions import alpha_to_int, int_to_alpha
 
 __MODULE__ = "Karma"
 __HELP__ = """
-Give reputation to other people in group.
+Berikan reputasi kepada orang lain dalam group.
 
 /karma_toggle [enable/disable] - Enable/Disable Karma.
 /karma - View all karma from member group.
