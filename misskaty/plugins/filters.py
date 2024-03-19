@@ -41,17 +41,17 @@ from misskaty.helper.functions import extract_text_and_keyb, extract_urls
 from misskaty.vars import COMMAND_HANDLER
 
 __MODULE__ = "Filters"
-__HELP__ = """/filters To Get All The Filters In The Chat.
-/filter [FILTER_NAME] or /addfilter [FILTER_NAME] To Save A Filter(reply to a message).
+__HELP__ = """/filters Untuk Mendapatkan Semua Filter Dalam Obrolan.
+/filter [FILTER_NAME] or /addfilter [FILTER_NAME] Untuk Menyimpan Filter (membalas pesan).
 
-Supported filter types are Text, Animation, Photo, Document, Video, video notes, Audio, Voice.
+Filter yang didukung adalah Teks, Animasi, Foto, Dokumen, Video, catatan video, Audio, Suara.
 
-To use more words in a filter use.
+Untuk menggunakan lebih banyak kata dalam penggunaan filter.
 `/filter Hey_there` or `/addfilter Hey_there` To filter "Hey there".
 /stop [FILTER_NAME] or /stopfilter [FILTER_NAME] To Stop A Filter.
 /stopall To delete all the filters in a chat (permanently).
 
-You can use markdown or html to save text too.
+Kau juga bisa gunakan markdown atau html untuk menyimpan teks.
 """
 
 
