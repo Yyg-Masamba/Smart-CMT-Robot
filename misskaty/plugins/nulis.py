@@ -12,8 +12,8 @@ from misskaty.vars import COMMAND_HANDLER
 
 __MODULE__ = "nulis"
 __HELP__ = """
-Command: <code>/nulis</code> [reply to msg or after cmd]
-Desc: For those of you who are lazy to write.
+Command: <code>/nulis</code> [balas pesan atau setelah cmd]
+Keterangan: Buat Anda yang malas menulis.
 """
 
 
