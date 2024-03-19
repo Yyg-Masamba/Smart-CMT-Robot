@@ -38,21 +38,21 @@ LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "Locks"
 __HELP__ = """
-Commands: /lock | /unlock | /locks [No Parameters Required]
+Perintah: /lock | /unlock | /locks [Tidak Diperlukan Parameter]
 
-Parameters:
+Parameter:
     messages | sticker | gif | media | games | polls
 
     inline  | url | group_info | user_add | pin | photo
 
     voice | video | audio | docs | plain
 
-You can only pass the "all" parameter with /lock, not with /unlock
+Kau bisa pakaikan parameter "all" dengan /lock, tidak dengan /unlock
 
-Example:
+Contohnya:
     /lock all
 """
-incorrect_parameters = "Incorrect Parameters, Check Locks Section In Help."
+incorrect_parameters = "Parameter Salah, Periksa Bagian Kunci Dalam Bantuan."
 # Using disable_preview as a switch for url checker
 # That way we won't need an additional db to check
 # If url lock is enabled/disabled for a chat
