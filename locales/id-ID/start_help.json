@@ -2,10 +2,10 @@
     "newgroup_log": "#NewGroup\nGroup = {jdl}(<code>{id}</code>)\nJumlah Anggota = <code>{c}</code>",
     "newuser_log": "#PenggunaBaru\nID - <code>{id}</code>\nNama - {nm}",
     "help_name": "Ini bantuan untuk **{mod}**:\n",
-    "help_txt": "Halo {kamuh}, Nama saya {bot}.\nSaya adalah bot pyrogram yang dikembangkan oleh pemilik yang baik hati dengan beberapa fitur berguna.\nAnda dapat melihat dengan mengeklik tombol di bawah.\n\nPerintah umum adalah :\n - /start: Mulai bot\n - /help: Berikan pesan ini\n - /setlang: Ubah bahasa bot [BETA]",
-    "click_me": "Klik Saya",
+    "help_txt": "Hai {kamuh}, Namaku {bot}.\nAku ini bot pyrogram yang dikembangkan oleh majikan yang baik hati dengan fitur serba guna.\nKau bisa ihat dengan mengeklik tombol di bawah.\n\nPerintah umum adalah :\n - /start: Mulai bot\n - /help: Berikan pesan ini\n - /setlang: Ubah bahasa bot [BETA]",
+    "click_me": "Klik aku",
     "back_btn": "Kembali",
     "click_btn": "Klik tombol di bawah untuk mendapatkan bantuan tentang {nm}",
-    "pm_detail": "PM Saya Untuk Detail Lebih Lanjut.",
-    "start_msg": "Hai {kamuh}, PM saya untuk mengetahui semua fitur saya. Anda dapat mengubah bahasa bot di bot menggunakan perintah /setlang tetapi ini masih dalam tahap beta."
+    "pm_detail": "PM Untuk Detail Lebih Lanjut.",
+    "start_msg": "Hai {kamuh}, PM jika mau tahu semua fiturku. Kau bisa ubah bahasa bot di bot menggunakan perintah /setlang tapi ini masih dalam tahap beta ya."
 }
