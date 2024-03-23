@@ -40,9 +40,9 @@ from misskaty.vars import SUDO
 
 __MODULE__ = "Blacklist"
 __HELP__ = """
-/blacklisted - Get All The Blacklisted Words In The Chat.
-/blacklist [WORD|SENTENCE] - Blacklist A Word Or A Sentence.
-/whitelist [WORD|SENTENCE] - Whitelist A Word Or A Sentence.
+/blacklisted - Dapatkan Semua Kata Yang Masuk Daftar Hitam Dalam Obrolan.
+/blacklist [WORD|SENTENCE] - Daftar Hitam Sebuah Kata Atau Kalimat.
+/whitelist [WORD|SENTENCE] - Daftar Putih Sebuah Kata Atau Kalimat.
 """
 
 
@@ -64,9 +64,9 @@ async def save_filters(_, message):
 async def get_filterss(_, message):
     data = await get_blacklisted_words(message.chat.id)
     if not data:
-        await message.reply_text("**No blacklisted words in this chat.**")
+        await message.reply_text("**Tidak ada kata-kata yang masuk daftar hitam dalam obrolan ini.**")
     else:
-        msg = f"List of blacklisted words in {message.chat.title} :\n"
+        msg = f"Daftar kata-kata yang masuk daftar hitam di {message.chat.title} :\n"
         for word in data:
             msg += f"**-** `{word}`\n"
         await message.reply_text(msg)
@@ -79,12 +79,12 @@ async def del_filter(_, message):
         return await message.reply_text("Usage:\n/whitelist [WORD|SENTENCE]")
     word = message.text.split(None, 1)[1].strip()
     if not word:
-        return await message.reply_text("Usage:\n/whitelist [WORD|SENTENCE]")
+        return await message.reply_text("Pemakaian:\n/whitelist [WORD|SENTENCE]")
     chat_id = message.chat.id
     deleted = await delete_blacklist_filter(chat_id, word)
     if deleted:
         return await message.reply_text(f"**Whitelisted {word}.**")
-    await message.reply_text("**No such blacklist filter.**")
+    await message.reply_text("**Tidak ada filter daftar hitam.**")
 
 
 @app.on_message(filters.text & ~filters.private, group=8)
@@ -115,10 +115,10 @@ async def blacklist_filters_re(self, message):
             except ChatAdminRequired:
                 return await message.reply("Please give me admin permissions to blacklist user", quote=False)
             except Exception as err:
-                self.log.info(f"ERROR Blacklist Chat: ID = {chat_id}, ERR = {err}")
+                self.log.info(f"KESALAHAN Daftar Hitam Chat: ID = {chat_id}, ERR = {err}")
                 return
             await app.send_message(
                 chat_id,
                 f"Muted {user.mention} [`{user.id}`] for 1 hour "
-                + f"due to a blacklist match on {word}.",
+                + f"karena kecocokan daftar hitam pada {word}.",
             )
