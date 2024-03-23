@@ -49,7 +49,7 @@ async def approve_chat(c, q):
         await c.approve_chat_join_request(chat, q.from_user.id)
     except UserAlreadyParticipant:
         await q.message.edit(
-            "Kamu sudah di acc join grup, jadi ga perlu menekan button."
+            "Kau sudah di acc join grup, jadi tak usah menekan button."
         )
     except Exception as err:
         await q.message.edit(err)
@@ -60,12 +60,12 @@ async def decline_chat(c, q):
     _, chat = q.data.split("_")
     try:
         await q.message.edit(
-            "Yahh, kamu ditolak join channel. Biasakan rajin membaca yahhh.."
+            "Kau ditolak join channel. Biasakan rajin membaca.."
         )
         await c.decline_chat_join_request(chat, q.from_user.id)
     except UserAlreadyParticipant:
         await q.message.edit(
-            "Kamu sudah di acc join grup, jadi ga perlu menekan button."
+            "Kau sudah di acc join grup, jadi tak usah menekan button."
         )
     except Exception as err:
         await q.message.edit(err)
