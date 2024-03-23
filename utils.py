@@ -17,7 +17,7 @@ from database.afk_db import is_cleanmode_on
 from database.users_chats_db import db
 from misskaty import app, cleanmode
 
-LOGGER = getLogger("MissKaty")
+LOGGER = getLogger("Smart-CMT-Robot")
 BANNED = {}
 
 loop = asyncio.get_event_loop()
