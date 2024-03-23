@@ -16,7 +16,7 @@ async def ban_reply(_, ctx: Message):
     isban, alesan = await db.get_ban_status(ctx.from_user.id)
     if isban:
         await ctx.reply_msg(
-            f'Maaf, kau dilarang untuk menggunakan-Ku. \nAlasan Pelarangan: {alesan["reason"]}'
+            f'Maaf, kau dilarang untuk menggunakanku. \nAlasan Pelarangan: {alesan["reason"]}'
         )
         await ctx.stop_propagation()
 
@@ -48,7 +48,7 @@ async def grp_bd(self: Client, ctx: Message, strings):
         vazha = await db.get_chat(ctx.chat.id)
         try:
             k = await ctx.reply_msg(
-                f"OBROLAN TIDAK DIIZINKAN 🈴\n\nPemilikku melarangku bekerja di sini!\nAlasan : <code>{vazha['reason']}</code>.",
+                f"OBROLAN TIDAK DIIZINKAN 🈴\n\nMajikanku melarangku bekerja di sini!\nAlasan : <code>{vazha['reason']}</code>.",
                 reply_markup=reply_markup,
             )
             await k.pin()
@@ -110,7 +110,7 @@ async def unban_a_user(bot, message):
         k = await bot.get_users(chat)
     except PeerIdInvalid:
         return await message.reply(
-            "Ini pengguna yang tidak valid, pastikan ia pernah bertemu sebelumnya."
+            "Ini pengguna yang tidak valid, pastikan dia pernah bertemu sebelumnya."
         )
     except IndexError:
         return await message.reply("This might be a channel, make sure its a user.")
@@ -121,7 +121,7 @@ async def unban_a_user(bot, message):
         if not jar["is_banned"]:
             return await message.reply(f"{k.mention} is not yet banned.")
         await db.remove_ban(k.id)
-        await message.reply(f"Successfully unbanned user {k.mention}!!!")
+        await message.reply(f"Berhasil membuka blokir pengguna {k.mention}!!!")
 
 
 @app.on_message(filters.command("disablechat", COMMAND_HANDLER) & filters.user(SUDO))
@@ -138,16 +138,16 @@ async def disable_chat(bot, message):
     try:
         chat_ = int(chat)
     except:
-        return await message.reply("Give Me A Valid Chat ID")
+        return await message.reply("Berikan ID Obrolan yang Valid")
     cha_t = await db.get_chat(chat_)
     if not cha_t:
-        return await message.reply("Chat Not Found In DB")
+        return await message.reply("Obrolan Tak Ditemukan di DB")
     if cha_t["is_disabled"]:
         return await message.reply(
             f"Obrolan ini sudah dinonaktifkan:\nAlasan-<code> {cha_t['reason']} </code>"
         )
     await db.disable_chat(chat_, reason)
-    await message.reply("Chat Succesfully Disabled")
+    await message.reply("Obrolan Berhasil Dinonaktifkan")
     try:
         buttons = [
             [InlineKeyboardButton("Support", url=f"https://t.me/{SUPPORT_CHAT}")]
@@ -155,7 +155,7 @@ async def disable_chat(bot, message):
         reply_markup = InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_,
-            text=f"<b>Halo temanku, \nPemilikku menyuruhku untuk keluar dari grup, jadi aku pergi! Jika mau memasukkanku lagi, hubungi Pemilikku.</b> \nAlasan : <code>{reason}</code>",
+            text=f"<b>Halo temanku, \nMajikanku menyuruhku untuk keluar dari grup, jadi aku pergi! Jika mau memasukkanku lagi, hubungi Majikanku.</b> \nAlasan : <code>{reason}</code>",
             reply_markup=reply_markup,
         )
         await bot.leave_chat(chat_)
@@ -166,16 +166,16 @@ async def disable_chat(bot, message):
 @app.on_message(filters.command("enablechat", COMMAND_HANDLER) & filters.user(SUDO))
 async def re_enable_chat(_, ctx: Message):
     if len(ctx.command) == 1:
-        return await ctx.reply("Give me a chat id")
+        return await ctx.reply("Berikan id chat")
     chat = ctx.command[1]
     try:
         chat_ = int(chat)
     except:
-        return await ctx.reply("Give Me A Valid Chat ID")
+        return await ctx.reply("Berikan ID Obrolan yang Valid")
     sts = await db.get_chat(int(chat))
     if not sts:
-        return await ctx.reply("Chat Not Found In DB !")
+        return await ctx.reply("Obrolan Tidak Ditemukan di DB!")
     if not sts.get("is_disabled"):
-        return await ctx.reply("This chat is not yet disabled.")
+        return await ctx.reply("Obrolan ini belum dinonaktifkan.")
     await db.re_enable_chat(chat_)
-    await ctx.reply("Chat Succesfully re-enabled")
+    await ctx.reply("Chat Berhasil diaktifkan kembali")
