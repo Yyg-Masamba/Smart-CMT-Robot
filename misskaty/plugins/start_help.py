@@ -206,7 +206,7 @@ Kau bisa memilih opsi di bawah ini, dengan mengeklik tombol.
 Jika kau mau berikan kopi padaku, kau bisa ketik perintah /donate ya.
 """.format(
             first_name=name,
-            bot_name="MissKaty",
+            bot_name="Smart CMT Robot",
         ),
         keyb,
     )
