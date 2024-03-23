@@ -30,11 +30,11 @@ LOGGER = getLogger("Smart-CMT-Robot")
 
 __MODULE__ = "SessionGen"
 __HELP__ = """
-/genstring - Generate string session using this bot. Only support Pyrogram v2 and Telethon.
+/genstring - Membuat sesi string menggunakan bot ini. Hanya mendukung Pyrogram v2 dan Telethon.
 """
 
 
-ask_ques = "**» Please choose the library for which you want generate string :**\n\nNote: I'm not collecting any personal info from this feature, you can deploy own bot if you want."
+ask_ques = "**» Pilih library yang kau inginkan untuk menghasilkan string :**\n\nCatatan: Aku tak mengambil informasi pribadi apa pun dari fitur ini, kau bisa gunakan botmu sendiri jika mau."
 buttons_ques = [
     [
         InlineKeyboardButton("Pyrogram", callback_data="pyrogram"),
@@ -54,7 +54,7 @@ gen_button = [
 async def is_batal(msg):
     if msg.text == "/cancel":
         await msg.reply(
-            "**» Cancelled the ongoing string session generation process !**",
+            "**» Membatalkan proses pembuatan sesi string yang sedang berlangsung!**",
             quote=True,
             reply_markup=InlineKeyboardMarkup(gen_button),
         )
@@ -63,7 +63,7 @@ async def is_batal(msg):
         return False
     elif msg.text.startswith("/"):  # Bot Commands
         await msg.reply(
-            "**» Cancelled the ongoing string session generation process !**",
+            "**» Membatalkan proses pembuatan sesi string yang sedang berlangsung!**",
             quote=True,
         )
         return True
@@ -102,10 +102,10 @@ async def callbackgenstring(bot, callback_query):
         except Exception as e:
             LOGGER.error(traceback.format_exc())
             ERROR_MESSAGE = (
-                "Something went wrong. \n\n**ERROR** : {} "
-                "\n\n**Please forward this message to my Owner**, if this message "
-                "doesn't contain any sensitive data "
-                "because this error is **not logged by bot.** !"
+                "Ada yang salah. \n\n**ERROR** : {} "
+                "\n\n**Harap teruskan pesan ini ke Majikanku**, jika pesan ini "
+                "tidak mengandung data sensitif apa pun "
+                "karena kesalahan ini **tidak dicatat oleh bot.** !"
             )
             await callback_query.message.reply(ERROR_MESSAGE.format(str(e)))
 
@@ -123,7 +123,7 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
         ty += " Bot"
     await msg.reply(f"» Trying to start **{ty}** session generator...")
     api_id_msg = await msg.chat.ask(
-        "Please send your **API_ID** to proceed.\n\nClick on /skip for using bot's api.",
+        "Silakan kirimkan **API_ID** untuk melanjutkan.\n\nKlik /skip untuk menggunakan api bot.",
         filters=filters.text,
     )
     if await is_batal(api_id_msg):
@@ -137,21 +137,21 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
             await api_id_msg.delete()
         except ValueError:
             return await api_id_msg.reply(
-                "**API_ID** must be integer, start generating your session again.",
+                "**API_ID** harus berupa bilangan bulat, mulai buat sesimu lagi.",
                 quote=True,
                 reply_markup=InlineKeyboardMarkup(gen_button),
             )
         api_hash_msg = await msg.chat.ask(
-            "» Now please send your **API_HASH** to continue.", filters=filters.text
+            "» Sekarang silakan kirimkan **API_HASH** untuk melanjutkan.", filters=filters.text
         )
         if await is_batal(api_hash_msg):
             return
         api_hash = api_hash_msg.text
         await api_hash_msg.delete()
     t = (
-        "Please send your **BOT_TOKEN** to continue.\nExample : `5432198765:abcdanonymousterabaaplol`'"
+        "Silahkan kirimkan **BOT_TOKEN** untuk melanjutkan.\nContoh : `5432198765:abcdanonymousterabaaplol`'"
         if is_bot
-        else "» Please send your **PHONE_NUMBER** with country code for which you want generate session. \nᴇxᴀᴍᴩʟᴇ : `+6286356837789`'"
+        else "» Silahkan kirimkan **PHONE_NUMBER** dengan kode negara yang kau mau untuk menghasilkan sesi. \nCONTOH : `+6286356837789`'"
     )
     phone_number_msg = await msg.chat.ask(t, filters=filters.text)
     if await is_batal(phone_number_msg):
@@ -159,9 +159,9 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
     phone_number = phone_number_msg.text
     await phone_number_msg.delete()
     if not is_bot:
-        await msg.reply("» Trying to send OTP at the given number...")
+        await msg.reply("» Mencoba mengirim OTP ke nomor yang diberikan...")
     else:
-        await msg.reply("» Trying to login using Bot Token...")
+        await msg.reply("» Mencoba masuk menggunakan Bot Token...")
     if telethon and is_bot or telethon:
         client = TelegramClient(StringSession(), api_id, api_hash)
     elif is_bot:
@@ -184,19 +184,19 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
                 code = await client.send_code(phone_number)
     except (ApiIdInvalid, ApiIdInvalidError):
         return await msg.reply(
-            "» Your **API_ID** and **API_HASH** combination doesn't match. \n\nPlease start generating your session again.",
+            "» Kombinasi **API_ID** and **API_HASH** kamu tidak cocok. \n\nSilakan buat sesi-mu lagi.",
             reply_markup=InlineKeyboardMarkup(gen_button),
         )
     except (PhoneNumberInvalid, PhoneNumberInvalidError):
         return await msg.reply(
-            "» The **PHONE_NUMBER** you've doesn't belong to any account in Telegram.\n\nPlease start generating your session again.",
+            "» **PHONE_NUMBER** kamu tidak terdaftar dalam akun mana pun di Telegram.\n\nSilakan mulai membuat sesimu lagi.",
             reply_markup=InlineKeyboardMarkup(gen_button),
         )
     try:
         phone_code_msg = None
         if not is_bot:
             phone_code_msg = await msg.chat.ask(
-                "» Please send the **OTP** That you've received from Telegram on your account.\nIf OTP is `12345`, **please send it as** `1 2 3 4 5`.",
+                "» Kirimkan **OTP** yang kau terima dari Telegram ke akunmu.\nJika OTP is `12345`, **silahkan kirim seperti ini** `1 2 3 4 5`.",
                 filters=filters.text,
                 timeout=600,
             )
@@ -204,7 +204,7 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
                 return
     except ListenerTimeout:
         return await msg.reply(
-            "» Time limit reached of 10 minutes.\n\nPlease start generating your session again.",
+            "» Batas waktu yang dicapai 10 menit.\n\nSilakan mulai buat sesimu lagi.",
             reply_markup=InlineKeyboardMarkup(gen_button),
         )
     if not is_bot:
@@ -217,24 +217,24 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
                 await client.sign_in(phone_number, code.phone_code_hash, phone_code)
         except (PhoneCodeInvalid, PhoneCodeInvalidError):
             return await msg.reply(
-                "» The OTP you've sent is **wrong.**\n\nPlease start generating your session again.",
+                "» OTP yang Anda kirimkan **salah.**\n\nSilakan mulai buat sesimu lagi.",
                 reply_markup=InlineKeyboardMarkup(gen_button),
             )
         except (PhoneCodeExpired, PhoneCodeExpiredError):
             return await msg.reply(
-                "» The OTP you've sent is **expired.**\n\nPlease start generating your session again.",
+                "» OTP yang Anda kirimkan sudah **expired.**\n\nSilakan mulai buat sesimu lagi.",
                 reply_markup=InlineKeyboardMarkup(gen_button),
             )
         except (SessionPasswordNeeded, SessionPasswordNeededError):
             try:
                 two_step_msg = await msg.chat.ask(
-                    "» Please enter your **Two Step Verification** password to continue.",
+                    "» Masukkan kata sandi **Verifikasi Dua Langkah** kamu untuk melanjutkan.",
                     filters=filters.text,
                     timeout=300,
                 )
             except ListenerTimeout:
                 return await msg.reply(
-                    "» Time limit reached of 5 minutes.\n\nPlease start generating your session again.",
+                    "» Batas waktu yang dicapai 5 menit.\n\nSilakan mulai buat sesimu lagi.",
                     reply_markup=InlineKeyboardMarkup(gen_button),
                 )
             try:
@@ -248,7 +248,7 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
                     return
             except (PasswordHashInvalid, PasswordHashInvalidError):
                 return await two_step_msg.reply(
-                    "» The password you've sent is wrong.\n\nPlease start generating session again.",
+                    "» Kata sandi yang kau kirimkan salah.\n\nSilakan mulai buat sesimu lagi.",
                     quote=True,
                     reply_markup=InlineKeyboardMarkup(gen_button),
                 )
@@ -266,7 +266,7 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
         string_session = client.session.save()
     else:
         string_session = await client.export_session_string()
-    text = f"**This is your {ty} String Session** \n\n`{string_session}` \n\n**Generated By :** @{bot.me.username}\n🍒 **Note :** Don't share it to anyone  And don't forget to support this owner bot if you like🥺"
+    text = f"**Ini {ty} String Session-mu** \n\n`{string_session}` \n\n**Dibuat oleh :** @{bot.me.username}\n🗒 **Catatan :** Jangan bagikan ke siapa pun dan jangan lupa dukung yang punya bot ini jika suka."
     try:
         if not is_bot:
             await client.send_message("me", text)
@@ -277,5 +277,5 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
     await client.disconnect()
     await bot.send_message(
         msg.chat.id,
-        f'» Successfully generated your {"Telethon" if telethon else "Pyrogram"} String Session.\n\nPlease check saved messages to get it ! \n\n**A String Generator bot by ** @IAmCuteCodes',
+        f'» Berhasil membuat {"Telethon" if telethon else "Pyrogram"} String Sessionmu.\n\nSilakan periksa di pesan tersimpan untuk mendapatkannya! \n\n**Bot Pembuat String oleh ** @smartcmtrobot',
     )
