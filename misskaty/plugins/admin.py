@@ -259,7 +259,7 @@ async def banFunc(client, message, strings):
         await message.chat.ban_member(user_id)
         await message.reply_msg(msg, reply_markup=keyboard)
     except ChatAdminRequired:
-        await message.reply("Please give me permission to banned members..!!!")
+        await message.reply("Tolong izinkan memblokir anggota..!!!")
     except Exception as e:
         await message.reply_msg(str(e))
 
@@ -823,7 +823,7 @@ async def set_user_title(_, ctx: Message):
     from_user = ctx.reply_to_message.from_user
     if len(ctx.command) < 2:
         return await ctx.reply_text(
-            "**Usage:**\n/set_user_title NEW ADMINISTRATOR TITLE"
+            "**Usage:**\n/set_user_title JABATAN ADMINISTRATOR BARU"
         )
     title = ctx.text.split(None, 1)[1]
     try:
@@ -841,23 +841,23 @@ async def set_chat_photo(_, ctx: Message):
     reply = ctx.reply_to_message
 
     if not reply:
-        return await ctx.reply_text("Reply to a photo to set it as chat_photo")
+        return await ctx.reply_text("Membalas foto untuk mengaturnya sebagai chat_photo")
 
     file = reply.document or reply.photo
     if not file:
         return await ctx.reply_text(
-            "Reply to a photo or document to set it as chat_photo"
+            "Membalas foto atau dokumen untuk mengaturnya sebagai chat_photo"
         )
 
     if file.file_size > 5000000:
-        return await ctx.reply("File size too large.")
+        return await ctx.reply("Ukuran file terlalu besar.")
 
     photo = await reply.download()
     try:
         await ctx.chat.set_photo(photo=photo)
-        await ctx.reply_text("Successfully Changed Group Photo")
+        await ctx.reply_text("Berhasil Mengubah Foto Grupo")
     except Exception as err:
-        await ctx.reply(f"Failed changed group photo. ERROR: {err}")
+        await ctx.reply(f"Gagal mengubah foto grup. ERROR: {err}")
     os.remove(photo)
 
 
