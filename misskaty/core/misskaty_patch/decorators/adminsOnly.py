@@ -43,7 +43,7 @@ async def anonymous_admin(m: pyrogram.types.Message):
         ]
     )
     return await m.reply_text(
-        "Click here to prove you are admin with the required rights to perform this action!",
+        "Klik di sini untuk membuktikan kau admin dengan hak yang diperlukan untuk melakukan tindakan ini!",
         reply_markup=keyboard,
     )
 
