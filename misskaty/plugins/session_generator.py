@@ -88,7 +88,7 @@ async def callbackgenstring(bot, callback_query):
                 await generate_session(bot, callback_query.message)
             elif query == "pyrogram_bot":
                 await callback_query.answer(
-                    "» The session generator will be of Pyrogram v2.", show_alert=True
+                    "» Generator sesi akan menggunakan Pyrogram v2.", show_alert=True
                 )
                 await generate_session(bot, callback_query.message, is_bot=True)
             elif query == "telethon_bot":
@@ -121,7 +121,7 @@ async def generate_session(bot, msg, telethon=False, is_bot: bool = False):
     ty = "Telethon" if telethon else "Pyrogram"
     if is_bot:
         ty += " Bot"
-    await msg.reply(f"» Trying to start **{ty}** session generator...")
+    await msg.reply(f"Mencoba menjalankan **{ty}** generator sesi...")
     api_id_msg = await msg.chat.ask(
         "Silakan kirimkan **API_ID** untuk melanjutkan.\n\nKlik /skip untuk menggunakan api bot.",
         filters=filters.text,
