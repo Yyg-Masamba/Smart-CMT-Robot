@@ -199,7 +199,7 @@ async def help_parser(name, keyb=None):
     if not keyb:
         keyb = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     return (
-        """Hello {first_name}, Namaku {bot_name}.
+        """Hai {first_name}, Namaku {bot_name}.
 Aku bot berfitur serbaguna. Kau bisa ubah bahasa bot dengan perintah /setlang, tapi masih dalam tahap beta ya.
 Kau bisa memilih opsi di bawah ini, dengan mengeklik tombol.
 
