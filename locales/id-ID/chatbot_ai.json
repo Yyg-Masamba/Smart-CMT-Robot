@@ -1,6 +1,6 @@
 {
-    "no_question": "Harap gunakan perintah <code>/{cmd} [question]</code> untuk mengajukan pertanyaan Anda menggunakan AI.",
-    "find_answers_str": "Sedang mencari jawaban terbaik buat Anda..",
-    "dont_spam": "Tolong jangan melakukan spam, harap tunggu {tm} detik atau saya akan membanned Anda dari bot ini.",
-    "answers_too_long": "Jawaban untuk pertanyaan Anda telah melampaui limit batas teks Telegram, periksa tautan ini untuk melihatnya.\n\n{answerlink}"
+    "no_question": "Harap gunakan perintah <code>/{cmd} [question]</code> untuk mengajukan pertanyaanmu menggunakan AI.",
+    "find_answers_str": "Sedang mencari jawaban terbaik...",
+    "dont_spam": "Tolong jangan lakukan spam, harap tunggu {tm} detik atau aku akan membannedmu dari bot ini.",
+    "answers_too_long": "Jawaban untuk pertanyaanmu sudah melampaui limit batas teks Telegram, periksa link ini untuk melihatnya.\n\n{answerlink}"
 }
