@@ -1,5 +1,5 @@
 {
   "language_changed_successfully": "Bahasa telah berhasil diubah.",
-  "language_changer_chat": "Di sini Anda dapat mengubah bahasa yang digunakan bot selama obrolan.\nJika bahasa Anda tidak ada di sini dan Anda ingin berkontribusi, Anda dapat membuka masalah di github saya. .",
-  "language_changer_private": "Di sini Anda dapat mengubah bahasa yang digunakan oleh bot dalam obrolan pribadi ini.\n\nJika Anda ingin mengubah bahasa grup Anda, buka perintah <code>/setchatlang</code>. \nJika bahasa Anda tidak ada di sini dan Anda ingin berkontribusi, buka repo misskaty di github."
+  "language_changer_chat": "Kau bisa mengubah bahasa bot selama obrolan.\nJika bahasamu tidak ada di sini dan kau mau berkontribusi, kau bisa buka masalah di github saya. .",
+  "language_changer_private": "Kau bisa mengubah bahasa yang digunakan bot dalam obrolan pribadi ini.\n\nJika kau mau ubah bahasa grupmu, buka perintah <code>/setchatlang</code>. \nJika bahasamu tidak ada di sini dan mau berkontribusi, buka Repo Smart-CMT-Robot di github."
 }
