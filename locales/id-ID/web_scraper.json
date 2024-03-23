@@ -1,6 +1,6 @@
 {
-    "no_result": "Maaf, saya tidak dapat menemukan hasil apa pun!",
-    "no_result_w_query": "Maaf, saya tidak dapat menemukan kueri: {kueri}",
+    "no_result": "Maaf, tak bisa kutemukan hasil apa pun!",
+    "no_result_w_query": "Maaf, tak bisa kutemukan kueri: {kueri}",
     "get_data": "⏳ Mohon tunggu, mengambil data dari web..",
     "cl_btn": "❌ Tutup",
     "back_btn": "↩️ Kembali",
@@ -8,7 +8,7 @@
     "cat_text": "Kategori",
     "kualitas": "Kualitas",
     "ex_data": "👇 Ekstrak Data",
-    "unauth": "Tombol ini bukan untuk Anda..",
+    "unauth": "Tombol ini bukan untukmu...",
     "invalid_cb": "Data callback tidak valid, silakan kirim perintah lagi..",
     "res_scrape": "<b>Hasil Scrape dari</b> <code>{link}</code>:\n\n{kl}",
     "header_with_query": "<b>Hasil Pencarian #{web} Untuk:</b> <code>{kueri}</code>\n\n",
@@ -16,5 +16,5 @@
     "invalid_cmd_scrape": "Gunakan perintah /{cmd} <b>[link]</b> untuk mengambil link unduhan.",
     "err_getweb": "ERROR: Failed getting data from web because {err}.",
     "err_getapi": "ERROR: Failed getting data from API",
-    "unsupport_dl_btn": "Beberapa hasil tidak akan muncul di tombol ekstrak karena tautan tidak didukung."
+    "unsupport_dl_btn": "Beberapa hasil tidak akan muncul di tombol ekstrak karena link tak didukung."
 }
