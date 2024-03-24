@@ -20,7 +20,7 @@ from misskaty.vars import GOOGLEAI_KEY, COMMAND_HANDLER, OPENAI_KEY, SUDO
 __MODULE__ = "ChatBot"
 __HELP__ = """
 /ai - Membuat respons teks dari AI menggunakan Gemini AI OLeh Google.
-/ask - Membuat respons teks dari AI menggunakan OpenAI.
+/tanya - Membuat respons teks dari AI menggunakan OpenAI.
 """
 
 
@@ -62,7 +62,7 @@ async def gemini_chatbot(_, ctx: Message, strings):
         await msg.edit_msg(str(e))
 
 
-@app.on_message(filters.command("ask", COMMAND_HANDLER) & pyro_cooldown.wait(10))
+@app.on_message(filters.command("tanya", COMMAND_HANDLER) & pyro_cooldown.wait(10))
 @use_chat_lang()
 async def openai_chatbot(_, ctx: Message, strings):
     if len(ctx.command) == 1:
