@@ -1,6 +1,6 @@
 {
-    "newgroup_log": "#NewGroup\nGroup = {jdl}(<code>{id}</code>)\nJumlah Anggota = <code>{c}</code>",
-    "newuser_log": "#PenggunaBaru\nID - <code>{id}</code>\nNama - {nm}",
+    "newgroup_log": "𝑮𝒓𝒐𝒖𝒑 = {jdl}(<code>\n𝑰𝑫 = {id}</code>)\n𝑱𝒖𝒎𝒍𝒂𝒉 𝑨𝒏𝒈𝒈𝒐𝒕𝒂 = <code>{c}</code>",
+    "newuser_log": "PenggunaBaru\nID - <code>{id}</code>\nNama - {nm}",
     "help_name": "Ini bantuan untuk **{mod}**:\n",
     "help_txt": "Hai {kamuh}, Namaku {bot}.\nAku ini bot pyrogram yang dikembangkan oleh majikan yang baik hati dengan fitur serba guna.\nKau bisa ihat dengan mengeklik tombol di bawah.\n\nPerintah umum adalah :\n - /start: Mulai bot\n - /help: Berikan pesan ini\n - /setlang: Ubah bahasa bot [BETA]",
     "click_me": "Klik aku",
