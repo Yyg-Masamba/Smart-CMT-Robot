@@ -125,7 +125,7 @@ async def byPassPh(url: str, name: str) -> Optional[str]:
 {{#data}}
     <h4>{{name}}</h4>
     {{#links}}
-    <p><b>Resolution: {{quality}}</b></p>
+    <p><b>Resolusi: {{quality}}</b></p>
     {{#link_download}}
     <p>✗ <a href="{{url}}">{{client}}</a></p>
     {{/link_download}}
