@@ -103,7 +103,7 @@ async def admin_cache_func(_, cmu):
                     )
                 ],
             }
-            LOGGER.info(f"Updated admin cache for {cmu.chat.id} [{cmu.chat.title}]")
+            LOGGER.info(f"Cache admin yang diperbarui untuk {cmu.chat.id} [{cmu.chat.title}]")
         except:
             pass
 
@@ -206,7 +206,7 @@ async def banFunc(client, message, strings):
     try:
         user_id, reason = await extract_user_and_reason(message, sender_chat=True)
     except UsernameNotOccupied:
-        return await message.reply_msg("Sorry, i didn't know that user.") 
+        return await message.reply_msg("Maaf, aku tak kenal user itu.") 
 
     if not user_id:
         return await message.reply_text(strings("user_not_found"))
@@ -487,7 +487,7 @@ async def demote(client, message, strings):
         umention = (await app.get_users(user_id)).mention
         await message.reply_text(f"Demoted! {umention}")
     except ChatAdminRequired:
-        await message.reply("Please give permission to demote members..")
+        await message.reply("Tolong izinkan memecat anggota..")
     except Exception as e:
         await message.reply_msg(str(e))
 
@@ -816,9 +816,9 @@ async def set_chat_title(_, ctx: Message):
 @app.adminsOnly("can_change_info")
 async def set_user_title(_, ctx: Message):
     if not ctx.reply_to_message:
-        return await ctx.reply_text("Reply to user's message to set his admin title")
+        return await ctx.reply_text("Membalas pesan user untuk mengatur gelar adminnya")
     if not ctx.reply_to_message.from_user:
-        return await ctx.reply_text("I can't change admin title of an unknown entity")
+        return await ctx.reply_text("Aku tak bisa ubah gelar admin dari entitas yang tidak dikenal")
     chat_id = ctx.chat.id
     from_user = ctx.reply_to_message.from_user
     if len(ctx.command) < 2:
@@ -829,7 +829,7 @@ async def set_user_title(_, ctx: Message):
     try:
         await app.set_administrator_title(chat_id, from_user.id, title)
         await ctx.reply_text(
-            f"Successfully Changed {from_user.mention}'s Admin Title To {title}"
+            f"Berhasil Mengubah  {from_user.mention}'s gelar Admin sebagai {title}"
         )
     except Exception as e:
         await ctx.reply_msg(str(e))
