@@ -71,7 +71,7 @@ def get_subname(lang, url, ext):
     return f"[{lang.upper()}] {get_base_name(os.path.basename(unquote(scheme_removed)))}{get_random_string(3)}.{ext}"
 
 
-@app.on_message(filters.command(["ceksub", "extractmedia"], COMMAND_HANDLER))
+@app.on_message(filters.command(["sub", "ceksub", "ekstrak", "extractmedia"], COMMAND_HANDLER))
 @use_chat_lang()
 async def ceksub(self, ctx: Message, strings):
     if len(ctx.command) == 1:
