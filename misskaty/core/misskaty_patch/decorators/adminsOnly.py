@@ -85,7 +85,7 @@ async def anonymous_admin_verification(
         client=self,
     ):
         return await CallbackQuery.message.edit_text(
-            f"You are Missing the following Rights to use this Command:\n{permission}",
+            f"Kau tak berHak menggunakan Perintah ini:\n{permission}",
         )
     if isinstance(permission, list):
         permissions = ""
@@ -99,14 +99,14 @@ async def anonymous_admin_verification(
                 permissions += f"\n{perm}"
                 if permissions != "":
                     return await CallbackQuery.message.edit_text(
-                        f"You are Missing the following Rights to use this Command:{permissions}",
+                        f"Kau tak berHak menggunakan Perintah ini:{permissions}",
                     )
     try:
         await CallbackQuery.message.delete()
         await cb[1](self, cb[0])
     except pyrogram.errors.exceptions.forbidden_403.ChatAdminRequired:
         return await CallbackQuery.message.edit_text(
-            "I must be admin to execute this task, or i will leave from this group.",
+            "Aku harus jadi admin baru bisa jalankan tugas ini, atau aku akan keluar dari grup ini.",
         )
     except BaseException as e:
         return await handle_error(e, CallbackQuery)
@@ -146,7 +146,7 @@ def adminsOnly(
             permissions = ""
             if message.chat.type != pyrogram.enums.ChatType.SUPERGROUP:
                 return await message.reply_text(
-                    "This command can be used in supergroups only.",
+                    "Perintah ini cuma bisa digunakan di supergrup.",
                 )
             if message.sender_chat and not TRUST_ANON_ADMINS:
                 ANON[int(f"{message.chat.id}{message.id}")] = (
@@ -161,7 +161,7 @@ def adminsOnly(
                 client=client,
             ):
                 return await message.reply_text(
-                    "Only admins can execute this Command!",
+                    "Hanya admin yang bisa!",
                 )
             if isinstance(permission, str) and not await check_rights(
                 message.chat.id,
@@ -170,7 +170,7 @@ def adminsOnly(
                 client=client,
             ):
                 return await message.reply_text(
-                    f"You are Missing the following Rights to use this Command:\n{permission}",
+                    f"Kau tak berHak menggunakan Perintah ini:\n{permission}",
                 )
             if isinstance(permission, list):
                 for perm in permission:
@@ -183,7 +183,7 @@ def adminsOnly(
                         permissions += f"\n{perm}"
                 if permissions != "":
                     return await message.reply_text(
-                        f"You are Missing the following Rights to use this Command:{permissions}",
+                        f"Kau tak berHak menggunakan Perintah ini:{permissions}",
                     )
             try:
                 await func(client, message)
