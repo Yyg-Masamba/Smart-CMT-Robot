@@ -10,7 +10,7 @@ from pyrogram.errors import FloodWait, MessageIdInvalid, MessageNotModified
 
 
 async def progress_for_pyrogram(current, total, ud_type, message, start, dc_id):
-    """generic progress display for Telegram Upload / Download status"""
+    """Tampilan kemajuan umum untuk status Unggah / Unduh Telegram"""
     now = time.time()
     diff = now - start
     if round(diff % 10.00) == 0 or current == total:
@@ -51,7 +51,7 @@ async def progress_for_pyrogram(current, total, ud_type, message, start, dc_id):
 
 
 def humanbytes(size: int) -> str:
-    """converts bytes into human readable format"""
+    """mengubah byte menjadi format yang dapat dibaca manusia"""
     # https://stackoverflow.com/a/49361727/4723940
     # 2**10 = 1024
     if not size:
