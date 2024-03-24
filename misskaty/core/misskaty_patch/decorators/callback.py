@@ -84,7 +84,7 @@ def callback(
                     pyrogram.enums.ChatMemberStatus.ADMINISTRATOR,
                 ):
                     return await CallbackQuery.message.edit_text(
-                        "I must be admin to execute this Command"
+                        "Aku harus jadi Admin dulu"
                     )
             try:
                 await func(client, CallbackQuery)
