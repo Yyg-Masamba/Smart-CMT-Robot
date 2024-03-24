@@ -53,18 +53,18 @@ async def handle_error(
     f_errname = f"crash_{tgl_now.strftime('%d %B %Y')}.txt"
     LOGGER.error(traceback.format_exc())
     with open(f_errname, "w+", encoding="utf-8") as log:
-        log.write(f"✍️ Message: {m.text or m.caption}\n👱‍♂️ User: {m.from_user.id if m.from_user else m.sender_chat.id}\n\n{traceback.format_exc()}")
+        log.write(f"✍️ Pesan: {m.text or m.caption}\n🤵🏻‍♂️ User: {m.from_user.id if m.from_user else m.sender_chat.id}\n\n{traceback.format_exc()}")
         log.close()
     if isinstance(m, pyrogram.types.Message):
         with contextlib.suppress(Exception):
             try:
                 await m.reply_photo(
                     "https://telegra.ph/file/8883eae0789b3589301d3.jpg",
-                    caption="An Internal Error Occurred while Processing your Command, the Logs have been sent to the Owners of this Bot. Sorry for Inconvenience",
+                    caption="Terjadi Kesalahan Internal saat Memproses Perintahmu, Log sudah dikirim ke Majikan Bot ini. Mohon maaf atas ketidaknyamanannya.",
                 )
             except:
                 await m.reply_msg(
-                    "An Internal Error Occurred while Processing your Command, the Logs have been sent to the Owners of this Bot. Sorry for Inconvenience"
+                    "Terjadi Kesalahan Internal saat Memproses Perintahmu, Log sudah dikirim ke Majikan Bot ini. Mohon maaf atas ketidaknyamanannya."
                 )
             await m._client.send_document(
                 LOG_CHANNEL,
@@ -77,16 +77,16 @@ async def handle_error(
             try:
                 await m.reply_photo(
                     "https://telegra.ph/file/8883eae0789b3589301d3.jpg",
-                    caption="An Internal Error Occurred while Processing your Command, the Logs have been sent to the Owners of this Bot. Sorry for Inconvenience",
+                    caption="Terjadi Kesalahan Internal saat Memproses Perintahmu, Log sudah dikirim ke Majikan Bot ini. Mohon maaf atas ketidaknyamanannya.",
                 )
             except:
                 await m.message.reply_msg(
-                    "An Internal Error Occurred while Processing your Command, the Logs have been sent to the Owners of this Bot. Sorry for Inconvenience"
+                    "Terjadi Kesalahan Internal saat Memproses Perintahmu, Log sudah dikirim ke Majikan Bot ini. Mohon maaf atas ketidaknyamanannya."
                 )
             await m.message._client.send_document(
                 LOG_CHANNEL,
                 f_errname,
-                caption=f"Crash Report of this Bot\n{cap_day}",
+                caption=f"Laporan Kerusakan Bot ini\n{cap_day}",
             )
     if os.path.exists(f_errname):
         os.remove(f_errname)
