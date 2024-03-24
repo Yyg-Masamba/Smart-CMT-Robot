@@ -88,7 +88,7 @@ def command(
         async def decorator(client, message: pyrogram.types.Message):
             if is_disabled:
                 return await message.reply_text(
-                    "Sorry, this command has been disabled by owner."
+                    "Maaf, perintah ini telah dinonaktifkan oleh majikannya."
                 )
             if not message.from_user and no_channel:
                 return await message.reply_text(
@@ -96,7 +96,7 @@ def command(
                 )
             if self_admin and message.chat.type != pyrogram.enums.ChatType.SUPERGROUP:
                 return await message.reply_text(
-                    "This command can be used in supergroups only."
+                    "Perintah ini cuma bisa digunakan di supergrup."
                 )
             if self_admin:
                 me = await client.get_chat_member(
@@ -111,7 +111,7 @@ def command(
                     )
             if group_only and message.chat.type != pyrogram.enums.ChatType.SUPERGROUP:
                 return await message.reply_text(
-                    "This command can be used in supergroups only."
+                    "Perintah ini cuma bisa digunakan di supergrup."
                 )
             if pm_only and message.chat.type != pyrogram.enums.ChatType.PRIVATE:
                 return await message.reply_text("This command can be used in PMs only.")
