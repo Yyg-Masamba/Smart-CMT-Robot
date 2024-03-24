@@ -43,7 +43,7 @@ __HELP__ = """
 Semuanya menyenangkan, bahkan seorang pengirim spam mulai memasuki grupmu, dan kau harus memblokirnya. Lalu kau harus blokir lagi, dan lebih banyak lagi, dan itu menyakitkan.
 Tapi grupmu banyak, dan kau tak mau spammer ini ada digrupmu - Bagaimana  caramu mengatasinya? Apa kau harus blokir manual, di semua grupmu?\n
 **Tidak lagi!** Dengan Federasi, kau bisa buat larangan dalam satu obrolan dengan semua obrolan lainnya.\n
-Bahkan kau bisa angkat admin federasi, agar dmin tepercayamu bisa memblokir semua spammer dari obrolan yang mau kau lindungi.\n\n
+Bahkan kau bisa angkat admin federasi, agar admin tepercayamu bisa memblokir semua spammer dari obrolan yang mau kau lindungi.\n\n
 """
 
 SUPPORT_CHAT = "@smartcmtrobot"
@@ -56,10 +56,10 @@ async def new_fed(self, message):
     user = message.from_user
     if message.chat.type != ChatType.PRIVATE:
         return await message.reply_msg(
-            "Federations can only be created by privately messaging me."
+            "Federasi cuma bisa dibuat dengan mengirim pesan pribadi padaku."
         )
     if len(message.command) < 2:
-        return await message.reply_msg("Please write the name of the federation!")
+        return await message.reply_msg("Silakan tulis nama federasi!")
     fednam = message.text.split(None, 1)[1]
     if fednam != "":
         fed_id = str(uuid.uuid4())
@@ -81,7 +81,7 @@ async def new_fed(self, message):
         )
         if not x:
             return await message.reply_msg(
-                f"Can't federate! Please contact {SUPPORT_CHAT} if the problem persist."
+                f"Tidak bisa melakukan federasi! Silakan hubungi {SUPPORT_CHAT} jika masalah terus berlanjut."
             )
 
         await message.reply_msg(
@@ -95,9 +95,9 @@ async def new_fed(self, message):
                 parse_mode=ParseMode.HTML,
             )
         except:
-            self.log.info("Cannot send a message to EVENT_LOGS")
+            self.log.info("Tidak bisa mengirim pesan ke EVENT_LOGS")
     else:
-        await message.reply_text("Please write down the name of the federation")
+        await message.reply_text("Mohon tuliskan nama federasinya")
 
 
 @app.on_message(filters.command("delfed", COMMAND_HANDLER))
@@ -107,7 +107,7 @@ async def del_fed(client, message):
     user = message.from_user
     if message.chat.type != ChatType.PRIVATE:
         return await message.reply_text(
-            "Federations can only be deleted by privately messaging me."
+            "Federasi cuma bisa dihapus dengan mengirim pesan pribadi kepadaku."
         )
     args = message.text.split(" ", 1)
     if len(args) <= 1:
@@ -124,12 +124,12 @@ async def del_fed(client, message):
     if is_owner is False:
         return await message.reply_text("Only federation owners can do this!")
     await message.reply_text(
-        f"""You sure you want to delete your federation? This cannot be reverted, you will lose your entire ban list, and '{getinfo["fed_name"]}' will be permanently lost.""",
+        f"""Yakin mau menghapus federasimu? Tapi tak bsia lagi dipulihkan, seluruh daftar laranganmu akan hilang, dan '{getinfo["fed_name"]}' akan hilang selamanya.""",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        "⚠️ Delete Federation ⚠️",
+                        "⚠️ Hapus Federasi ⚠️",
                         callback_data=f"rmfed_{fed_id}",
                     )
                 ],
@@ -150,10 +150,10 @@ async def fedtransfer(client, message):
         )
     is_feds = await get_feds_by_owner(int(user.id))
     if not is_feds:
-        return await message.reply_text("**You haven't created any federations.**")
+        return await message.reply_text("**Kau belum buat federasi apa pun.**")
     if len(message.command) < 2:
         return await message.reply_text(
-            "**You needed to specify a user or reply to their message!**"
+            "**Tentukan user atau membalas pesan mereka!**"
         )
     user_id, fed_id = await extract_user_and_reason(message)
     if not user_id:
@@ -683,7 +683,7 @@ async def funban_user(client, message):
         )
     if len(message.command) < 2:
         return await message.reply_text(
-            "**You needed to specify a user or reply to their message!**"
+            "**Kau harus tentukan user atau membalas pesan mereka!**"
         )
     user_id, reason = await extract_user_and_reason(message)
     user = await app.get_users(user_id)
@@ -702,7 +702,7 @@ async def funban_user(client, message):
     served_chats, _ = await chat_id_and_names_in_fed(fed_id)
     m = await message.reply_text(
         f"**Fed UnBanning {user.mention}!**"
-        + f" **This Action Should Take About {len(served_chats)} Seconds.**"
+        + f" **Tindakan cuma {len(served_chats)} Sebentar.**"
     )
     await remove_fban_user(fed_id, user_id)
     number_of_chats = 0
@@ -725,19 +725,19 @@ async def funban_user(client, message):
     try:
         await app.send_message(
             user.id,
-            f"Hello, You have been fed unbanned by {from_user.mention}, You can thank him for his action.",
+            f"Halo, kau sudah diberi makan tanpa larangan oleh {from_user.mention}, berterima kasilah atas tindakannya.",
         )
     except Exception:
         pass
     await m.edit(f"Fed UnBanned {user.mention} !")
     ban_text = f"""
-__**New Federation UnBan**__
-**Origin:** {message.chat.title} [`{message.chat.id}`]
+__**Pelarangan Federasi Baru**__
+**Asal:** {message.chat.title} [`{message.chat.id}`]
 **Admin:** {from_user.mention}
-**UnBanned User:** {user.mention}
-**UnBanned User ID:** `{user_id}`
-**Reason:** __{reason}__
-**Chats:** `{number_of_chats}`"""
+**User Tidak Dilarang:** {user.mention}
+**ID User Tidak Dilarang:** `{user_id}`
+**Alasan:** __{reason}__
+**Obrolan:* `{number_of_chats}`"""
     try:
         m2 = await app.send_message(
             info["log_group_id"],
@@ -745,12 +745,12 @@ __**New Federation UnBan**__
             disable_web_page_preview=True,
         )
         await m.edit(
-            f"Fed UnBanned {user.mention} !\nAction Log: {m2.link}",
+            f"Fed Tidak Dilarang {user.mention} !\nCatatan Tindakan: {m2.link}",
             disable_web_page_preview=True,
         )
     except Exception:
         await message.reply_text(
-            "User FUnbanned, But This Fban Action Wasn't Logged, Add Me In LOG_GROUP"
+            "User FUnbanned, Tepi Tindakan Fban Ini Tidak Tercatat, Tambahkan aku Di LOG_GROUP"
         )
 
 
@@ -759,7 +759,7 @@ async def fedstat(client, message):
     user = message.from_user
     if message.chat.type != ChatType.PRIVATE:
         await message.reply_text(
-            "Federation Ban status can only be checked by privately messaging me."
+            "Status Larangan Federasi cuma bisa diperiksa dengan mengirim pesan pribadi padamu."
         )
         return
     if len(message.command) < 2:
@@ -771,7 +771,7 @@ async def fedstat(client, message):
         fed_id = message.text.split(" ", 1)[1].strip()
     if not fed_id:
         return await message.reply_text(
-            "Provide me a Fed Id along with the command to search for."
+            "Berikan Fed Id beserta perintah untuk mencari."
         )
     info = await get_fed_info(fed_id)
     if not info:
@@ -783,11 +783,11 @@ async def fedstat(client, message):
             reason = check_user["reason"]
             date = check_user["date"]
             return await message.reply_text(
-                f"**User {user.mention} was Fed Banned for:\n\nReason: {reason}.\nDate: {date}.**"
+                f"**Feed {user.mention} user diblokir karena\n\nAlasan: {reason}.\nDate: {date}.**"
             )
         else:
             await message.reply_text(
-                f"**User {user.mention} is not Fed Banned in this federation.**"
+                f"**User {user.mention} tak dilarang di federasi ini.**"
             )
 
 
@@ -798,29 +798,29 @@ async def fbroadcast_message(client, message):
     from_user = message.from_user
     reply_message = message.reply_to_message
     if message.chat.type == ChatType.PRIVATE:
-        await message.reply_text("This command is specific to groups, not our pm!.")
+        await message.reply_text("Perintah ini khusus untuk grup, bukan untuk pm!.")
         return
     fed_id = await get_fed_id(chat.id)
     if not fed_id:
-        return await message.reply_text("**This chat is not a part of any federation.")
+        return await message.reply_text("**Obrolan ini bukan bagian dari federasi mana pun.")
     info = await get_fed_info(fed_id)
     fed_owner = info["owner_id"]
     fed_admins = info["fadmins"]
     all_admins = [fed_owner] + fed_admins + [int(BOT_ID)]
     if from_user.id not in all_admins and from_user.id not in SUDO:
         return await message.reply_text(
-            "You need to be a Fed Admin to use this command"
+            "Jadilah Admin Fed jika mau gunakan perintah ini."
         )
     if not reply_message:
         return await message.reply_text(
-            "**You need to reply to a text message to Broadcasted it.**"
+            "**Kau haurs balas pesan teks untuk menyiarkannya.**"
         )
     sleep_time = 0.1
 
     if reply_message.text:
         text = reply_message.text.markdown
     else:
-        return await message.reply_text("You can only Broadcast text messages.")
+        return await message.reply_text("Kau hanya bisa menyiarkan pesan teks.")
 
     reply_markup = None
     if reply_message.reply_markup:
@@ -828,7 +828,7 @@ async def fbroadcast_message(client, message):
     sent = 0
     chats, _ = await chat_id_and_names_in_fed(fed_id)
     m = await message.reply_text(
-        f"Broadcast in progress, will take {len(chats) * sleep_time} seconds."
+        f"Siaran sedang berlangsung, butuh waktu {len(chats) * sleep_time} beberapa detik."
     )
     for i in chats:
         try:
@@ -843,7 +843,7 @@ async def fbroadcast_message(client, message):
             await asyncio.sleep(e.value)
         except Exception:
             pass
-    await m.edit(f"**Broadcasted Message In {sent} Chats.**")
+    await m.edit(f"**Pesan yang disiarkan di {sent} Obrolan.**")
 
 
 @app.on_callback_query(filters.regex("rmfed_(.*)"))
@@ -853,14 +853,14 @@ async def del_fed_button(client, cb):
     fed_id = query.split("_")[1]
 
     if fed_id == "cancel":
-        await cb.message.edit_text("Federation deletion cancelled")
+        await cb.message.edit_text("Penghapusan federasi dibatalkan")
         return
 
     getfed = await get_fed_info(fed_id)
     if getfed:
         if delete := fedsdb.delete_one({"fed_id": str(fed_id)}):
             await cb.message.edit_text(
-                f'You have removed your Federation! Now all the Groups that are connected with `{getfed["fed_name"]}` do not have a Federation.',
+                f'kau sudah menghapus Federasi-mu!   Sekarang semua Grup yang terhubung `{getfed["fed_name"]}` tidak memiliki Federasi.',
                 parse_mode=ParseMode.MARKDOWN,
             )
 
@@ -872,7 +872,7 @@ async def fedtransfer_button(client, cb):
     data = query.split("_")[1]
 
     if data == "cancel":
-        await cb.message.edit_text("Federation deletion cancelled")
+        await cb.message.edit_text("Penghapusan federasi dibatalkan")
         return
     data2 = data.split("|", 1)
     new_owner_id = int(data2[0])
@@ -880,7 +880,7 @@ async def fedtransfer_button(client, cb):
     transferred = await transfer_owner(fed_id, userid, new_owner_id)
     if transferred:
         await cb.message.edit_text(
-            "**Successfully transferred ownership to new owner.**"
+            "**Berhasil mengalihkan kepemilikan ke majikan baru.**"
         )
 
 
@@ -890,36 +890,36 @@ async def fed_owner_help(client, cb):
     userid = cb.message.chat.id
     data = query.split("_")[1]
     if data == "owner":
-        text = """**👑 Fed Owner Only:**
- • /newfed <fed_name>**:** Creates a Federation, One allowed per user
- • /renamefed <fed_id> <new_fed_name>**:** Renames the fed id to a new name
- • /delfed <fed_id>**:** Delete a Federation, and any information related to it. Will not cancel blocked users
- • /myfeds**:** To list the federations that you have created
- • /fedtransfer <new_owner> <fed_id>**:**To transfer fed ownership to another person
- • /fpromote <user>**:** Assigns the user as a federation admin. Enables all commands for the user under `Fed Admins`
- • /fdemote <user>**:** Drops the User from the admin Federation to a normal User
- • /setfedlog <fed_id>**:** Sets the group as a fed log report base for the federation
- • /unsetfedlog <fed_id>**:** Removed the group as a fed log report base for the federation
- • /fbroadcast **:** Broadcasts a messages to all groups that have joined your fed """
+        text = """**👑 Khusus Pemilik Fed:**
+ • /newfed <fed_name>**:** Membuat Federasi, Satu diizinkan per user.
+ • /renamefed <fed_id> <new_fed_name>**:** Mengganti nama fed id menjadi nama baru.
+ • /delfed <fed_id>**:** Menghapus Federasi, dan info apa pun terkait dengannya. Tidak akan membatalkan user yang diblokir.
+ • /myfeds**:** Untuk membuat daftar federasi yang sudah kau buat.
+ • /fedtransfer <new_owner> <fed_id>**:**Untuk mengalihkan kepemilikan fed ke orang lain.
+ • /fpromote <user>**:** Mengangkat user jadi admin federasi. Mengaktifkan semua perintah untuk user di bawah "Fed Admin".
+ • /fdemote <user>**:** Memecat User dari Federasi admin ke User normal.
+ • /setfedlog <fed_id>**:** Menetapkan grup sebagai basis laporan log umpan untuk federasi.
+ • /unsetfedlog <fed_id>**:** Menghapus grup sebagai basis laporan log feed untuk federasi.
+ • /fbroadcast **:** Menyiarkan pesan ke semua grup yang sudah gabung dengan feedmu. """
     elif data == "admin":
-        text = """**🔱 Fed Admins:**
- • /fban <user> <reason>**:** Fed bans a user
- • /sfban**:** Fban a user without sending notification to chats
- • /unfban <user> <reason>**:** Removes a user from a fed ban
- • /sunfban**:** Unfban a user without sending a notification
- • /fedadmins**:** Show Federation admin
- • /fedchats <FedID>**:** Get all the chats that are connected in the Federation
- • /fbroadcast **:** Broadcasts a messages to all groups that have joined your fed
+        text = """**🔱 Admin Fed:**
+ • /fban <user> <reason>**:** Fed memban user.
+ • /sfban**:** Mencekal user tanpa mengirim pemberitahuan ke obrolan.
+ • /unfban <user> <reason>**:** Menghapus larangan makan untuk user.
+ • /sunfban**:** Membatalkan pencekalan user tanpa mengirim pemberitahuan.
+ • /fedadmins**:** Menampilkan admin Federasi.
+ • /fedchats <FedID>**:** Dapatkan semua obrolan yang terhubung di Federasi.
+ • /fbroadcast **:** Menyiarkan pesan ke semua grup yang telah bergabung dengan feednmu.
  """
     else:
-        text = """**User Commands:**
-• /fedinfo <FedID>: Information about a federation.
-• /fedadmins <FedID>: List the admins in a federation.
-• /joinfed <FedID>: Join the current chat to a federation. A chat can only join one federation. Chat owners only.
-• /leavefed: Leave the current federation. Only chat owners can do this.
-• /fedstat <FedID>: Gives information about your ban in a federation.
-• /fedstat <user ID> <FedID>: Gives information about a user's ban in a federation.
-• /chatfed: Information about the federation the current chat is in.
+        text = """**Perintah User:**
+• /fedinfo <FedID>: Informasi mengenai federasi.
+• /fedadmins <FedID>: Buat daftar admin dalam sebuah federasi.
+• /joinfed <FedID>: Bergabung dengan obrolan saat ini ke federasi. Obrolan cuma bisa gabung dengan satu federasi. Hanya majikan obrolan.
+• /leavefed: Keluar dari federasi saat ini. Hanya majikan obrolan yang bisa.
+• /fedstat <FedID>: Memberikan informasi tentang laranganmu di federasi.
+• /fedstat <user ID> <FedID>: Memberikan informasi tentang larangan user dalam federasi.
+• /chatfed: Informasi tentang federasi tempat obrolan saat ini berlangsung.
 """
     await cb.message.edit(
         text,
