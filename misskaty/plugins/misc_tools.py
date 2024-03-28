@@ -188,7 +188,7 @@ async def kbbi_search(_, ctx: Client):
         kt_dasar = "".join(f"{a}, " for a in a["kata_dasar"])[:-2]
         bt_takbaku = "".join(f"{a}, " for a in a["bentuk_tidak_baku"])[:-2]
         res += f"<b>{a['nama']} ({a['makna'][0]['kelas'][0]['nama']}: {a['makna'][0]['kelas'][0]['deskripsi']})</b>\n<b>Kata Dasar:</b> {kt_dasar if kt_dasar else '-'}\n<b>Bentuk Tidak Baku:</b> {bt_takbaku if bt_takbaku else '-'}\n<b>Submakna:</b> {submakna}\n<b>Contoh:</b> {contoh if contoh else '-'}\n\n"
-    await ctx.reply(f"{res}<b>By YasirPedia API</b>", reply_markup=kbbi_btn)
+    await ctx.reply(f"{res}<b>By Pea Masamba API</b>", reply_markup=kbbi_btn)
 
 
 @app.on_cmd("carbon")
