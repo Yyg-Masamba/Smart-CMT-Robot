@@ -214,8 +214,8 @@ async def wastepaste(_, message):
             "expire_at": 0,
             "expire_in": 0,
         }
-        response = await fetch.post("https://paste.yasir.eu.org/api/new", json=json_data)
-        url = f"https://paste.yasir.eu.org/{response.json()['id']}"
+        response = await fetch.post("https://pastebin.com/ngWy7PDz", json=json_data)
+        url = f"https://pastebin.com/u/PeaMasamba/{response.json()['id']}"
     except Exception as e:
         return await msg.edit_msg(f"ERROR: {e}")
 
