@@ -553,7 +553,7 @@ async def mdlapi(title):
         return await result.json()
 
 
-@app.on_message(filters.command(["mdl"], COMMAND_HANDLER))
+@app.on_message(filters.command(["mydramalist"], COMMAND_HANDLER))
 @capture_err
 async def mdlsearch(_, message):
     if " " in message.text:
