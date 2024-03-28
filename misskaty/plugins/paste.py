@@ -172,7 +172,7 @@ async def wastepaste(_, message):
             f"**Reply To A Message With /{target} or with command**", del_in=6
         )
 
-    msg = await message.reply_msg("`Pasting to YasirBin...`")
+    msg = await message.reply_msg("`Pasting to PeaMasambaBin...`")
     data = ""
     limit = 1024 * 1024
     if reply and reply.document:
@@ -230,7 +230,7 @@ async def wastepaste(_, message):
         ],
     ]
 
-    pasted = f"**Successfully pasted your data to YasirBin<a href='{url}'>.</a>\n\nPaste by {uname}**"
+    pasted = f"**Successfully pasted your data to PeaMasambaBin<a href='{url}'>.</a>\n\nPaste by {uname}**"
     await msg.edit_msg(pasted, reply_markup=InlineKeyboardMarkup(button))
 
 
